@@ -5,6 +5,7 @@ let $injector = widgetContext.$scope.$injector;
 let attributeService = $injector.get(widgetContext
     .servicesMap.get('attributeService'));
 
+console.log(additionalParams)
 // build the msg array
 let attributesArray = [{key:'regNum',value:additionalParams["1"]}];
 
@@ -12,5 +13,17 @@ let attributesArray = [{key:'regNum',value:additionalParams["1"]}];
 attributeService.saveEntityAttributes(entityId, 'SHARED_SCOPE', attributesArray).subscribe(
                     function () {
                         widgetContext.updateAliases();
+                        openDashboardState('editar_operacion');
                     }
                 );
+
+// function to do what it says
+function openDashboardState(stateId) {
+    let params = {
+        entityId: entityId,
+        entityName: entityName
+    }
+
+    widgetContext.stateController.openState(stateId, params,
+        false);
+}
