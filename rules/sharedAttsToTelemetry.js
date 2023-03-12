@@ -14,11 +14,23 @@ function filterScript(){
     return metadata.shared_canSaveTelemetry == "true";
 }
 
+function filterForUpdate(){
+    return metadata.shared_canUpdate == "true";
+}
+
 function stopSaving(){
     return {
         msg: {"canSaveTelemetry":false},
         metadata: {},
         msgType: "POST_ATTRIBUTES_REQUEST"   // attributes befor the save attributes
+    };
+}
+
+function stopUpdating(){
+    return {
+        msg: {"canUpdate":false},
+        metadata: {},
+        msgType: "POST_ATTRIBUTES_REQUEST"
     };
 }
 
@@ -36,5 +48,25 @@ function telemMsg(){
         },
         metadata: metadata,
         msgType: "POST_TELEMETRY_REQUEST"  // telemetry before the save telemetry
+    }
+}
+
+function msgUpdate(){
+    return {
+        msg: {
+            "ts" : metadata.shared_ts_id,
+            "values":{
+                regNum: metadata.shared_regNum,
+                sta: metadata.shared_sta,
+                std: metadata.shared_std,
+                blockin: metadata.shared_blockin,
+                pushback: metadata.shared_pushback,
+                echo: metadata.shared_echo,
+                TT1: metadata.shared_TT1,
+                TT2: metadata.shared_TT2
+            }
+        },
+        metadata: {},
+        msgType: "POST_TELEMETRY_REQUEST"
     }
 }
