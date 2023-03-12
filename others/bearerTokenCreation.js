@@ -1,7 +1,9 @@
-const url = 'https://.com/api/auth/login';
+let {credentials} = require('../myvars')
+
+const url = `https://${credentials.dns}/api/auth/login`;
 const data = {
-    username: '',
-    password: ''
+    username: credentials.user,
+    password: credentials.pass
 };
 
 fetch(url, {
