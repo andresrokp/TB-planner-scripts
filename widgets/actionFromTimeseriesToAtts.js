@@ -11,7 +11,7 @@ console.log(additionalParams)
 let ts_id = additionalParams['0']
 
 // build the msg array de sta, std, blockin, pushback, isClosed, +20
-let keys = ['regNum','sta','std','blockin','pushback']
+let keys = ['ts_id','regNum','sta','std','blockin','pushback','echo','TT1','TT2']
 
 // get la telemetría de ese ts_id -> 
 attributeService.getEntityTimeseries(entityId,keys,ts_id-2,ts_id+2).subscribe(
@@ -22,15 +22,13 @@ attributeService.getEntityTimeseries(entityId,keys,ts_id-2,ts_id+2).subscribe(
                 attributesArray.push({key:key,value:telemetry[key][0].value})
             }
             log('attributesArray\n',attributesArray);
+            updateAttributes(attributesArray)
         }
     )
 
-let attributesArray = [{key:'regNum',value:additionalParams["1"]}];
-
-// updateAttributes()
 
 // Update esa mondá
-function updateAttributes(){
+function updateAttributes(attributesArray){
     attributeService.saveEntityAttributes(entityId, 'SHARED_SCOPE', attributesArray).subscribe(
                     function () {
                         widgetContext.updateAliases();

@@ -43,11 +43,16 @@ function telemMsg(){
                 ts_id : tsid,
                 sta: metadata.shared_sta,
                 std: metadata.shared_std,
-                regNum: metadata.shared_regNum
+                regNum: metadata.shared_regNum,
+                echo:"-",
+                blockin:"-",
+                pushback:"-",
+                TT1:"-",
+                TT2:"-"
             }
         },
         metadata: metadata,
-        msgType: "POST_TELEMETRY_REQUEST"  // telemetry before the save telemetry
+        msgType: "POST_TELEMETRY_REQUEST"
     }
 }
 
