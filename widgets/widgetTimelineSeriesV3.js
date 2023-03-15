@@ -1,9 +1,15 @@
-let log = console.log
+
+let log = function(obj){
+    console.log(JSON.parse(JSON.stringify(obj)));
+}
 
 self.onInit = function() {
 
-    // .data y .datasource are the main data carriers
-    // log(self.ctx); log(self.ctx.datasources); log(self.ctx.data)
+    // ctx.data y ctx.datasource are the main data carriers
+    log('datasources');
+    log(self.ctx.datasources);
+    log('data');
+    log(self.ctx.data);
 
     // hash to store the devices names as visJS needs; with id and content
     let turnarounds = self.ctx.datasources.map((e, i) => {
@@ -12,6 +18,9 @@ self.onInit = function() {
             content: e.name
         }
     });
+    
+    log('turnarounds');
+    log(turnarounds);
 
     // empty dict to organice the info. It is a Hash of Hashes of arrays. The main key are for device name, the second hash is for the key values {sta:[],std:[],rN:[]}. Inside will be the timeseries values of each
     let mainStore = {};
@@ -20,15 +29,21 @@ self.onInit = function() {
 
     // iterate over [.data] to assembly esa verga with the desired info
     self.ctx.data.forEach(e => {
-        if (!mainStore[e.datasource
-                .entityName]) mainStore[e
-            .datasource.entityName] = {};
-        // TODO
-        // second loop to iterate over data[i][data] and push it to
+        let entityName = e.datasource
+                .entityName;
+        let dataKey = e.dataKey.name
+        console.log(e)
+        let dataArray = e.data.map((d) => {d[1]})
+        
+        //TODO: go async
+        
+        if (!mainStore[entityName]) mainStore[entityName] = {};
+        
+        mainStore[entityName][dataKey] = dataArray
     })
 
-    // console.log(aviones);
-    // console.log(dataCompacto);
+    log('mainStore');
+    log(mainStore);
 
     var groups = new vis.DataSet(turnarounds);
 
