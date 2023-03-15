@@ -1,59 +1,51 @@
 
-let log = function(obj) {
-    console.log(JSON.parse(JSON.stringify(obj)));
+let log = function(msg, obj) {
+    console.log(msg, JSON.parse(JSON.stringify(obj)));
 }
 
-self.onInit = function() {
-
+self.onInit = async function() {
+    let startTime = performance.now();
+    
     // ctx.data y ctx.datasource are the main data carriers
-    log('datasources');
-    log(self.ctx.datasources);
-    log('data');
-    log(self.ctx.data);
+    console.log('ctx\n', self.ctx);
+    log('datasources\n', self.ctx.datasources);
+    log('data\n',self.ctx.data);
+    
+    // corroncho mechanism to wait for data array full load
+    await new Promise(resolve => setTimeout(resolve, 100));
+    data = [...(self.ctx.data)]
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     // hash to store the devices names as visJS needs; with id and content
-    let turnarounds = self.ctx.datasources.map((e,
-    i) => {
+    let turnarounds = self.ctx.datasources.map((e,i) => {
         return {
             id: e.name,
             content: e.name
         }
     });
 
-    log('turnarounds');
-    log(turnarounds);
+    log('turnarounds\n',turnarounds);
 
     // empty dict to organice the info. It is a Hash of Hashes of arrays. The main key are for device name, the second hash is for the key values {sta:[],std:[],rN:[]}. Inside will be the timeseries values of each
     let mainStore = {};
-
-    if (!self.ctx.data) self.ctx.data = []
+    
+    // guard to avoid development joda to save
+    if (!data) data = []
 
     // iterate over [.data] to assembly esa verga with the desired info
+    
 
-    async function stopForArray(e){
-        let entityName = e.datasource
-            .entityName;
+    data.forEach(e => {
+        // log('e\n',e)|
+        let entityName = e.datasource.entityName;
         let dataKey = e.dataKey.name
-        await new Promise(resolve => setTimeout(resolve, 100));
-        log('e')
-        log(e)
-        let dataArray = e.data.map((d) => {
-            d[1]
-        })
+        let dataArray = e.data.map((d) => {d[1]})
 
-        if (!mainStore[entityName]) mainStore[
-            entityName] = {};
-
-        mainStore[entityName][dataKey] =
-            dataArray
-    }
-
-    self.ctx.data.forEach(e => {
-        stopForArray(e)
+        if (!mainStore[entityName]) mainStore[entityName] = {};
+        mainStore[entityName][dataKey] = dataArray
     })
 
-    log('mainStore');
-    log(mainStore);
+    log('mainStore',mainStore);
 
     var groups = new vis.DataSet(turnarounds);
 
@@ -111,6 +103,8 @@ self.onInit = function() {
         options);
     timeline.setGroups(groups);
     timeline.setItems(items);
+    
+    log('performance Time\n',performance.now()-startTime)
 }
 
 self.onDataUpdated = function() {
