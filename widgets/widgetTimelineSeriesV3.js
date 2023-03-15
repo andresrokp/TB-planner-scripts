@@ -1,5 +1,5 @@
 
-let log = function(obj){
+let log = function(obj) {
     console.log(JSON.parse(JSON.stringify(obj)));
 }
 
@@ -12,13 +12,14 @@ self.onInit = function() {
     log(self.ctx.data);
 
     // hash to store the devices names as visJS needs; with id and content
-    let turnarounds = self.ctx.datasources.map((e, i) => {
+    let turnarounds = self.ctx.datasources.map((e,
+    i) => {
         return {
             id: e.name,
             content: e.name
         }
     });
-    
+
     log('turnarounds');
     log(turnarounds);
 
@@ -28,18 +29,27 @@ self.onInit = function() {
     if (!self.ctx.data) self.ctx.data = []
 
     // iterate over [.data] to assembly esa verga with the desired info
-    self.ctx.data.forEach(e => {
+
+    async function stopForArray(e){
         let entityName = e.datasource
-                .entityName;
+            .entityName;
         let dataKey = e.dataKey.name
-        console.log(e)
-        let dataArray = e.data.map((d) => {d[1]})
-        
-        //TODO: go async
-        
-        if (!mainStore[entityName]) mainStore[entityName] = {};
-        
-        mainStore[entityName][dataKey] = dataArray
+        await new Promise(resolve => setTimeout(resolve, 100));
+        log('e')
+        log(e)
+        let dataArray = e.data.map((d) => {
+            d[1]
+        })
+
+        if (!mainStore[entityName]) mainStore[
+            entityName] = {};
+
+        mainStore[entityName][dataKey] =
+            dataArray
+    }
+
+    self.ctx.data.forEach(e => {
+        stopForArray(e)
     })
 
     log('mainStore');
@@ -54,12 +64,12 @@ self.onInit = function() {
 
     // console.log(deviceList);
     let j = 1;
-    
+
     // TODO change for for..of
     deviceList.forEach(d => {
-        
+
         //TODO secod loop on each hash element
-        
+
         // dates generation
         var start = new Date(mainStore[d]
             .sta);
@@ -67,8 +77,8 @@ self.onInit = function() {
         let diffMillis = end - start;
         let diffHours = Math.round((diffMillis /
             1000 / 60 / 60) * 10) / 10;
-        
-        
+
+
         items.add({
             id: ++j,
             group: mainStore[d].name,
@@ -104,21 +114,21 @@ self.onInit = function() {
 }
 
 self.onDataUpdated = function() {
-    
+
 }
 
 self.onLatestDataUpdated = function() {
-    
+
 }
 
 self.onResize = function() {
-    
+
 }
 
 self.onEditModeChanged = function() {
-    
+
 }
 
 self.onDestroy = function() {
-    
+
 }
