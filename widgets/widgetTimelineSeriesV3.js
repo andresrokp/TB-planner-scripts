@@ -63,12 +63,29 @@ self.onInit = async function() {
                 group: device,
                 start: start,
                 end: end,
+                content1: mainStore[device]['regNum'][i],
+                content2: diffHours,
                 content: `${mainStore[device]['regNum'][i]}::${diffHours}hr`
             });
         })
     }
 
-    // console.log(items);
+    function formatDateAndTime(aDate) {
+        let daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let date = aDate.getDate().toString().padStart(2, '0');
+        let dayOfWeek = daysOfWeek[aDate.getDay()];
+        let hours = aDate.getHours().toString().padStart(2, '0');
+        let minutes = aDate.getMinutes().toString().padStart(2, '0');
+        return `${dayOfWeek}${date} @ ${hours}:${minutes}`;
+    }
+    
+    function timeRemaining(futureTime) {
+        let now = new Date();
+        let timeRemaining = Math.max(0, futureTime - now); // ensure not get negative values
+        let hoursRemaining = Math.floor(timeRemaining / (60 * 60 * 1000)); // get hours in whole number
+        let minutesRemaining = Math.floor((timeRemaining / (60 * 1000)) % 60); // get minutes, then the reminder quantity
+        return `${hoursRemaining} hrs, ${minutesRemaining} min`;
+    }
 
     // specify options
     var options = {
@@ -79,7 +96,11 @@ self.onInit = async function() {
         editable: false,
         tooltip: {
             template: function(itemData,parsedItemData){
-                return `<span>${itemData.content}</span>`
+                return `<span><strong>Details</strong></span><br>
+                        <span>reg: ${itemData.content1}</span><br>
+                        <span>in: ${timeRemaining(itemData.start)}</span><br>
+                        <span>at: ${formatDateAndTime(itemData.start)}</span><br>
+                        <span>lasts: ${itemData.content2}hr</span>`
             }
         },
         margin: {
