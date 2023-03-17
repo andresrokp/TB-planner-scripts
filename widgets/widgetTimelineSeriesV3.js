@@ -7,9 +7,9 @@ self.onInit = async function() {
     let startTime = performance.now();
     
     // ctx.data y ctx.datasource are the main data carriers
-    console.log('ctx\n', self.ctx);
-    log('ctx.datasources\n', self.ctx.datasources);
-    log('ctx.data\n',self.ctx.data);
+    // console.log('ctx\n', self.ctx);
+    // log('ctx.datasources\n', self.ctx.datasources);
+    // log('ctx.data\n',self.ctx.data);
     
     // corroncho mechanism to wait for data array full load
     await new Promise(resolve => setTimeout(resolve, 100));
@@ -23,7 +23,7 @@ self.onInit = async function() {
             content: e.name
         }
     });
-    log('turnarounds\n',turnarounds);
+    // log('turnarounds\n',turnarounds);
 
     // empty hash to organice the info. It is a Hash of Hashes of arrays. The main key are for device name, the second hash is for the key values {sta:[],std:[],rN:[]}. Inside will be the timeseries values of each
     let mainStore = {};
@@ -34,7 +34,7 @@ self.onInit = async function() {
     log('my data\n',data);
     // iterate over [.data] to assembly la verga with the desired info
     data.forEach(e => {
-        log('e\n',e);
+        // log('e\n',e);
         let entityName = e.datasource.entityName;
         let dataKey = e.dataKey.name;
         let dataArray = e.data.map(d => d[1]);
@@ -42,7 +42,7 @@ self.onInit = async function() {
         if (!mainStore[entityName]) mainStore[entityName] = {};
         mainStore[entityName][dataKey] = dataArray;
     })
-    log('mainStore',mainStore);
+    // log('mainStore',mainStore);
 
     // create items
     var groups = new vis.DataSet(turnarounds);
@@ -50,10 +50,10 @@ self.onInit = async function() {
     let j = 1;
 
     for(let device in mainStore){
-        log('device\n',device)
-        log("mainStore[device]['regNum']",mainStore[device]['regNum'])
+        // log('device\n',device)
+        // log("mainStore[device]['regNum']",mainStore[device]['regNum'])
         mainStore[device]['regNum'].forEach((e,i)=>{
-            log('items e,i\n',`${e},${i}`)
+            // log('items e,i\n',`${e},${i}`)
             var start = new Date(mainStore[device]['sta'][i]);
             var end = new Date(mainStore[device]['std'][i]);
             let diffMillis = end - start;
@@ -65,19 +65,23 @@ self.onInit = async function() {
                 end: end,
                 content: `${mainStore[device]['regNum'][i]}::${diffHours}hr`
             });
-            log('slot',mainStore[device]['regNum'][i],start,end)
         })
     }
 
-    console.log(items);
+    // console.log(items);
 
     // specify options
     var options = {
         stack: false,
         start: new Date(),
-        end: new Date(1000 * 60 * 60 * 48 + (
-            new Date()).valueOf()),
-        editable: true,
+        end: new Date(1000 * 60 * 60 * 48 + (new Date()).valueOf()),
+        selectable: false,
+        editable: false,
+        tooltip: {
+            template: function(itemData,parsedItemData){
+                return `<span>${itemData.content}</span>`
+            }
+        },
         margin: {
             item: 10, // between items
             axis: 5 // between items and the axis
@@ -85,13 +89,11 @@ self.onInit = async function() {
         orientation: 'top'
     };
 
-    // create a Timeline
+    // create the Timeline
     var container = document.getElementById('visualization');
-    timeline = new vis.Timeline(container, null, options);
+    timeline = new vis.Timeline(container, null,options);
     timeline.setGroups(groups);
     timeline.setItems(items);
-    
-    log('performance Time\n',performance.now()-startTime)
 }
 
 self.onDataUpdated = function() {
