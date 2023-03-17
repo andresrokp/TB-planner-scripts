@@ -8,8 +8,8 @@ self.onInit = async function() {
     
     // ctx.data y ctx.datasource are the main data carriers
     console.log('ctx\n', self.ctx);
-    log('datasources\n', self.ctx.datasources);
-    log('data\n',self.ctx.data);
+    log('ctx.datasources\n', self.ctx.datasources);
+    log('ctx.data\n',self.ctx.data);
     
     // corroncho mechanism to wait for data array full load
     await new Promise(resolve => setTimeout(resolve, 100));
@@ -23,64 +23,53 @@ self.onInit = async function() {
             content: e.name
         }
     });
-
     log('turnarounds\n',turnarounds);
 
-    // empty dict to organice the info. It is a Hash of Hashes of arrays. The main key are for device name, the second hash is for the key values {sta:[],std:[],rN:[]}. Inside will be the timeseries values of each
+    // empty hash to organice the info. It is a Hash of Hashes of arrays. The main key are for device name, the second hash is for the key values {sta:[],std:[],rN:[]}. Inside will be the timeseries values of each
     let mainStore = {};
     
     // guard to avoid development joda to save
     if (!data) data = []
 
-    // iterate over [.data] to assembly esa verga with the desired info
-    
-
+    log('my data\n',data);
+    // iterate over [.data] to assembly la verga with the desired info
     data.forEach(e => {
-        // log('e\n',e)|
+        log('e\n',e);
         let entityName = e.datasource.entityName;
-        let dataKey = e.dataKey.name
-        let dataArray = e.data.map((d) => {d[1]})
+        let dataKey = e.dataKey.name;
+        let dataArray = e.data.map(d => d[1]);
 
         if (!mainStore[entityName]) mainStore[entityName] = {};
-        mainStore[entityName][dataKey] = dataArray
+        mainStore[entityName][dataKey] = dataArray;
     })
-
     log('mainStore',mainStore);
 
-    var groups = new vis.DataSet(turnarounds);
-
     // create items
+    var groups = new vis.DataSet(turnarounds);
     var items = new vis.DataSet();
-
-    let deviceList = Object.keys(mainStore);
-
-    // console.log(deviceList);
     let j = 1;
 
-    // TODO change for for..of
-    deviceList.forEach(d => {
+    for(let device in mainStore){
+        log('device\n',device)
+        log("mainStore[device]['regNum']",mainStore[device]['regNum'])
+        mainStore[device]['regNum'].forEach((e,i)=>{
+            log('items e,i\n',`${e},${i}`)
+            var start = new Date(mainStore[device]['sta'][i]);
+            var end = new Date(mainStore[device]['std'][i]);
+            let diffMillis = end - start;
+            let diffHours = Math.round((diffMillis / 1000 / 60 / 60) * 10) / 10;
+            items.add({
+                id: ++j,
+                group: device,
+                start: start,
+                end: end,
+                content: `${mainStore[device]['regNum'][i]}::${diffHours}hr`
+            });
+            log('slot',mainStore[device]['regNum'][i],start,end)
+        })
+    }
 
-        //TODO secod loop on each hash element
-
-        // dates generation
-        var start = new Date(mainStore[d]
-            .sta);
-        var end = new Date(mainStore[d].std);
-        let diffMillis = end - start;
-        let diffHours = Math.round((diffMillis /
-            1000 / 60 / 60) * 10) / 10;
-
-
-        items.add({
-            id: ++j,
-            group: mainStore[d].name,
-            start: start,
-            end: end,
-            content: `${mainStore[d].regNum}::${diffHours}hr`
-        });
-    });
-
-    // console.log(items);
+    console.log(items);
 
     // specify options
     var options = {
@@ -97,10 +86,8 @@ self.onInit = async function() {
     };
 
     // create a Timeline
-    var container = document.getElementById(
-        'visualization');
-    timeline = new vis.Timeline(container, null,
-        options);
+    var container = document.getElementById('visualization');
+    timeline = new vis.Timeline(container, null, options);
     timeline.setGroups(groups);
     timeline.setItems(items);
     
