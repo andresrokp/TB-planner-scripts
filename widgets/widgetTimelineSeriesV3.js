@@ -7,7 +7,7 @@ self.onInit = async function() {
     let startTime = performance.now();
     
     // ctx.data y ctx.datasource are the main data carriers
-    // console.log('ctx\n', self.ctx);
+    console.log('ctx\n', self.ctx);
     // log('ctx.datasources\n', self.ctx.datasources);
     // log('ctx.data\n',self.ctx.data);
     
@@ -86,6 +86,8 @@ self.onInit = async function() {
         let minutesRemaining = Math.floor((timeRemaining / (60 * 1000)) % 60); // get minutes, then the reminder quantity
         return `${hoursRemaining} hrs, ${minutesRemaining} min`;
     }
+    
+    
 
     // specify options
     var options = {
@@ -115,6 +117,12 @@ self.onInit = async function() {
     timeline = new vis.Timeline(container, null,options);
     timeline.setGroups(groups);
     timeline.setItems(items);
+    
+    if (self.ctx.dashboardWidget.widgetId == "05cf4465-5da7-4450-8654-c838c50a9ef2") console.log('hola widget pruebas')
+    timeline.on('doubleClick', function(props){
+        console.log('ctx\n',self.ctx.stateController);
+        log('props\n',props)
+    })
 }
 
 self.onDataUpdated = function() {
