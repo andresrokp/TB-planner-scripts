@@ -41,6 +41,7 @@ self.onInit = async function() {
 
         if (!mainStore[entityName]) mainStore[entityName] = {};
         mainStore[entityName][dataKey] = dataArray;
+        mainStore[entityName]['entityId'] = self.ctx.data[0].datasource.entityId;
     })
     // log('mainStore',mainStore);
 
@@ -62,6 +63,7 @@ self.onInit = async function() {
             items.add({
                 id: ++j,
                 group: device,
+                deviceId : deviceData['entityId'],
                 start: start,
                 end: end,
                 regNum: deviceData['regNum'][i],
@@ -121,8 +123,22 @@ self.onInit = async function() {
     timeline.setGroups(groups);
     timeline.setItems(items);
     
+    // helper to 
+    function openDashboardState(stateId, deviceId, group) {
+        let entityId = {
+            "entityType": "DEVICE",
+            "id": deviceId
+        }
+        let params = {
+            entityId: entityId,
+            entityName: group
+        }
+        self.ctx.stateController.openState(stateId, params,false);
+    }
+    
     if (self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390" && self.ctx.dashboard.authUser.tenantId == "87191010-8d9d-11ea-8896-2dbeb466d642"){
         console.log('hola dashboard pruebas')
+        console.log('self\n', self);
         console.log('ctx\n', self.ctx);
         log('my data\n',data);
         log('items\n',items);
@@ -130,8 +146,11 @@ self.onInit = async function() {
         timeline.on('doubleClick', function(event){
             console.log('ctx.stateController\n',self.ctx.stateController);
             log('props\n',event)
-            log('item\n',event.item)
-            log('item ts_id\n',items.get(event.item).ts_id)
+            log('service item\n',event.item)
+            let item = items.get(event.item)
+            log('real item\n',item)
+            log('item ts_id\n',item.ts_id)
+            openDashboardState('selected_item',item.deviceId,item.group )
         })
     }
 }
