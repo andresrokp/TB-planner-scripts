@@ -122,20 +122,7 @@ self.onInit = async function() {
     timeline = new vis.Timeline(container, null,options);
     timeline.setGroups(groups);
     timeline.setItems(items);
-    
-    // helper to 
-    function openDashboardState(stateId, deviceId, group) {
-        let entityId = {
-            "entityType": "DEVICE",
-            "id": deviceId
-        }
-        let params = {
-            entityId: entityId,
-            entityName: group
-        }
-        self.ctx.stateController.openState(stateId, params,false);
-    }
-    
+        
     if (self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390" && self.ctx.dashboard.authUser.tenantId == "87191010-8d9d-11ea-8896-2dbeb466d642"){
         console.log('hola dashboard pruebas')
         console.log('self\n', self);
@@ -150,8 +137,50 @@ self.onInit = async function() {
             let item = items.get(event.item)
             log('real item\n',item)
             log('item ts_id\n',item.ts_id)
-            openDashboardState('selected_item',item.deviceId,item.group )
+            telemetryLoadPushAndGo('selected_item',item.deviceId,item.group,item.ts_id )
         })
+    }
+    
+    // function similar to the custom action in the timeseries table of operations in the planner second dashboard state editar_operación
+    function telemetryLoadPushAndGo(stateId, deviceId, deviceName, ts_id){
+        // here we need to put-in this parameters values "manually"
+        let entityId = {
+            "entityType": "DEVICE",
+            "id": deviceId
+        }
+        let $injector = self.ctx.$scope.$injector;
+        let attributeService = $injector.get(self.ctx.servicesMap.get('attributeService'));
+        let keys = ['ts_id','regNum','sta','std','blockin','pushback','echo','TT1','TT2']
+        
+        // get la telemetría de ese ts_id -> 
+        attributeService.getEntityTimeseries(entityId,keys,ts_id-2,ts_id+2).subscribe(
+            function(telemetry){
+                let attributesArray = []
+                for (let key in telemetry){
+                    attributesArray.push({key:key,value:telemetry[key][0].value})
+                }
+                updateAttributes(attributesArray)
+            }
+        )
+        
+        // Update esa mondá
+        function updateAttributes(attributesArray){
+            attributeService.saveEntityAttributes(entityId, 'SHARED_SCOPE', attributesArray) 
+            .subscribe(
+                function () {
+                    openDashboardState();
+                    self.ctx.updateAliases();
+                }
+            );
+        }
+        
+        function openDashboardState() {
+            let params = {
+                entityId: entityId,
+                entityName: deviceName
+            }
+            self.ctx.stateController.openState(stateId,params,false);
+        }
     }
 }
 
