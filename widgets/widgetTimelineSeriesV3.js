@@ -7,7 +7,7 @@ self.onInit = async function() {
     let startTime = performance.now();
     
     // ctx.data y ctx.datasource are the main data carriers
-    // console.log('ctx\n', self.ctx);
+    console.log('ctx\n', self.ctx);
     // log('ctx.datasources\n', self.ctx.datasources);
     // log('ctx.data\n',self.ctx.data);
     
@@ -49,6 +49,12 @@ self.onInit = async function() {
     var groups = new vis.DataSet(turnarounds);
     var items = new vis.DataSet();
     let j = 1;
+    
+    let actualExpectedTest = false;
+    if (self.ctx.dashboard.authUser.tenantId == "87191010-8d9d-11ea-8896-2dbeb466d642"
+        && self.ctx.stateController.dashboardId == "3cb087c0-c859-11ed-9b83-e14509358390"){
+            actualExpectedTest = true;                 
+    }
 
     for(let device in mainStore){
         // log('device\n',device)
@@ -71,7 +77,10 @@ self.onInit = async function() {
                 diffHours: diffHours,
                 content: `${deviceData['regNum'][i]}::${diffHours}hr`
             });
-            // console.log(e,i,items)
+            
+            if (actualExpectedTest){
+                console.log('Hello only actual-current test')
+            }
         })
     }
 
@@ -122,9 +131,11 @@ self.onInit = async function() {
     timeline = new vis.Timeline(container, null,options);
     timeline.setGroups(groups);
     timeline.setItems(items);
-        
-    if (self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390" && self.ctx.dashboard.authUser.tenantId == "87191010-8d9d-11ea-8896-2dbeb466d642"){
-        console.log('hola dashboard pruebas')
+    
+    
+    if ( self.ctx.dashboard.authUser.tenantId == "87191010-8d9d-11ea-8896-2dbeb466d642"
+            && (self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390") ){
+        console.log('hola on click test')
         console.log('self\n', self);
         console.log('ctx\n', self.ctx);
         log('my data\n',data);
