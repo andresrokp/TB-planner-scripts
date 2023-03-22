@@ -78,10 +78,26 @@ self.onInit = async function() {
                 content: `${deviceData['regNum'][i]}::${diffHours}hr`
             });
             
-            if (actualExpectedTest){
+            if (actualExpectedTest && deviceData['blockin'][i] && deviceData['pushback'][i]){
                 console.log('Hello only actual-current test')
+                let operationStart = new Date(deviceData['blockin'][i]);
+                let operationEnd = new Date(deviceData['pushback'][i]);
+                let operationDiffMillis = operationEnd - operationStart;
+                let operationDiffMinutes = Math.round((operationDiffMillis / 1000 / 60 ) * 10) / 10;
+                items.add({
+                    id: ++j,
+                    group: device,
+                    className: 'operation',
+                    deviceId : deviceData['entityId'],
+                    start: operationStart,
+                    end: operationEnd,
+                    regNum: deviceData['regNum'][i],
+                    ts_id: deviceData['ts_id'][i],
+                    diffHours: operationDiffMinutes,
+                    content: `${operationDiffMinutes}min`
+                });
             }
-        })
+        });
     }
 
     function formatDateAndTime(aDate) {
@@ -105,7 +121,7 @@ self.onInit = async function() {
 
     // specify options
     var options = {
-        stack: false,
+        stack: true,
         start: new Date(),
         end: new Date(1000 * 60 * 60 * 48 + (new Date()).valueOf()),
         selectable: false,
@@ -116,7 +132,7 @@ self.onInit = async function() {
                         <span>reg: ${itemData.regNum}</span><br>
                         <span>in: ${timeRemaining(itemData.start)}</span><br>
                         <span>at: ${formatDateAndTime(itemData.start)}</span><br>
-                        <span>lasts: ${itemData.diffHours}hr</span>`
+                        <span>lasts: ${itemData.diffHours}hr</span>`;
             }
         },
         margin: {
@@ -135,7 +151,7 @@ self.onInit = async function() {
     
     if ( self.ctx.dashboard.authUser.tenantId == "87191010-8d9d-11ea-8896-2dbeb466d642"
             && (self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390") ){
-        console.log('hola on click test')
+        console.log('hola on click test');
         console.log('self\n', self);
         console.log('ctx\n', self.ctx);
         log('my data\n',data);
@@ -143,12 +159,12 @@ self.onInit = async function() {
         console.log('items async\n',items);
         timeline.on('doubleClick', function(event){
             console.log('ctx.stateController\n',self.ctx.stateController);
-            log('props\n',event)
-            log('service item\n',event.item)
-            let item = items.get(event.item)
-            log('real item\n',item)
-            log('item ts_id\n',item.ts_id)
-            telemetryLoadPushAndGo('selected_item',item.deviceId,item.group,item.ts_id )
+            log('props\n',event);
+            log('service item\n',event.item);
+            let item = items.get(event.item);
+            log('real item\n',item);
+            log('item ts_id\n',item.ts_id);
+            telemetryLoadPushAndGo('selected_item',item.deviceId,item.group,item.ts_id );
         })
     }
     
