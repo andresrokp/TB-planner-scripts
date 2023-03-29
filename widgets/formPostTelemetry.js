@@ -1,34 +1,32 @@
-let choose = confirm('Are you sure to save the data?')
+let choose = confirm('Are you sure to save the data?');
 
-if (!choose) return
-
-alert('load atts, save telem')
+if (!choose) return;
 
 let $injector = widgetContext.$scope.$injector;
 let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
 
-console.log(additionalParams)
-// coger el ts_id
-let ts_id = additionalParams['0']
-
 // build the msg array de sta, std, blockin, pushback, isClosed, +20
-let keys = ['regNum','sta','std']
+let keys = ['regNum','sta','std'];
 
-// get la telemetría de ese ts_id -> 
-attributeService.getEntityTimeseries(entityId,keys,ts_id-2,ts_id+2).subscribe(
-        function(telemetry){
-            let attributesArray = []
-            for (let key in telemetry){
-                attributesArray.push({key:key,value:telemetry[key][0].value})
+// get SHARED attributes -> 
+attributeService.getEntityAttributes(entityId, 'SHARED_SCOPE', keys).subscribe(
+        async function(atts){
+            // console.log('atts\n',atts)
+            let valuesHash = {};
+            await new Promise(resolve => setTimeout(resolve, 100)); 
+            for (let keyPkg of atts){
+                valuesHash[keyPkg.key] = keyPkg.value;
             }
-            updateAttributes(attributesArray)
         }
-    )
+    );
 
 
 // Update esa mondá
-function updateAttributes(attributesArray){
-    attributeService.saveEntityAttributes(entityId, 'SHARED_SCOPE', attributesArray)
+function saveTelemetry(telemetryHashArray){
+    attributeService.saveEntityTimeseries(entityId, 'ANY', telemetryHashArray).subscribe(
+                    function () {
+                        widgetContext.updateAliases();
+                    })
 }
 
 // fetch('https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js')
