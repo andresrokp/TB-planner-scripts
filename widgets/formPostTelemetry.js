@@ -17,6 +17,11 @@ attributeService.getEntityAttributes(entityId, 'SHARED_SCOPE', keys).subscribe(
             for (let keyPkg of atts){
                 valuesHash[keyPkg.key] = keyPkg.value;
             }
+            let nowDate = new Date();
+            valuesHash.ts_id = nowDate;
+            let telemetryHashArray = [{key:'ts',value:nowDate.getTime()},{key:'values',value:valuesHash}];
+            console.log(telemetryHashArray);
+            saveTelemetry(telemetryHashArray)
         }
     );
 
