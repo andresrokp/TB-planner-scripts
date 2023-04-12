@@ -1,5 +1,5 @@
 
-let log = (msg, obj) => console.log(msg, JSON.parse(JSON.stringify(obj)));
+let log = (obj, msg) => console.log(msg, JSON.parse(JSON.stringify(obj)));
 
 let wait = async (ms) => await new Promise(resolve => setTimeout(resolve, ms));
 
@@ -47,10 +47,9 @@ self.onInit = async function() {
     const groups = new vis.DataSet(turnarounds);
     const items = new vis.DataSet();
     
-    const actualExpectedTest = (self.ctx.dashboard.authUser.userId == "38f40310-2c68-11ed-9e8e-83451eb09aa6"
-                            && self.ctx.dashboard.authUser.firstName == "Andres")
-                            // && self.ctx.stateController.dashboardId == "3cb087c0-c859-11ed-9b83-e14509358390")
-    
+    const actualExpectedTest = (self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390"
+                               || self.ctx.stateController.dashboardId == "3cb087c0-c859-11ed-9b83-e14509358390")
+
     let j = 1;
     // extract the info from mainStore and work with it as is
     for(let [device,deviceData] of Object.entries(mainStore)){
@@ -115,6 +114,7 @@ self.onInit = async function() {
     }
     
     // specify visJS options
+    let executeCount = 0
     var options = {
         stack: true,
         start: new Date(),
@@ -127,15 +127,55 @@ self.onInit = async function() {
                         <span>reg: ${itemData.regNum}</span><br>
                         <span>in: ${timeRemaining(itemData.start)}</span><br>
                         <span>at: ${formatDateAndTime(itemData.start)}</span><br>
-                        <span>lasts: ${itemData.diffHours}hr</span>`
+                        <span>lasts: ${itemData.diffHours}hr</span>`;
             }
         },
         margin: {
             item: 3, // between items
             axis: 5 // between items and the axis
         },
-        orientation: 'top'
+        groupOrder: function(a,b){
+            log(executeCount++,'executeCount');
+            // Get the start time of the next upcoming event in each group
+            let aStart = getNextEventStart(a.id);
+            let bStart = getNextEventStart(b.id);
+            log(aStart,'aStart')
+              
+            // Calculate the time difference between the current time and the next upcoming event
+            let now = new Date();
+            let aDiff = aStart - now;
+            let bDiff = bStart - now;
+              
+            // Compare the time differences to determine the order
+            if (aDiff < bDiff) {
+                return -1;
+            } else if (aDiff > bDiff) {
+                return 1;
+            } else {
+                return 0;
+            }
+        },
+        orientation: 'top',
     };
+    
+    function getNextEventStart(groupId) {
+        // documentación de esta verga:
+        // https://visjs.github.io/vis-data/data/dataset.html
+        log(groupId,'groupId');
+        var events = items.get({group: groupId, type: {start: true}});
+        log(events,'events');
+        var now = new Date();
+        var upcomingEvents = events.filter(function(event) {
+            return event.start >= now;
+        });
+        log(upcomingEvents,'upcomingEvents');
+        if (upcomingEvents.length > 0) {
+            return upcomingEvents[0].start;
+        } else {
+            return new Date('2030-12-31');
+        }
+    }
+    
 
     // create the Timeline
     var container = document.getElementById('visualization');
@@ -143,13 +183,16 @@ self.onInit = async function() {
     timeline.setGroups(groups);
     timeline.setItems(items);
     
-    if ( self.ctx.dashboard.authUser.userId == "38f40310-2c68-11ed-9e8e-83451eb09aa6"
-    && self.ctx.dashboard.authUser.firstName == "Andres"
-    && self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390"){
+    if ( self.ctx.stateController.dashboardId == "c7c456b0-b450-11ed-9b83-e14509358390"
+    // && self.ctx.dashboard.authUser.firstName == "Andres"
+    // && self.ctx.dashboard.authUser.userId == "38f40310-2c68-11ed-9e8e-83451eb09aa6"
+    ){
         timeline.on('doubleClick', function(event){
-            log('event\n',event)
-            log('items.get(event.item)\n',items.get(event.item))
+            log('event\n',event) // structure at the end
+            log('event.item\n',event.item) // simple whole number
+            log('items.get(event.item)\n',items.get(event.item)) // structure at the end
             const { entityId,group,ts_id } = items.get(event.item)
+            // main action: load atts for the form, takes to the aux dash state
             telemetryLoadPushAndGo('selected_item',entityId,group,ts_id )
         })
     }
@@ -157,24 +200,21 @@ self.onInit = async function() {
     // BIG function similar to the custom action in the timeseries table of operations in the planner second dashboard state editar_operación
     function telemetryLoadPushAndGo(stateId, _entityId, entityName, ts_id){
         // here we need to put-in this parameters values "manually"
-        let entityId = {
-            "entityType": "DEVICE",
-            "id": _entityId
-        }
+        let entityId = { "entityType": "DEVICE", "id": _entityId };
         let $injector = self.ctx.$scope.$injector;
         let attributeService = $injector.get(self.ctx.servicesMap.get('attributeService'));
-        let keys = ['ts_id','regNum','sta','std','blockin','pushback','echo','TT1','TT2']
+        let keys = ['ts_id','regNum','sta','std','blockin','pushback','echo','TT1','TT2'];
         
         // get la telemetría de ese ts_id -> 
         attributeService.getEntityTimeseries(entityId,keys,ts_id-2,ts_id+2).subscribe(
             function(telemetry){
-                let attributesArray = []
+                let attributesArray = [];
                 for (let key in telemetry){
-                    attributesArray.push({key:key,value:telemetry[key][0].value})
+                    attributesArray.push({key:key,value:telemetry[key][0].value});
                 }
-                updateAttributes(attributesArray)
+                updateAttributes(attributesArray);
             }
-        )
+        );
         
         // Update esa mondá
         function updateAttributes(attributesArray){
@@ -213,3 +253,37 @@ self.onEditModeChanged = function() {
 self.onDestroy = function() {
 
 }
+
+/*
+log('event\n',event)
+{
+    "event": {
+        "isTrusted": true
+    },
+    "item": 61,
+    "isCluster": false,
+    "items": [],
+    "group": "QT4139-QT4130",
+    "customTime": null,
+    "what": "item",
+    "pageX": 727,
+    "pageY": 430,
+    "x": 330.9062194824219,
+    "y": 207.91665649414062,
+    "time": "2023-04-13T05:02:56.686Z",
+    "snappedTime": "2023-04-13T05:00:00.000Z"
+}
+
+log('items.get(event.item)\n',items.get(event.item))
+{
+    "id": 61,
+    "group": "QT4139-QT4130",
+    "entityId": "414f6a14-b94c-11ed-9b83-e14509358390",
+    "start": "2023-04-13T04:00:00.000Z",
+    "end": "2023-04-13T05:55:00.000Z",
+    "regNum": "11-abr-1",
+    "ts_id": 1681235941262,
+    "diffHours": 1.9,
+    "content": "11-abr-1::1.9hr"
+}
+*/
