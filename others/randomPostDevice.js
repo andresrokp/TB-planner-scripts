@@ -123,7 +123,7 @@ let msgBody = {
     attributes: {},
     groupId: getRandomInt(0, 10),
     name: "prebas FMC125",
-    uniqueId: getRandomToken(15),
+    uniqueId: 1111111111, // importan !!
     status: "online",
     lastUpdate: getRandomDate(new Date("2022-01-01"), new Date()),
     positionId: getRandomInt(10000000, 99999999),
@@ -134,3 +134,24 @@ let msgBody = {
     disabled: getRandomBoolean(),
   },
 };
+
+let {credentials} = require('../myvars')
+const fetch = require('node-fetch');
+
+async function sendMessageToDevice(deviceId, message) {
+  const url = `https://${credentials.dns}/api/v1/${deviceId}/telemetry`;
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  const body = JSON.stringify(message);
+
+  try {
+    const response = await fetch(url, { method: 'POST', headers, body });
+    const data = await response.json();
+    console.log(`Message sent to device ${deviceId}:`, data);
+  } catch (error) {
+    console.error(`Error sending message to device ${deviceId}:`, error);
+  }
+}
+
+sendMessageToDevice()
