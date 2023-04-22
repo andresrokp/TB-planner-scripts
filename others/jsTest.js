@@ -1,4 +1,4 @@
-// remote script loading
+// test for remote script loading inside a postprocessing function
 
 function usingEmbededScriptTag(){
     let ans = ''
