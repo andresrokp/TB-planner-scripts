@@ -1,3 +1,5 @@
+const log = console.log;
+
 // LLM chatGPT: I want the posibility to modify randomly any of the key values in the propper data type an range with coherent min and max. Insert the random function in the same line of the JSON key name with propper values inside the function like this example
 // >> example begin:
 // {
@@ -124,93 +126,95 @@ function calculateY(x, slope, yIntercept) {
 
 
 // LLM chatgpt: Replace the corresponent function (getRandomInt, getRandomInt, getRandomBoolean, getRandomString, getRandomToken, getRandomDate) in front of each key inside the Original Big JSON. This is the original big JSON:
-let {credentials, testvehicles, jueputacalletano} = require('../myvars')
+let {credentials, testDevices, jueputacalletano} = require('../myvars')
 
-let msgBody = {
-  "position": {
-    "id": getRandomInt(0, 100000),
-    "attributes": {
-      "priority": getRandomInt(1, 10),
-      "sat": getRandomInt(0, 15),
-      "event": getRandomInt(0, 1000),
-      "ignition": getRandomBoolean(),
-      "motion": getRandomBoolean(),
-      "workMode": getRandomInt(0, 10),
-      "rssi": getRandomInt(0, 10),
-      "gpsStatus": getRandomInt(0, 3),
-      "di1": getRandomInt(0, 1),
-      "out1": getRandomBoolean(),
-      "di2": getRandomInt(0, 1),
-      "io202": getRandomInt(0, 65535),
-      "io204": getRandomInt(0, 65535),
-      "io211": getRandomInt(0, 65535),
-      "io213": getRandomInt(0, 65535),
-      "io215": getRandomInt(0, 65535),
-      "io113": getRandomInt(0, 65535),
-      "io263": getRandomInt(0, 65535),
-      "io303": getRandomInt(0, 65535),
-      "pdop": getRandomInt(1, 10) / 10,
-      "hdop": getRandomInt(1, 10) / 10,
-      "power": getRandomInt(0, 30) + Math.random(),
-      "io24": getRandomInt(0, 65535),
-      "io206": getRandomInt(0, 65535),
-      "battery": getRandomInt(0, 100) / 10,
-      "io68": getRandomInt(0, 65535),
-      "adc1": getRandomInt(0, 1023),
-      "io327": getRandomInt(0, 65535),
-      "operator": getRandomInt(0, 1000000),
-      "tripOdometer": getRandomInt(0, 1000),
-      "odometer": getRandomInt(0, 100000),
-      "temp1": getRandomInt(-40, 85) + Math.random(),
-      "temp2": getRandomInt(-40, 85) + Math.random(),
-      "temp3": getRandomInt(-40, 85) + Math.random(),
-      "io75": getRandomInt(0, 65535),
-      "di4": getRandomInt(0, 1),
-      "io483": getRandomInt(0, 65535),
-      "io449": getRandomInt(0, 65535),
-      "io636": getRandomInt(0, Number.MAX_SAFE_INTEGER),
-      "io11": getRandomInt(0, Number.MAX_SAFE_INTEGER),
-      "io76": getRandomInt(0, Number.MAX_SAFE_INTEGER),
-      "io77": getRandomInt(0, 65535),
-      "io79": getRandomInt(0, 65535),
-      "io71": getRandomInt(0, 65535),
-      "io238": getRandomInt(0, 65535),
-      "io14": getRandomInt(0, Number.MAX_SAFE_INTEGER),
-      "io387": getRandomToken(64),
-      "distance": getRandomInt(0, 100000),
-      "totalDistance": getRandomInt(0, 100000),
-      "driverUniqueId": getRandomString(16),
-      "hours": getRandomDate(new Date(2000, 0, 1), new Date()),
+function buildMsg(device) {
+  return {
+    "position": {
+      "id": getRandomInt(0, 100000),
+      "attributes": {
+        "priority": getRandomInt(1, 10),
+        "sat": getRandomInt(0, 15),
+        "event": getRandomInt(0, 1000),
+        "ignition": getRandomBoolean(),
+        "motion": getRandomBoolean(),
+        "workMode": getRandomInt(0, 10),
+        "rssi": getRandomInt(0, 10),
+        "gpsStatus": getRandomInt(0, 3),
+        "di1": getRandomInt(0, 1),
+        "out1": getRandomBoolean(),
+        "di2": getRandomInt(0, 1),
+        "io202": getRandomInt(0, 65535),
+        "io204": getRandomInt(0, 65535),
+        "io211": getRandomInt(0, 65535),
+        "io213": getRandomInt(0, 65535),
+        "io215": getRandomInt(0, 65535),
+        "io113": getRandomInt(0, 65535),
+        "io263": getRandomInt(0, 65535),
+        "io303": getRandomInt(0, 65535),
+        "pdop": getRandomInt(1, 10) / 10,
+        "hdop": getRandomInt(1, 10) / 10,
+        "power": getRandomInt(0, 30) + Math.random(),
+        "io24": getRandomInt(0, 65535),
+        "io206": getRandomInt(0, 65535),
+        "battery": getRandomInt(0, 100) / 10,
+        "io68": getRandomInt(0, 65535),
+        "adc1": getRandomInt(0, 1023),
+        "io327": getRandomInt(0, 65535),
+        "operator": getRandomInt(0, 1000000),
+        "tripOdometer": getRandomInt(0, 1000),
+        "odometer": getRandomInt(0, 100000),
+        "temp1": getRandomInt(-40, 85) + Math.random(),
+        "temp2": getRandomInt(-40, 85) + Math.random(),
+        "temp3": getRandomInt(-40, 85) + Math.random(),
+        "io75": getRandomInt(0, 65535),
+        "di4": getRandomInt(0, 1),
+        "io483": getRandomInt(0, 65535),
+        "io449": getRandomInt(0, 65535),
+        "io636": getRandomInt(0, Number.MAX_SAFE_INTEGER),
+        "io11": getRandomInt(0, Number.MAX_SAFE_INTEGER),
+        "io76": getRandomInt(0, Number.MAX_SAFE_INTEGER),
+        "io77": getRandomInt(0, 65535),
+        "io79": getRandomInt(0, 65535),
+        "io71": getRandomInt(0, 65535),
+        "io238": getRandomInt(0, 65535),
+        "io14": getRandomInt(0, Number.MAX_SAFE_INTEGER),
+        "io387": getRandomToken(64),
+        "distance": getRandomInt(0, 100000),
+        "totalDistance": getRandomInt(0, 100000),
+        "driverUniqueId": getRandomString(16),
+        "hours": getRandomDate(new Date(2000, 0, 1), new Date()),
+      },
+      "deviceId": getRandomInt(100, 999),
+      "protocol": "teltonika",
+      "serverTime": new Date(),
+      "deviceTime": new Date(),
+      "fixTime": new Date(),
+      "outdated": getRandomBoolean(),
+      "valid": getRandomBoolean(),
+      "latitude": getRandomFloat(-90, 90),
+      "longitude": getRandomFloat(-180, 180),
+      "altitude": getRandomFloat(0, 5000),
+      "speed": getRandomFloat(0, 200),
+      "course": getRandomFloat(0, 360),
+      "accuracy": getRandomFloat(0, 100),
     },
-    "deviceId": getRandomInt(100, 999),
-    "protocol": "teltonika",
-    "serverTime": getRandomDate(new Date("2022-01-01"), new Date()),
-    "deviceTime": new Date(),
-    "fixTime": new Date(),
-    "outdated": getRandomBoolean(),
-    "valid": getRandomBoolean(),
-    "latitude": getRandomFloat(-90, 90),
-    "longitude": getRandomFloat(-180, 180),
-    "altitude": getRandomFloat(0, 5000),
-    "speed": getRandomFloat(0, 200),
-    "course": getRandomFloat(0, 360),
-    "accuracy": getRandomFloat(0, 100),
-  },
-  "device": {
-    "id": getRandomInt(100, 999),
-    "attributes": {},
-    "groupId": getRandomInt(0, 10),
-    "name": "prebas FMC125",
-    "uniqueId": testvehicles.testLA010.token, // importan !!
-    "status": "online",
-    "lastUpdate": getRandomDate(new Date("2022-01-01"), new Date()),
-    "positionId": getRandomInt(10000000, 99999999),
-    "geofenceIds": [],
-    "phone": "",
-    "model": "",
-    "contact": "",
-    "disabled": getRandomBoolean(),
-  },
+    "device": {
+      "id": getRandomInt(100, 999),
+      "attributes": {},
+      "groupId": getRandomInt(0, 10),
+      "name": device.name,
+      "uniqueId": device.token, // importan !!
+      "status": "online",
+      "lastUpdate": getRandomDate(new Date("2022-01-01"), new Date()),
+      "positionId": getRandomInt(10000000, 99999999),
+      "geofenceIds": [],
+      "phone": "",
+      "model": "",
+      "contact": "",
+      "disabled": getRandomBoolean(),
+    }
+  }
 };
 
 
@@ -222,21 +226,28 @@ async function sendMessageToDevice(deviceId, message) {
   const body = JSON.stringify(message);
   try {
     const response = await fetch(url, { method: 'POST', headers, body });
-    console.log(`Message sent to device ${deviceId}:`); // response
+    log(`Message sent to device ${deviceId}:`); // response
   } catch (error) {
     console.error(`Error sending message to device ${deviceId}:`, error);
   }
 }
 
-let point1 = [21.038764, -86.875932]
-let point2 = [21.033697, -86.868137]
-let point3 = [21.034798, -86.867333]
-let point4 = [21.039685, -86.875372]
-
-console.log(getRandomPointInsideArea(point1, point2, point3, point4))
+// Test random generation
+// let point1 = [21.038764, -86.875932]
+// let point2 = [21.033697, -86.868137]
+// let point3 = [21.034798, -86.867333]
+// let point4 = [21.039685, -86.875372]
+// console.log(getRandomPointInsideArea(point1, point2, point3, point4))
 
 let start = performance.now()
 
-sendMessageToDevice(jueputacalletano, msgBody)
+function main(){
+  for(device of testDevices.slice(0,4)){
+    log(device.name, device.token)
+    let msgBody = buildMsg(device);
+    log(msgBody)
+  }
+}
+main()
 
-console.log(performance.now() - start)
+log(performance.now() - start)
