@@ -23,14 +23,35 @@ async function sendMessageToDevice(deviceId, message) {
 
 let start = performance.now()
 
-function main(){
+function mainALoCerdo(qty){
   // Loop over the device array to perform the data replacing and Postingg
-  for(device of testDevices.slice(0,6)){
-    log(device.name, device.token)
-    // let msgBody = buildMsg(device);
+  for(device of testDevices.slice(0,qty)){
+    // log(device.name, device.token)
+    let msgBody = buildMsg(device);
     // log(msgBody)
+    sendMessageToDevice(jueputacalletano,msgBody);
   }
 }
-main()
+
+function mainByStep(qty, t){
+  log('post with delays')
+  let i = 0
+  const timer = setInterval(() => {
+    let device = testDevices[i]
+    log(i,device)
+    let msgBody = buildMsg(device);
+    // sendMessageToDevice(jueputacalletano,msgBody);
+    if(i == qty || i == testDevices.length){
+      clearInterval(timer);
+    }
+    i++
+  }, t);
+}
+
+// to launch load test
+// Array(1).fill().forEach(()=>mainALoCerdo()) //
+
+// to send some with delays
+mainByStep(6,1000)
 
 log(performance.now() - start)
