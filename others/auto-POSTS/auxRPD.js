@@ -118,7 +118,7 @@ function getRandomDate(start, end) {
   each key inside the Original Big JSON. This is the original big JSON:
 */
 
-module.exports.buildMsg = function buildMsg(device) {
+module.exports.buildMsg = function buildMsg(device,idx) {
   return {
     position: {
       id: getRandomInt(5000, 10000),
@@ -167,12 +167,12 @@ module.exports.buildMsg = function buildMsg(device) {
       altitude: getRandomFloat(1000, 2000),
       speed: getRandomFloat(0, 60),
       course: getRandomFloat(0, 360),
-      accuracy: getRandomFloat(0, 100),
+      accuracy: idx,
     },
     device: {
       id: getRandomInt(100, 999),
       attributes: {},
-      groupId: getRandomInt(0, 10),
+      groupId: 5,
       name: device.name,
       uniqueId: device.token, // importan !!
       status: "online",

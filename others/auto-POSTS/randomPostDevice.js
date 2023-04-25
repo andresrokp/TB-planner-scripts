@@ -15,21 +15,23 @@ async function sendMessageToDevice(deviceId, message) {
   // try the post
   try {
     const response = await fetch(url, { method: 'POST', headers, body });
-    log(`Message sent to device ${deviceId}:`); // response
+    log(`Message sent to device ${message.device.uniqueId} - ${message.device.name}`); // response
   } catch (error) {
     console.error(`Error sending message to device ${deviceId}:`, error);
   }
 }
 
-let start = performance.now()
 
 function mainALoCerdo(qty){
   // Loop over the device array to perform the data replacing and Postingg
+  let i = 0
   for(device of testDevices.slice(0,qty)){
     // log(device.name, device.token)
-    let msgBody = buildMsg(device);
-    // log(msgBody)
-    sendMessageToDevice(jueputacalletano,msgBody);
+    let msgBody = buildMsg(device, i++);
+    setTimeout(() => {
+      sendMessageToDevice(jueputacalletano,msgBody);
+    }, 5000);
+    
   }
 }
 
@@ -48,10 +50,15 @@ function mainByStep(qty, t){
   }, t);
 }
 
+let start = performance.now()
+
 // to launch load test
-// Array(1).fill().forEach(()=>mainALoCerdo()) //
+// Array(10).fill().forEach(()=>mainALoCerdo()) //
+
+// send without delays
+// mainALoCerdo()
 
 // to send some with delays
-mainByStep(6,1000)
+// mainByStep(6,1000)
 
 log(performance.now() - start)
