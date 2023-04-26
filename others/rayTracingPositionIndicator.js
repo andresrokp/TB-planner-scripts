@@ -72,3 +72,21 @@ function getRandomPointInsideArea(point1, point2, point3, point4) {
   function calculateY(x, slope, yIntercept) {
     return slope * x + yIntercept;
   }
+
+function pointInPolygon(point, polygon) {
+  let x = point[0],  y = point[1],  inside = false;
+  
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0], yi = polygon[i][1],
+    xj = polygon[j][0], yj = polygon[j][1];
+    
+    if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
+  }
+  
+  return inside;
+}
+
+let polygon = [[21.040463, -86.879325], [21.033854, -86.868158], [21.034798, -86.867333], [21.041978, -86.878108]];
+let point = [21.035899, -86.871285]
+
+console.log(pointInPolygon(point,polygon))
