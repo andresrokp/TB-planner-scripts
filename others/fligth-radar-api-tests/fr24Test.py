@@ -10,12 +10,20 @@ print("hello python fr24 test")
 
 fr_api = FlightRadar24API()
 
+
+flightsssPure = fr_api.get_flights()
+flight = flightsssPure[-1]
+flightDetails = fr_api.get_flight_details(flight.id)
+pprint(flightDetails["identification"])
+
+
+
 def test_get_flight_details():
     flight = fr_api.get_flights()[-1]
     details = fr_api.get_flight_details(flight.id)
     return details
 
-flightDetails = test_get_flight_details()
+
 
 
 print('\n- - - details\n',flightDetails.keys())
@@ -26,3 +34,8 @@ print('\n- - - details\n',flightDetails.keys())
 print('\n- - - status\n',flightDetails["status"])
 print('\n- - - airport\n')
 pprint(flightDetails["airport"])
+
+# code to clear terminal screen . código borrar terminal consola
+# >>> import os
+# >>> clear = lambda: os.system('clear')
+# >>> clear()
