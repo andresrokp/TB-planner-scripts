@@ -55,3 +55,18 @@ function transformMessage(message, metadata, msgType) {
         msgType: msgType,
     };
 }
+
+//Categorizar el nivel de la alarma para combustible según porcentajes de relación respecto al rango total
+function switchAlarmaFuel(){
+    var value = msg.fuel
+    var min_fuel = metadata.shared_min_fuel;
+    var max_fuel = metadata.shared_max_fuel;
+
+    var percentage = (value-min_fuel)/(max_fuel-min_fuel) * 100;
+
+    if (percentage < 15) return['critical']
+    if (percentage > 25) return['good']
+    return ['major']
+}
+
+
