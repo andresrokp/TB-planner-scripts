@@ -1,0 +1,22 @@
+{
+  "name": "tb-planner-scripts",
+  "version": "0.7.4",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresrokp/TB-planner-scripts.git"
+  },
+  "author": "andresrokp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresrokp/TB-planner-scripts/issues"
+  },
+  "homepage": "https://github.com/andresrokp/TB-planner-scripts#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
