@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/andresrokp/TB-planner-scripts#readme",
   "dependencies": {
+    "csv": "^6.3.1",
     "dotenv": "^16.3.1"
   }
 }
