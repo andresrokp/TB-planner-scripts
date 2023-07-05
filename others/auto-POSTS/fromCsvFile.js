@@ -5,75 +5,109 @@ require('dotenv').config()
 const fs = require('fs');
 const { parse: csv_parser} = require('csv');
 
-async function sendTelemetryData(csvFilePath, deviceToken, startRow, endRow) {
-  let headersRow = [];
-  let rowCount = 0;
 
-  // Read the CSV file, extract, buil msg and send teltry
-  fs.createReadStream(csvFilePath)
-    .pipe(csv_parser({delimiter:';'}))
-    .on('data', (data) => {      // data es un arreglo simple de length = elAnchoDeLaTabla
-      // headers name capture
-      if (rowCount == 0) headersRow = [...data]
-      rowCount++;
-      // attend only the row interval
-      if (rowCount >= startRow && rowCount <= endRow) {
-        console.log(data)
-        // Construct the telemetry message object
-        let msg = {}
-        headersRow.forEach((e,i) => msg[e] = data[i]);
-        console.log(msg)
-        console.log("-------")
-
-      }
+function getColumnsName(csvFilePath) {
+  return new Promise((res,rej)=>{
+    let stream = fs.createReadStream(csvFilePath, {encoding:'utf8'});
+    let columnsName;
+    stream.on('data', (chunk)=>{
+        columnsName = chunk.split(/\r\n|\n/)[0].split(';');
+        stream.close();
     })
-    // .on('end', async () => {
-    //   // Send telemetry data to ThingsBoard API with time delay between messages
-    //   for (const [index, message] of telemetryData.entries()) {
-    //     const delay = index === 0 ? 0 : (new Date(message.timestamp) - new Date(telemetryData[index - 1].timestamp));
-    //     await delayExecution(delay);
-    //     await sendMessageToDevice(deviceToken, message);
-    //   }
-    // })
-    // .on('error', (error) => {
-    //   console.error('Error reading CSV file:', error);
-    // });
+    stream.on('close',()=>{
+      return res(columnsName);
+    })
+  })
 }
 
-// async function delayExecution(delay) {
-//   return new Promise((resolve) => setTimeout(resolve, delay));
-// }
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, 2000));
+}
+
+function getRandomMillis() {
+  return Math.floor(Math.random() * (1000 - 500 + 1) + 500);
+}
+
+async function processCsvBody(csvFilePath, columnsName) {
+  const parser = fs.createReadStream(csvFilePath)
+  .pipe(csv_parser({
+      delimiter: ';',
+      columns: columnsName,//['Timestamp','axisX','axisY','axisZ','battery','course','driverUniqueId','emergency','event','fuel','geofenceIds','hdop','horometerAlt','ignition','io24','io248','io483','io68','lastUpdate','latitude','longitude','motion','odometer','outdated','pdop','power','proximity','sat','speed','start','temp1','tripOdometer','valid'],
+      from_line: 6,
+      to_line: 10
+    })
+  );
+
+  //   console.log(parser);
+
+  let previousTimestamp = null;
+  let isFirstRow = true;
+
+  for await (const telemetryRow of parser) {
+    const timestamp = isFirstRow ? Date.now() : Date.parse(telemetryRow['timestamp']);
+    const delayTime = isFirstRow ? 0 : timestamp - previousTimestamp + getRandomMillis();
+    previousTimestamp = timestamp;
+    isFirstRow = false;
+
+    await delay(delayTime);
+
+    const deviceId = telemetryRow['device_id'];
+    delete telemetryRow['timestamp'];
+    delete telemetryRow['device_id'];
+
+    const telemetryData = {
+      [timestamp]: telemetryRow,
+    };
+
+    await postTelemetry(deviceId, telemetryData);
+  }
+}
 
 
-// async function sendMessageToDevice(deviceToken, message) {
-//   // Set variables
-//   const url = `https://${credentials.dns}/api/v1/${deviceToken}/telemetry`;
-//   const headers = {
-//     'Content-Type': 'application/json'
-//   };
-//   const body = JSON.stringify(message);
-
-//   // Try the POST
-//   try {
-//     const response = await fetch(url, { method: 'POST', headers, body });
-//     console.log(`Message sent to device ${message.device.uniqueId} - ${message.device.name}`); // Response
-//   } catch (error) {
-//     console.error(`Error sending message to device ${deviceToken}:`, error);
+async function postTelemetry(deviceId, telemetryData) {
+    console.log(telemetryData);
+//   const url = `https://${credentials.dns}/api/v1/${deviceId}/telemetry`;
+//   const response = await fetch(url, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(telemetryData),
+//   });
+  
+//   if (response.ok) {
+//     console.log('Telemetry posted successfully');
+//   } else {
+//     console.log('Failed to post telemetry:', response.status);
 //   }
-// }
+}
 
 
-// execution init
+//-----------------------------------------------------------------
+// main execution
+
 const csvFilePath = process.env.CSV_FILE_PATH;
-const deviceToken = process.env.CUN_TEST_TOKEN;
-const startRow = 3;
-const endRow = 5;
+const credentials = {
+  dns: 'your-thingsboard-dns',
+};
 
-sendTelemetryData(csvFilePath, deviceToken, startRow, endRow)
-  .then(() => {
-    console.log('Telemetry data sent successfully.');
-  })
-  .catch((error) => {
-    console.error('Error sending telemetry data:', error);
+
+(async ()=>{
+  let columnsName = await getColumnsName(csvFilePath)
+  
+  console.log(columnsName)
+  
+  processCsvBody(csvFilePath, columnsName).catch((err) => {
+    console.error('Error processing CSV:', err);
   });
+})();
+
+
+// sendTelemetryData(csvFilePath, deviceToken, startRow, endRow)
+//   .then(() => {
+//     console.log('Telemetry data sent successfully.');
+//   })
+//   .catch((error) => {
+//     console.error('Error sending telemetry data:', error);
+//   });
 
