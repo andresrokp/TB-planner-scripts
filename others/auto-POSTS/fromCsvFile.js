@@ -10,7 +10,7 @@ function getColumnsName(csvFilePath) {
   return new Promise((res,rej)=>{
     let stream = fs.createReadStream(csvFilePath, {encoding:'utf8'});
     let columnsName;
-    
+
     stream.on('data', (chunk)=>{
         columnsName = chunk.split(/\r\n|\n/)[0].split(';');
         stream.close();
@@ -50,7 +50,7 @@ async function processCsvBody(csvFilePath, columnsName, startRow, endRow) {
     // previousTimestamp = timestamp;
     // isFirstRow = false;
 
-    delayTime = 5000; // static waiting value... remove
+    delayTime = 1000; // static waiting value... remove
     await delay(delayTime);
 
     await postTelemetry(telemetryRow);
@@ -77,8 +77,8 @@ async function postTelemetry(telemetryData) {
 // main execution
 
 const csvFilePath = process.env.CSV_FILE_PATH;
-let startRow = 20;
-let endRow = 25;
+let startRow = 30;
+let endRow = 35;
 
 
 (async ()=>{
