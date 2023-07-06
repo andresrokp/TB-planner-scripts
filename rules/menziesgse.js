@@ -56,6 +56,18 @@ function transformMessage(message, metadata, msgType) {
     };
 }
 
+
+// Genera una nueva telesmetría Del combustible en unidades de galones y litros
+function fuelConversion(){
+    var lt = msg.fuel * metadata.shared_mm_to_lt;
+
+    msg.fuelLt = lt;
+    msg.fuelGal = lt * 0.264172;
+
+    return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
+}
+
+
 //Categorizar el nivel de la alarma para combustible según porcentajes de relación respecto al rango total
 function switchAlarmaFuel(){
     var value = msg.fuel
@@ -68,5 +80,7 @@ function switchAlarmaFuel(){
     if (percentage > 25) return['good']
     return ['major']
 }
+
+
 
 
