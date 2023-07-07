@@ -1,12 +1,14 @@
 
 
 
-function fuelFilterPostFunctionAvoidPikes(){
+function postProcesingFunctionFuelFilterToAvoidPikes(){
+    // comparisson to omit low and higth values
     if (value > 10000 || value < 10 ) return prevValue;
     return value;
 }
 
-function fuelPercentageAdvanceCellContent(){
+function cellContentAdvancedGetFuelPercentage(){
+    // based on invocation of attributes as table data... then hide the atts columns
     let percentage = ((value-entity.min_fuel)/(entity.max_fuel-entity.min_fuel) * 100).toFixed(1);
     if(percentage > 100) return 100;
     if(percentage < 0) return 0;
