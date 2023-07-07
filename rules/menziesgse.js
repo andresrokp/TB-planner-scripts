@@ -58,12 +58,25 @@ function transformMessage(message, metadata, msgType) {
 
 
 // Genera una nueva telesmetría Del combustible en unidades de galones y litros
-function fuelConversion(){
+function fuelProcessing(){
+    // Si se sale de rango, fuel toma el valor previo
+    if (msg.fuel > 5000 || msg.fuel < 200){
+        msg.fuel = msg.fuel - msg.deltaFuel;
+        msg.deltaFuel = 0;
+    }
+    
+    // Accumulate deltas in consumption only if inside el rango
+    if (msg.deltaFuel > 0) {
+        msg.fuelSuministro = parseInt(metadata.fuelSuministro.replaceAll('\"',''))||0 + msg.deltaFuel;
+    } else if (msg.deltaFuel < 0) {
+        msg.fuelConsumo = parseInt(metadata.fuelConsumo.replaceAll('\"',''))||0 + Math.abs(msg.deltaFuel);
+    }
+    
+    // conversions... maybe to errase
     var lt = msg.fuel * metadata.shared_mm_to_lt;
-
     msg.fuelLt = lt;
     msg.fuelGal = lt * 0.264172;
-
+    
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
