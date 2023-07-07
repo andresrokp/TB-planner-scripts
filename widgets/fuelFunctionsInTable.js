@@ -15,6 +15,15 @@ function cellContentAdvancedGetFuelPercentage(){
     return percentage
 }
 
+function cellStyleAdvancedDeltaFuel(){
+    if(value > 5000 || value <-5000) return {background:'OrangeRed'}; // sensor errors > bad
+    if(value > 100) return {background:'GreenYellow'}; // feel refill > good 1
+    if(value > 0) return {background:'LightSalmon'}; // Fake level increas > somewhat bad
+    if(value == 0) return {background:'white'}; // Neutral > white
+    if(value > -50) return {background:'LightGreen'}; // Normal consumption > good 2
+    return {background:'LightSalmon'}; // rare consumption > somewhat bad
+}
+
 
 /*
 
