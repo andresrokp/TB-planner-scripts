@@ -59,7 +59,7 @@ function transformMessage(message, metadata, msgType) {
 
 // Genera una nueva telesmetría Del combustible en unidades de galones y litros
 function fuelProcessing(){
-    
+        
     // Si se sale de rango, fuel toma el valor previo
     if(parseInt(msg.fuel) > 5000) {
         msg.fuel = msg.fuel - msg.deltaFuel;
@@ -68,7 +68,8 @@ function fuelProcessing(){
 
     var prevFuelSuministro = metadata.fuelSuministro;
     if(prevFuelSuministro){
-        msg.fuelSuministro = 1;
+        msg.fuelSuministro = prevFuelSuministro;
+        if (prevFuelSuministro.length > 50) msg.fuelSuministro = 0
     }else{
         msg.fuelSuministro = 0;
     }
