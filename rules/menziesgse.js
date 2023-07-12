@@ -59,7 +59,7 @@ function transformMessage(message, metadata, msgType) {
 
 // Genera una nueva telesmetría Del combustible en unidades de galones y litros
 function fuelProcessing(){
-            
+        
     // Si se sale de rango, fuel toma el valor previo
     if(parseInt(msg.fuel) > 5000) {
         msg.fuel = msg.fuel - msg.deltaFuel;
@@ -71,25 +71,22 @@ function fuelProcessing(){
     // learn: if uncontroled, feedback prev vals can lead to overflow
     // learn: here let and const no valen de ni mondá
 
-    if(msg.deltaFuel > 0){
-        var prevFuelSuministro = metadata.fuelSuministro;
-        if(prevFuelSuministro){
-            msg.fuelSuministro = msg.deltaFuel + parseInt(prevFuelSuministro.replaceAll('"',''));
-            if (prevFuelSuministro.length > 50) msg.fuelSuministro = 0
-        }else{
-            msg.fuelSuministro = 0;
-        }
+    var prevFuelSuministro = metadata.fuelSuministro;
+    if(prevFuelSuministro){
+        msg.fuelSuministro = parseInt(prevFuelSuministro.replaceAll('"',''));
+        msg.fuelSuministro += msg.deltaFuel > 0 ? msg.deltaFuel : 0;
+        if (prevFuelSuministro.length > 50) msg.fuelSuministro = 0;
+    }else{
+        msg.fuelSuministro = 0;
     }
 
-    if(msg.deltaFuel < 0){
-        var prevFuelConsumo = metadata.fuelConsumo;
-        if(prevFuelConsumo){
-            prevFuelConsumo = parseInt(prevFuelConsumo.replaceAll('"',''))
-            msg.fuelConsumo = prevFuelConsumo + Math.abs(msg.deltaFuel);
-            if (prevFuelConsumo.length > 50) msg.fuelConsumo = 0
-        }else{
-            msg.fuelConsumo = 0
-        }
+    var prevFuelConsumo = metadata.fuelConsumo;
+    if(prevFuelConsumo){
+        msg.fuelConsumo = parseInt(prevFuelConsumo.replaceAll('"',''))
+        msg.fuelConsumo +=  msg.deltaFuel < 0 ? Math.abs(msg.deltaFuel) : 0;
+        if (prevFuelConsumo.length > 50) msg.fuelConsumo = 0
+    }else{
+        msg.fuelConsumo = 0
     }
 
     // conversions... maybe to errase
