@@ -77,9 +77,10 @@ async function postTelemetry(telemetryData) {
 // main execution
 
 const csvFilePath = process.env.CSV_FILE_PATH;
-let startRow = 2530;
-let endRow = 2550;
+let startRow = parseInt(process.argv[2]);
+let endRow = parseInt(process.argv[3]);
 
+console.log(startRow, endRow);
 
 (async ()=>{
   let columnsName = await getColumnsName(csvFilePath)
