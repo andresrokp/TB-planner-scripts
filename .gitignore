@@ -1,3 +1,4 @@
 *.env*
 *myvars*
 *node_modules*
+*ctx_mock*
