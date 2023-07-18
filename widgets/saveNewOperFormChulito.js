@@ -5,11 +5,12 @@ if (!choose) return;
 let $injector = widgetContext.$scope.$injector;
 let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
 
-// keys to fetch
-let keys = ['airline','regNum','sta','std'];
+// get all widget's key names
+let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
 
 // get SHARED attributes -> 
-attributeService.getEntityAttributes(entityId, 'SHARED_SCOPE', keys).subscribe(
+
+attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
     async function(atts){
         await new Promise(resolve => setTimeout(resolve, 1000)); 
         let nowDate = new Date().getTime();
