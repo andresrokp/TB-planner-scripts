@@ -51,6 +51,8 @@ const summaryFunctionsDefinitions = {
 };
 
 // Define the data instruction array
+// esto lo puedo refactorizar a un objeto y evitar el for loop de abajo
+// ...how can I instruct gpt in an oppen manner to have it conclude the best way of implement this
 const dataInstructions = [
   {
     datakeyName: "buzzer",
@@ -59,211 +61,19 @@ const dataInstructions = [
   { datakeyName: "battery", summaryFunctions: ["getMax","getMin"] },
   { datakeyName: "deltaFuel", summaryFunctions: ["getSumOfPossitives"] },
   { datakeyName: "hourmeter", summaryFunctions: ["getMaxDifference"] },
+  { datakeyName: "driverUniqueId", summaryFunctions: ["getMostRepeated"] },
   // Add more data key names and summary functions as needed
 ];
 
 // Parse the input JSON string to get the large JSON array
 
 const jsonArray = JSON.parse(fs.readFileSync('widgets/ctx_mock_data.json','utf8'));
-// const jsonArray = JSON.parse(`[
-//     {
-//         "datasource": {
-//             "type": "entity",
-//             "name": "equipo ensamble",
-//             "entityAliasId": "b22a5e00-2e0c-0720-c400-427e1ba87101",
-//             "filterId": null,
-//             "latestDataKeys": [],
-//             "aliasName": "vehicles",
-//             "entityFilter": {
-//                 "type": "deviceType",
-//                 "resolveMultiple": true,
-//                 "deviceType": "MENZIESGSE",
-//                 "deviceNameFilter": ""
-//             },
-//             "pageLink": {
-//                 "pageSize": 1024,
-//                 "page": 0,
-//                 "sortOrder": {
-//                     "key": {
-//                         "type": "ENTITY_FIELD",
-//                         "key": "createdTime"
-//                     },
-//                     "direction": "DESC"
-//                 }
-//             },
-//             "dataReceived": true,
-//             "entity": {
-//                 "id": {
-//                     "entityType": "DEVICE",
-//                     "id": "1c90cf60-1a8c-11ee-9b83-e14509358390"
-//                 },
-//                 "label": "",
-//                 "name": "equipo ensamble"
-//             },
-//             "entityId": "1c90cf60-1a8c-11ee-9b83-e14509358390",
-//             "entityType": "DEVICE",
-//             "entityName": "equipo ensamble",
-//             "entityLabel": "",
-//             "entityDescription": "",
-//             "generated": true
-//         },
-//         "dataKey": {
-//             "name": "buzzer",
-//             "type": "timeseries",
-//             "label": "buzzer",
-//             "color": "#dd2c00",
-//             "settings": {},
-//             "_hash": 0.7592265762531603,
-//             "hidden": false,
-//             "inLegend": true,
-//             "pattern": "buzzer"
-//         },
-//         "data": [
-//             [
-//                 1689365331000,
-//                 "false"
-//             ],
-//             [
-//                 1689365421000,
-//                 "true"
-//             ],
-//             [
-//                 1689365627000,
-//                 "false"
-//             ],
-//             [
-//                 1689365646000,
-//                 "false"
-//             ],
-//             [
-//                 1689365661000,
-//                 "true"
-//             ],
-//             [
-//                 1689365674000,
-//                 "true"
-//             ],
-//             [
-//                 1689365703000,
-//                 "false"
-//             ],
-//             [
-//                 1689368334000,
-//                 "false"
-//             ],
-//             [
-//                 1689368336000,
-//                 "true"
-//             ],
-//             [
-//                 1689368410000,
-//                 "true"
-//             ]
-//         ]
-//     },
-//     {
-//         "datasource": {
-//             "type": "entity",
-//             "name": "equipo ensamble",
-//             "entityAliasId": "b22a5e00-2e0c-0720-c400-427e1ba87101",
-//             "filterId": null,
-//             "latestDataKeys": [],
-//             "aliasName": "vehicles",
-//             "entityFilter": {
-//                 "type": "deviceType",
-//                 "resolveMultiple": true,
-//                 "deviceType": "MENZIESGSE",
-//                 "deviceNameFilter": ""
-//             },
-//             "pageLink": {
-//                 "pageSize": 1024,
-//                 "page": 0,
-//                 "sortOrder": {
-//                     "key": {
-//                         "type": "ENTITY_FIELD",
-//                         "key": "createdTime"
-//                     },
-//                     "direction": "DESC"
-//                 }
-//             },
-//             "dataReceived": true,
-//             "entity": {
-//                 "id": {
-//                     "entityType": "DEVICE",
-//                     "id": "1c90cf60-1a8c-11ee-9b83-e14509358390"
-//                 },
-//                 "label": "",
-//                 "name": "equipo ensamble"
-//             },
-//             "entityId": "1c90cf60-1a8c-11ee-9b83-e14509358390",
-//             "entityType": "DEVICE",
-//             "entityName": "equipo ensamble",
-//             "entityLabel": "",
-//             "entityDescription": "",
-//             "generated": true
-//         },
-//         "dataKey": {
-//             "name": "battery",
-//             "type": "timeseries",
-//             "label": "battery",
-//             "color": "#616161",
-//             "settings": {},
-//             "_hash": 0.26077173185420177,
-//             "hidden": false,
-//             "inLegend": true,
-//             "pattern": "battery"
-//         },
-//         "data": [
-//             [
-//                 1689365331000,
-//                 4.048
-//             ],
-//             [
-//                 1689365421000,
-//                 4.048
-//             ],
-//             [
-//                 1689365627000,
-//                 4.048
-//             ],
-//             [
-//                 1689365646000,
-//                 3.973
-//             ],
-//             [
-//                 1689365661000,
-//                 3.948
-//             ],
-//             [
-//                 1689365674000,
-//                 3.943
-//             ],
-//             [
-//                 1689365703000,
-//                 3.932
-//             ],
-//             [
-//                 1689368334000,
-//                 3.465
-//             ],
-//             [
-//                 1689368336000,
-//                 3.446
-//             ],
-//             [
-//                 1689368410000,
-//                 3.45
-//             ]
-//         ]
-//     }
-// ]`);
-
-// Generate the summary table
 const summaryTable = [];
 for (const obj of jsonArray) {
   const { datasource, dataKey, data } = obj;
   const datasourceName = datasource.name;
   console.log(datasourceName, dataKey.name);
+  // to refactor: I can change this approach for a dictionary approach if I stick to have just 1 data key name appearance in the dictionary
   for (const instruction of dataInstructions) {
     const { datakeyName, summaryFunctions } = instruction;
     if (dataKey.name === datakeyName) {
@@ -288,4 +98,4 @@ for (const obj of jsonArray) {
 }
 
 // Output the summary table
-console.log(summaryTable);
+console.table(summaryTable);
