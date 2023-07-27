@@ -14,17 +14,27 @@ let AllEntitiesName = widgetContext.datasources.map(ds => ds.entityName);
 // attributeService.getEntityTimeseries(entityId,keys,ts_id-2,ts_id+2).subscribe(
 //         function(telemetry){
 
+// empacar la data in TB format
+let testData = [{key:'test-attribute',value:'hola-atributos-2'}];
 
-let testData = [{key:'test-attribute',value:'hola-atributoss'}];
-
-for(let id of allEntitiesIds){
-    console.log(id)
-    
-    //id should be an object {entityType, id}
-    attributeService.saveEntityAttributes(id, 'SHARED_SCOPE', testData).subscribe(function(resp){console.log(resp)})
+// write the values in device attribute
+async function setAllConsumos(){
+    for await (let id of allEntitiesIds){ //allEntitiesIds[0],allEntitiesIds[1]]){
+        console.log(id)
+        //id should be an object {entityType, id}
+        const response = await saveEntityAttributesPromise(id,'SHARED_SCOPE',testData);
+      console.log(response);
+    }
 }
+
+// a promise wrapper to enable await for each writing
+function saveEntityAttributesPromise(id, scope, data) {
+  return new Promise((resolve, reject) => {
+    attributeService.saveEntityAttributes(id, scope, data).subscribe(   (response) => resolve(response)  );
+  });
+}
+
+setAllConsumos()
 
 // console.log('allEntitiesIds',allEntitiesIds)
 // console.log('AllEntitiesNames',AllEntitiesName)
-
-
