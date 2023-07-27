@@ -2,8 +2,8 @@ console.log('widgetContext',widgetContext);
 
 let startTs = widgetContext.dashboard.dashboardTimewindow.history.fixedTimewindow.startTimeMs;
 let endTs = widgetContext.dashboard.dashboardTimewindow.history.fixedTimewindow.endTimeMs;
-let limit = 10;
-let orderBy = 'DESC'
+let limit;
+let orderBy;
 console.log('startTimeMs', new Date(startTs));
 console.log('endTimeMs',new Date(endTs));
 
@@ -40,11 +40,15 @@ async function getCalcSetEachDevice(){
 function entityOperationsChainPromise(entityId) {
   return new Promise((resolve,reject) => {
     // get all inferiors
+    limit = 1;
     orderBy = 'DESC';
     // console.log(entityId)
     // console.log(keys, startTs, endTs, limit, orderBy)
     getTSeries(entityId, keys, startTs, endTs, limit, orderBy).subscribe(
-        function(superiorValue){            
+        function(superiorValueObj){
+            // response has the form {key1:[{ts1,val1},{ts2,val2},...],key2:[...],..}
+            let superiorValue = NaN
+            if(superiorValueObj.fuel) superiorValue = superiorValueObj.fuel[0].value
             console.log(superiorValue)
             resolve()
             // saveAtts(id, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
