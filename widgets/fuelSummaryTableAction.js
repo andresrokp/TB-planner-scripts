@@ -10,11 +10,10 @@ console.log('endTimeMs',new Date(endTs));
 
 let $injector = widgetContext.$scope.$injector;
 let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
-let saveAtts = attributeService.saveEntityAttributes.bind(attributeService)
-let getTSeries = attributeService.getEntityTimeseries.bind(attributeService)
+let saveAtts = attributeService.saveEntityAttributes.bind(attributeService);
+let getTSeries = attributeService.getEntityTimeseries.bind(attributeService);
 
 let allEntitiesIds = widgetContext.datasources.map(ds => ({'entityType':ds.entityType,'id':ds.entityId}));
-let AllEntitiesName = widgetContext.datasources.map(ds => ds.entityName);
 
 let keys = ['fuel']
 
@@ -41,18 +40,27 @@ function entityOperationsChainPromise(entityId) {
   return new Promise((resolve,reject) => {
     // get all inferiors
     limit = 1;
-    orderBy = 'DESC';
-    // console.log(entityId)
-    // console.log(keys, startTs, endTs, limit, orderBy)
-    getTSeries(entityId, keys, startTs, endTs, limit, orderBy).subscribe(
+    console.log(entityId)
+    getTSeries(entityId, keys, startTs, endTs, limit) //DESC by default
+    .subscribe(
         function(superiorValueObj){
             // response has the form {key1:[{ts1,val1},{ts2,val2},...],key2:[...],..}
-            let superiorValue = NaN
-            if(superiorValueObj.fuel) superiorValue = superiorValueObj.fuel[0].value
-            console.log(superiorValue)
-            resolve()
-            // saveAtts(id, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
+            let superiorValue = NaN;
+            if(superiorValueObj.fuel) superiorValue = superiorValueObj.fuel[0].value;
+            console.log('superiorValue',superiorValue);
+            
+            console.log(keys, new Date(startTs), new Date(endTs), limit, orderBy)
+            getTSeries(entityId, keys, startTs, endTs, limit, undefined, undefined, 'ASC')
+            .subscribe(
+                function(inferiorValueObj){
+                    console.log('inferiorValueObj',inferiorValueObj);
+                    let inferiorValue = NaN;
+                    if(inferiorValueObj.fuel) inferiorValue = inferiorValueObj.fuel[0].value;
+                    console.log('inferiorValue',inferiorValue);
+                    console.log('difference',superiorValue - inferiorValue);
+                    resolve()
+                    // saveAtts(id, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
+                })
         })
-    
   });
 }
