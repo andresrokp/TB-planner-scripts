@@ -1,7 +1,7 @@
 console.log('widgetContext',widgetContext);
 
-let startTs = widgetContext.dashboard.dashboardTimewindow.history.fixedTimewindow.startTimeMs;
-let endTs = widgetContext.dashboard.dashboardTimewindow.history.fixedTimewindow.endTimeMs;
+let startTs = Math.round(widgetContext.dashboard.dashboardTimewindow.history.fixedTimewindow.startTimeMs);
+let endTs = Math.round(widgetContext.dashboard.dashboardTimewindow.history.fixedTimewindow.endTimeMs);
 let limit;
 let orderBy;
 console.log('startTimeMs', new Date(startTs));
@@ -58,7 +58,7 @@ function entityOperationsChainPromise(entityId) {
                     if(inferiorValueObj.fuel) inferiorValue = inferiorValueObj.fuel[0].value;
                     console.log('inferiorValue',inferiorValue);
                     let difference = superiorValue - inferiorValue
-                    console.log('difference',difference);
+                    console.log(difference,difference);
                     let data = [{key:'test-attribute',value:difference}];
                     // write the differences en esta mondá!! :)
                     saveAtts(entityId, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
