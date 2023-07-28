@@ -45,7 +45,7 @@ function entityOperationsChainPromise(entityId) {
     .subscribe(
         function(superiorValueObj){
             // response has the form {key1:[{ts1,val1},{ts2,val2},...],key2:[...],..}
-            let superiorValue = NaN;
+            let superiorValue = 0;
             if(superiorValueObj.fuel) superiorValue = superiorValueObj.fuel[0].value;
             console.log('superiorValue',superiorValue);
             
@@ -54,12 +54,14 @@ function entityOperationsChainPromise(entityId) {
             .subscribe(
                 function(inferiorValueObj){
                     console.log('inferiorValueObj',inferiorValueObj);
-                    let inferiorValue = NaN;
+                    let inferiorValue = 0;
                     if(inferiorValueObj.fuel) inferiorValue = inferiorValueObj.fuel[0].value;
                     console.log('inferiorValue',inferiorValue);
-                    console.log('difference',superiorValue - inferiorValue);
-                    resolve()
-                    // saveAtts(id, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
+                    let difference = superiorValue - inferiorValue
+                    console.log('difference',difference);
+                    let data = [{key:'test-attribute',value:difference}];
+                    // write the differences en esta mondá!! :)
+                    saveAtts(entityId, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
                 })
         })
   });
