@@ -15,7 +15,8 @@ let getTSeries = attributeService.getEntityTimeseries.bind(attributeService);
 
 let allEntitiesIds = widgetContext.datasources.map(ds => ({'entityType':ds.entityType,'id':ds.entityId}));
 
-let keys = ['fuel']
+let key = 'fuelConsumo'
+let keys = [key]
 
 // get fuelConsumption values around TimeWindow interval extremes
 
@@ -41,24 +42,24 @@ function entityOperationsChainPromise(entityId) {
     // get all inferiors
     limit = 1;
     console.log(entityId)
+    console.log(keys, new Date(startTs), new Date(endTs), limit)
     getTSeries(entityId, keys, startTs, endTs, limit) //DESC by default
     .subscribe(
         function(superiorValueObj){
             // response has the form {key1:[{ts1,val1},{ts2,val2},...],key2:[...],..}
             let superiorValue = 0;
-            if(superiorValueObj.fuel) superiorValue = superiorValueObj.fuel[0].value;
+            if(superiorValueObj[key]) superiorValue = superiorValueObj[key][0].value;
             console.log('superiorValue',superiorValue);
             
-            console.log(keys, new Date(startTs), new Date(endTs), limit, orderBy)
             getTSeries(entityId, keys, startTs, endTs, limit, undefined, undefined, 'ASC')
             .subscribe(
                 function(inferiorValueObj){
                     console.log('inferiorValueObj',inferiorValueObj);
                     let inferiorValue = 0;
-                    if(inferiorValueObj.fuel) inferiorValue = inferiorValueObj.fuel[0].value;
+                    if(inferiorValueObj[key]) inferiorValue = inferiorValueObj[key][0].value;
                     console.log('inferiorValue',inferiorValue);
                     let difference = superiorValue - inferiorValue
-                    console.log(difference,difference);
+                    console.log('difference',difference);
                     let data = [{key:'test-attribute',value:difference}];
                     // write the differences en esta mondá!! :)
                     saveAtts(entityId, 'SERVER_SCOPE', data).subscribe(   () => resolve()  );
