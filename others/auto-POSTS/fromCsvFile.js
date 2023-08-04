@@ -4,6 +4,36 @@
 require('dotenv').config()
 const fs = require('fs');
 const { parse: csv_parser} = require('csv');
+var counter = 1;
+
+
+//-----------------------------------------------------------------
+// main execution
+
+const csvFilePath = process.env.CSV_FILE_PATH;
+let startRow = parseInt(process.argv[2]);
+let endRow = parseInt(process.argv[3]);
+// 2520 2540 
+// 2525 2555
+// 2 8000
+// 8440 8540
+// console.log(startRow, endRow);
+
+(async ()=>{
+  let columnsName = await getColumnsName(csvFilePath)
+  // console.log(columnsName)
+  processCsvBody(csvFilePath, columnsName, startRow, endRow).catch((err) => {
+    console.error('Error processing CSV:', err);
+  });
+})();
+
+
+
+
+//-----------------------------------------------------------------
+
+//-----------------------------------------------------------------
+// Aux Functions
 
 
 function getColumnsName(csvFilePath) {
@@ -12,8 +42,10 @@ function getColumnsName(csvFilePath) {
     let columnsName;
 
     stream.on('data', (chunk)=>{
-        columnsName = chunk.split(/\r\n|\n/)[0].split(';');
-        stream.close();
+      // toma la primera línea del primera chunk y la divide por ';'
+      columnsName = chunk.split(/\r\n|\n/)[0].split(';');
+      // cierra para que sólo se ejecute una vez
+      stream.close();
     })
     stream.on('close',()=>{
       return res(columnsName);
@@ -21,12 +53,9 @@ function getColumnsName(csvFilePath) {
   })
 }
 
+// utilidad para implementar una espera entre envíos
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function getRandomMillis() {
-  return Math.floor(Math.random() * (1000 - 500 + 1) + 500);
 }
 
 async function processCsvBody(csvFilePath, columnsName, startRow, endRow) {
@@ -39,27 +68,17 @@ async function processCsvBody(csvFilePath, columnsName, startRow, endRow) {
     })
   );
 
-  let previousTimestamp = null;
-  let isFirstRow = true;
-
   for await (const telemetryRow of parser) {
-    
-    // // dynamic wait time between operation
-    // const timestamp = isFirstRow ? Date.now() : Date.parse(telemetryRow['timestamp']);
-    // const delayTime = isFirstRow ? 0 : timestamp - previousTimestamp + getRandomMillis();
-    // previousTimestamp = timestamp;
-    // isFirstRow = false;
-
-    delayTime = 1000; // static waiting value... remove
+    delayTime = 1000; // static waiting value...
     await delay(delayTime);
-
+    //TODO: build telemetry considering a forced timestamp from csv. Triggers if i put a flag in CLI
+    console.log(counter,'telemetryRow',startRow+counter++-1,telemetryRow)
     await postTelemetry(telemetryRow);
   }
 }
 
 
 async function postTelemetry(telemetryData) {
-  console.log(telemetryData);
   const url = `https://${process.env.TB_DNS}/api/v1/${process.env.CUN_TEST_TOKEN}/telemetry`;
   const response = await fetch(url, {
     method: 'POST',
@@ -70,25 +89,3 @@ async function postTelemetry(telemetryData) {
   if (response.ok) { console.log('Telemetry posted successfully'); }
   else { console.log('Failed to post telemetry:', response.status); }
 }
-
-
-
-//-----------------------------------------------------------------
-// main execution
-
-const csvFilePath = process.env.CSV_FILE_PATH;
-let startRow = parseInt(process.argv[2]);
-let endRow = parseInt(process.argv[3]);
-
-console.log(startRow, endRow);
-
-(async ()=>{
-  let columnsName = await getColumnsName(csvFilePath)
-  
-  console.log(columnsName)
-  
-  processCsvBody(csvFilePath, columnsName, startRow, endRow).catch((err) => {
-    console.error('Error processing CSV:', err);
-  });
-})();
-
