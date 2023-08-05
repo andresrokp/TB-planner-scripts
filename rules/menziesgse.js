@@ -58,43 +58,40 @@ function transformMessage(message, metadata, msgType) {
 
 
 // Genera una nueva telesmetría Del combustible en unidades de galones y litros
-function fuelProcessing(){
-        
-    // Si se sale de rango, fuel toma el valor previo
-    if(parseInt(msg.fuel) > 5000) {
-        msg.fuel = msg.fuel - msg.deltaFuel;
-        msg.deltaFuel = 0;
-    }
-
+function fuelProcessing(){        
+    // Si está dentro del rango válido...
+if(parseInt(msg.fuel) > 300 && parseInt(msg.fuel) < 6000) {
     // // Accumulate deltas in consumption only if inside el rango
     // learn: metadata previous value is a string WITH QUOTES
     // learn: if uncontroled, feedback prev vals can lead to overflow
-    // learn: here let and const no valen de ni mondá
-
-    var prevFuelSuministro = metadata.fuelSuministro;
-    if(prevFuelSuministro){
-        msg.fuelSuministro = parseInt(prevFuelSuministro.replaceAll('"',''));
-        msg.fuelSuministro += msg.deltaFuel > 0 ? msg.deltaFuel : 0;
-        if (prevFuelSuministro.length > 50) msg.fuelSuministro = 0;
-    }else{
-        msg.fuelSuministro = 0;
-    }
+    // learn: here let and const no valen de ni mondá, solo var
 
     var prevFuelConsumo = metadata.fuelConsumo;
     if(prevFuelConsumo){
         msg.fuelConsumo = parseInt(prevFuelConsumo.replaceAll('"',''))
         msg.fuelConsumo +=  msg.deltaFuel < 0 ? Math.abs(msg.deltaFuel) : 0;
-        if (prevFuelConsumo.length > 50) msg.fuelConsumo = 0
     }else{
         msg.fuelConsumo = 0
     }
-
-    // conversions... maybe to errase
+    
+    // conversiones
     var lt = msg.fuel * metadata.shared_mm_to_lt;
     msg.fuelLt = lt;
     msg.fuelGal = lt * 0.264172;
+    
+    // // Activar solo si el cliente lo pide
+    // var prevFuelSuministro = metadata.fuelSuministro;
+    // if(prevFuelSuministro){
+    //     msg.fuelSuministro = parseInt(prevFuelSuministro.replaceAll('"',''));
+    //     msg.fuelSuministro += msg.deltaFuel > 0 ? msg.deltaFuel : 0;
+    // }else{
+    //     msg.fuelSuministro = 0;
+    // }
+}else{
+    delete msg.fuel
+}
 
-    return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
+return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
 
