@@ -12,3 +12,7 @@ function tableWidgetIgnitionCellContent(){
 
     return `<img style="height:25px;" src="${url}"/>`;
 }
+
+function tableWidgetNameCellContent(params) {
+    return `<span style="font-weight:900">${value}</span>`
+}
