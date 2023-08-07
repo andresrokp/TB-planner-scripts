@@ -59,41 +59,23 @@ function transformMessage(message, metadata, msgType) {
 
 // Genera una nueva telesmetría Del combustible en unidades de galones y litros
 function fuelProcessing(){
-    
-// Take delta to evaluate repeated values
-var prevFuel = parseInt((metadata.fuel||'0').replaceAll('"',''));
-var deltaFuel = msg.fuel - prevFuel
-
-
-// if dentro del rango and no repeated...
-if(parseInt(msg.fuel) > 300 && parseInt(msg.fuel) < 6000 && deltaFuel != 0) {
-    // learn: metadata previous value is a string WITH QUOTES
-    // learn: if uncontroled, feedback prev vals can lead to overflow
-    // learn: here let and const no valen de ni mondá, solo var
-    
-    msg.deltaFuel = deltaFuel
-
-    var prevFuelConsumo = parseInt((metadata.fuelConsumo||'0').replaceAll('"',''));
-    msg.fuelConsumo = prevFuelConsumo + (deltaFuel < 0 ? Math.abs(deltaFuel) : 0);
-    
-    // conversiones
-    var lt = msg.fuel * metadata.shared_mm_to_lt;
-    msg.fuelLt = lt;
-    msg.fuelGal = lt * 0.264172;
-    
-    // // Activar solo si el cliente lo pide >> TODO >> simplificar
-    // var prevFuelSuministro = metadata.fuelSuministro;
-    // if(prevFuelSuministro){
-    //     msg.fuelSuministro = parseInt(prevFuelSuministro.replaceAll('"',''));
-    //     msg.fuelSuministro += msg.deltaFuel > 0 ? msg.deltaFuel : 0;
-    // }else{
-    //     msg.fuelSuministro = 0;
-    // }
-}else{
-    delete msg.fuel
-}
-
-return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
+    // Take delta to evaluate repeated values
+    var prevFuel = parseInt((metadata.fuel||'0').replaceAll('"',''));
+    var deltaFuel = msg.fuel - prevFuel
+    // if dentro del rango and no repeated...
+    if(parseInt(msg.fuel) > 300 && parseInt(msg.fuel) < 6000 && deltaFuel != 0) {
+        // learn: metadata previous value is a string WITH QUOTES
+        // learn: if uncontroled, feedback prev vals can lead to overflow
+        msg.deltaFuel = deltaFuel
+        var prevFuelConsumo = parseInt((metadata.fuelConsumo||'0').replaceAll('"',''));
+        msg.fuelConsumo = prevFuelConsumo + (deltaFuel < 0 ? Math.abs(deltaFuel) : 0);
+        // conversiones
+        msg.fuelLt = msg.fuel * metadata.shared_mm_to_lt;
+        msg.fuelConsumoLt = msg.fuelConsumo * metadata.shared_mm_to_lt;
+    }else{  
+        delete msg.fuel
+    }
+    return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
 
