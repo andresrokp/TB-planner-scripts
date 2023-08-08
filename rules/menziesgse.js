@@ -94,7 +94,24 @@ function variablesProcessing(){
         if(metadata.ignition.replaceAll('"','') == msg.ignition)
             delete msg.ignition
     }
-    
+
+    //----------------------------------------------------------
+    //GEOFENCES
+    if(metadata.geofenceIds){
+        if(metadata.geofenceIds.replaceAll('"','') == msg.geofenceIds)
+            delete msg.geofenceIds
+    }
+
+    //----------------------------------------------------------
+    //EMERGENCY
+    if(metadata.emergency){
+        if(metadata.emergency.replaceAll('"','') == msg.emergency)
+            delete msg.emergency
+    }
+
+    //TODO: refactor the repetition filtering
+    // >> An iteration over an array of keys
+
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
