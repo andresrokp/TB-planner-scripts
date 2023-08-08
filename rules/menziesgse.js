@@ -57,8 +57,11 @@ function transformMessage(message, metadata, msgType) {
 }
 
 
-// Genera una nueva telesmetría Del combustible en unidades de galones y litros
-function fuelProcessing(){
+// Procesa datos del mensaje (acumulación, no repeticón, conversión, etc)
+function variablesProcessing(){
+    // ---------------------------------------------------------------
+    // FUEL ----------------------------------------------------------
+
     // Take delta to evaluate repeated values
     var prevFuel = parseInt((metadata.fuel||'0').replaceAll('"',''));
     var deltaFuel = msg.fuel - prevFuel
@@ -72,9 +75,26 @@ function fuelProcessing(){
         // conversiones
         msg.fuelLt = msg.fuel * metadata.shared_mm_to_lt;
         msg.fuelConsumoLt = msg.fuelConsumo * metadata.shared_mm_to_lt;
-    }else{  
-        delete msg.fuel
+    }else{  delete msg.fuel   }
+
+    //----------------------------------------------------------
+    //POWER
+    if(msg.power < 8) delete msg.power
+
+    //----------------------------------------------------------
+    //DRIVER
+    if(metadata.driverUniqueId){
+        if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
+            delete msg.driverUniqueId
     }
+
+    // //----------------------------------------------------------
+    // //IGNITION
+    if(metadata.ignition){
+        if(metadata.ignition.replaceAll('"','') == msg.ignition)
+            delete msg.ignition
+    }
+    
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
