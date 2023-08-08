@@ -13,10 +13,14 @@ var counter = 1;
 const csvFilePath = process.env.CSV_FILE_PATH;
 let startRow = parseInt(process.argv[2]);
 let endRow = parseInt(process.argv[3]);
+let delayTime = parseInt(process.argv[4]);
 // 2520 2540 
 // 2525 2555
 // 2 8000
+// sección trucada
 // 8440 8540
+// mock3
+// 525 865
 // console.log(startRow, endRow);
 
 (async ()=>{
@@ -69,10 +73,10 @@ async function processCsvBody(csvFilePath, columnsName, startRow, endRow) {
   );
 
   for await (const telemetryRow of parser) {
-    delayTime = 1000; // static waiting value...
-    await delay(delayTime);
+    await delay(delayTime); // static waiting value...
     //TODO: build telemetry considering a forced timestamp from csv. Triggers if i put a flag in CLI
-    console.log(counter,'telemetryRow',startRow+counter++-1,telemetryRow)
+    console.table(telemetryRow)
+    console.log(counter,'telemetryRow',startRow+counter++-1)
     await postTelemetry(telemetryRow);
   }
 }
@@ -86,6 +90,6 @@ async function postTelemetry(telemetryData) {
     body: JSON.stringify(telemetryData),
   });
   
-  if (response.ok) { console.log('Telemetry posted successfully'); }
+  if (response.ok) { console.log('Telemetry posted successfully', new Date()); }
   else { console.log('Failed to post telemetry:', response.status); }
 }
