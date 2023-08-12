@@ -14,6 +14,7 @@ const csvFilePath = process.env.CSV_FILE_PATH;
 let startRow = parseInt(process.argv[2]);
 let endRow = parseInt(process.argv[3]);
 let delayTime = parseInt(process.argv[4]);
+let deviceToken = process.argv[5];
 // 2520 2540 
 // 2525 2555
 // 2 8000
@@ -83,7 +84,7 @@ async function processCsvBody(csvFilePath, columnsName, startRow, endRow) {
 
 
 async function postTelemetry(telemetryData) {
-  const url = `https://${process.env.TB_DNS}/api/v1/${process.env.CUN_TEST_TOKEN}/telemetry`;
+  const url = `https://${process.env.TB_DNS}/api/v1/${deviceToken}/telemetry`;
   const response = await fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
