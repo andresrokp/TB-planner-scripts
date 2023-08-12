@@ -1,0 +1,183 @@
+{
+    "disabledMenuItems": [
+      "login_white_labeling",
+      "asset_groups",
+      "device_groups",
+      "edge_groups",
+      "dashboard_groups",
+      "scheduler",
+      "audit_log",
+      "customer_groups",
+      "roles",
+      "widget_library",
+      "customers_hierarchy",
+      "rule_chains",
+      "converters",
+      "home",
+      "integrations",
+      "entity_view_groups",
+      "mail_server",
+      "mail_templates",
+      "custom_translation",
+      "self_registration",
+      "settings",
+      "settings_applications",
+      "white_labeling",
+      "custom_menu",
+      "home_settings",
+      "alarms",
+      "dashboards",
+      "customers",
+      "users",
+      "edges",
+      "alerts",
+      "entities",
+      "notifications_center"
+    ],
+    "menuItems": [
+      {
+        "name": "Mantenimiento",
+        "iconUrl": null,
+        "materialIcon": "miscellaneous_services",
+        "iframeUrl": null,
+        "dashboardId": "",
+        "hideDashboardToolbar": false,
+        "setAccessToken": false,
+        "childMenuItems": [
+          {
+            "name": "Checklist 360",
+            "iconUrl": null,
+            "materialIcon": "fact_check",
+            "iframeUrl": "",
+            "dashboardId": "cc4cadc0-e44f-11ed-9b83-e14509358390",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          },
+          {
+            "name": "GSE Status Report",
+            "iconUrl": null,
+            "materialIcon": "equalizer",
+            "iframeUrl": "",
+            "dashboardId": "d302c2c0-e455-11ed-9b83-e14509358390",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          },
+          {
+            "name": "Resumen de Consumo",
+            "iconUrl": null,
+            "materialIcon": "query_stats",
+            "iframeUrl": "",
+            "dashboardId": "cd93c580-2291-11ee-9bab-f10f15570bc5",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          },
+          {
+            "name": "Alertas",
+            "iconUrl": null,
+            "materialIcon": "notifications_active",
+            "iframeUrl": "",
+            "dashboardId": "47be36f0-32e2-11ee-9a5a-27a2b74c1c5f",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          }
+        ]
+      },
+      {
+        "name": "Operaciones",
+        "iconUrl": null,
+        "materialIcon": "emoji_transportation",
+        "iframeUrl": null,
+        "dashboardId": null,
+        "hideDashboardToolbar": null,
+        "setAccessToken": false,
+        "childMenuItems": [
+          {
+            "name": "Tracking GSE",
+            "iconUrl": null,
+            "materialIcon": "pin_drop",
+            "iframeUrl": null,
+            "dashboardId": "e7d221c0-e453-11ed-9b83-e14509358390",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          },
+          {
+            "name": "Operarios",
+            "iconUrl": null,
+            "materialIcon": "airline_seat_recline_normal",
+            "iframeUrl": "",
+            "dashboardId": "",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          },
+          {
+            "name": "Alertas",
+            "iconUrl": null,
+            "materialIcon": "notifications_active",
+            "iframeUrl": null,
+            "dashboardId": "c2521db0-b64a-11ed-9b83-e14509358390",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          }
+        ]
+      },
+      {
+        "name": "Planning",
+        "iconUrl": null,
+        "materialIcon": "connecting_airports",
+        "iframeUrl": null,
+        "dashboardId": null,
+        "hideDashboardToolbar": null,
+        "setAccessToken": false,
+        "childMenuItems": [
+          {
+            "name": "Arrivals",
+            "iconUrl": null,
+            "materialIcon": "flight_land",
+            "iframeUrl": "",
+            "dashboardId": "",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          }
+        ]
+      },
+      {
+        "name": "Safety",
+        "iconUrl": null,
+        "materialIcon": "health_and_safety",
+        "iframeUrl": null,
+        "dashboardId": null,
+        "hideDashboardToolbar": null,
+        "setAccessToken": false,
+        "childMenuItems": [
+          {
+            "name": "GSE Safety",
+            "iconUrl": null,
+            "materialIcon": "no_crash",
+            "iframeUrl": null,
+            "dashboardId": "e7d221c0-e453-11ed-9b83-e14509358390",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          },
+          {
+            "name": "Alertas",
+            "iconUrl": null,
+            "materialIcon": "notifications_active",
+            "iframeUrl": null,
+            "dashboardId": "e4a8e4e0-339d-11ee-9a5a-27a2b74c1c5f",
+            "hideDashboardToolbar": false,
+            "setAccessToken": false,
+            "childMenuItems": []
+          }
+        ]
+      }
+    ]
+  }
