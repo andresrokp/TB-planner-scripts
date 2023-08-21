@@ -8,3 +8,37 @@
  * >
  * 
  */
+
+
+let msg = {
+    "airline": {
+        "iataCode": "VE",
+        "icaoCode": "EFY",
+        "name": "EasyFly"
+    },
+    "arrival": {
+        "actualRunway": null,
+        "actualTime": null,
+        "baggage": null,
+        "delay": null,
+        "estimatedRunway": null,
+        "estimatedTime": null,
+        "gate": null,
+        "iataCode": "BOG",
+        "icaoCode": "SKBO",
+        "scheduledTime": "2023-08-21T14:33:00.000",
+        "terminal": "2"
+    }
+}
+
+function filterOnlyScheduledInsideTime(msg) {
+    let presentTime = new Date().getTime();
+    let intervalStart = presentTime - 2 * 60 * 60 * 1000;
+    let intervalEnd = presentTime + 48 * 60 * 60 * 1000;
+
+    let scheduledTime = new Date(msg.arrival.scheduledTime).getTime()
+
+    return scheduledTime > intervalStart && scheduledTime < intervalEnd    
+}
+
+console.log(filterOnlyScheduledInsideTime(msg));
