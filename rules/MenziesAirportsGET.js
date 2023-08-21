@@ -10,6 +10,17 @@
  */
 
 
+function generadorParaAirports() {
+    var msg = {};
+    var metadata = { 'tz': 'America/Bogota' };
+    var msgType = "POST_TELEMETRY_REQUEST";
+
+    return { msg: msg, metadata: metadata, msgType: msgType };
+    
+}
+
+
+
 let msg = {
     "airline": {
         "iataCode": "VE",
@@ -30,7 +41,6 @@ let msg = {
         "terminal": "2"
     }
 }
-
 function filterOnlyScheduledInsideTime(msg) {
     let presentTime = new Date().getTime();
     let intervalStart = presentTime - 2 * 60 * 60 * 1000;
