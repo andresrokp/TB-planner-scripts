@@ -41,14 +41,17 @@ let msg = {
         "terminal": "2"
     }
 }
-function filterOnlyScheduledInsideTime(msg) {
-    let presentTime = new Date().getTime();
-    let intervalStart = presentTime - 2 * 60 * 60 * 1000;
-    let intervalEnd = presentTime + 48 * 60 * 60 * 1000;
+function filterOnlyScheduledInsideTime(msg, metadata) {
+    var offset = parseInt(metadata.utcTimeOffset);
 
-    let scheduledTime = new Date(msg.arrival.scheduledTime).getTime()
-
-    return scheduledTime > intervalStart && scheduledTime < intervalEnd    
+    var presentTime = new Date().getTime();
+    
+    var intervalStart = presentTime +  (-2 + offset)*60*60*1000;
+    var intervalEnd = presentTime +  (48 + offset)*60*60*1000;
+    
+    var scheduledTime = new Date(msg.arrival.scheduledTime).getTime();
+    
+    return scheduledTime > intervalStart && scheduledTime < intervalEnd; 
 }
 
-console.log(filterOnlyScheduledInsideTime(msg));
+console.log(filterOnlyScheduledInsideTime(msg, {utcTimeOffset: '-5'}));
