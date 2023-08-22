@@ -54,4 +54,21 @@ function filterOnlyScheduledInsideTime(msg, metadata) {
     return scheduledTime > intervalStart && scheduledTime < intervalEnd; 
 }
 
-console.log(filterOnlyScheduledInsideTime(msg, {utcTimeOffset: '-5'}));
+
+
+function msgTransformationToTelemetry(msg) {
+    var msgForTelemetry = {
+        airlineIataCode : msg.airline.iataCode,
+        airlineName : msg.airline.name,
+        departureIataCode : msg.departure.iataCode,
+        arrivalIataCode : msg.arrival.iataCode,
+        arrivalScheduledTime : msg.arrival.scheduledTime,
+        arrivalEstimatedTime : msg.arrival.estimatedTime,
+        arrivalGate : msg.arrival.gate,
+        arrivalBaggage : msg.arrival.baggage,
+        flightIataNumber : msg.flight.iataNumber,
+        flightStatus : msg.status,
+    };
+    
+    return {msg: msgForTelemetry, metadata: metadata, msgType: msgType};    
+}
