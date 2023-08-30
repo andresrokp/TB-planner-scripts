@@ -1,3 +1,22 @@
+function msgTypeSelector() {
+    let isChecklist = msg.nivelAceiteMotor || msg.nivelCombustible || msg.lucesFrontales;
+
+    let isTelemetry = msg.driverUniqueId || msg.geofenceIds || msg.fuel || msg.battery
+
+    if(msgType === 'POST_ATTRIBUTES_REQUEST') {
+        return ['atts'];
+    }
+    if(msgType === 'POST_TELEMETRY_REQUEST' && isTelemetry && !isChecklist ) {
+        return ['teltry'];
+    }
+    if (isChecklist && !isTelemetry){
+        return['check']
+    }
+    return ['none']
+    
+}
+
+
 function transformMessage(message, metadata, msgType) {
     // Extract necessary information from the message object
     const { position, device } = message;
