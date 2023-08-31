@@ -66,7 +66,7 @@ console.log('-----\n----------------------------------\n-----');
 
 // valores
 const entityType = 'DEVICE';
-const entityId = process.env.CURRENT_ENTITY_ID;
+const entityId = process.argv[2];
 const keys = 'axisX,axisY,axisZ';
 const allKeys = Array(process.env.TEL_KEY_LIST.replaceAll("\'","")).join(',')
 const deleteAllDataForKeys = true;
