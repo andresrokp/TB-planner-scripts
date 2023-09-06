@@ -67,7 +67,7 @@ const dataInstructions = [
 
 // Parse the input JSON string to get the large JSON array
 
-const jsonArray = JSON.parse(fs.readFileSync('widgets/ctx_mock_data.json','utf8'));
+const jsonArray = JSON.parse(fs.readFileSync('widgets/ctx_data_fragment_mock_data.json','utf8'));
 const summaryTable = [];
 for (const obj of jsonArray) {
   const { datasource, dataKey, data } = obj;
