@@ -50,3 +50,23 @@ function saveChecklist360Teltry() {
         }
     ); 
 }
+
+
+
+function rowActionButton_popEntityQRCode() {
+
+    console.log('entityName',entityName)
+    console.log('entityId',entityId)
+    console.log('additionalParams',additionalParams)
+    console.log('widgetContext',widgetContext)
+
+    let info = {entityName,entityId};
+
+    widgetContext.dialogs
+    .alert('Qr Generado',
+        `<br>Información:
+        <br><pre>${info}</pre>
+        <br>Imágen:
+        <br><img style="width:50px;" src="https://www.sighums.com/wp-content/uploads/2023/03/logo2-1.png">`).subscribe();
+
+}
