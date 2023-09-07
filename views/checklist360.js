@@ -83,3 +83,19 @@ function rowActionButton_popEntityQRCode() {
     .subscribe();
     
 }
+
+function entityTable_headerAction_readQRCode(params) {
+    // Function body to process result of QR code scanning. 
+    // - code - scanned QR code
+    // - format - scanned QR code format
+
+    showQrCodeDialog('Vehículo para diligenciar', code, format);
+
+    function showQrCodeDialog(title, code, format) {
+        setTimeout(function() {
+            widgetContext.dialogs
+            .alert(title, `<pre>${code}</pre>`)
+            .subscribe();
+        }, 150);
+    }
+}
