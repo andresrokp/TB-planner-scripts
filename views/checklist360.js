@@ -55,36 +55,36 @@ function saveChecklist360Teltry() {
 
 function rowActionButton_popEntityQRCode() {
 
-    console.log('entityName',entityName);
-    console.log('entityId',entityId);
-    console.log('additionalParams',additionalParams);
-    console.log('widgetContext',widgetContext);
-    
+    // console.log('widgetContext',widgetContext);
+
     let data = {...additionalParams.entity};
-    
+
+    //remove standard values, and only leave the column named values
     delete data.actionCellButtons
     delete data.hasActions
-    let infoFetch = encodeURIComponent(JSON.stringify(data));
-    
-    delete data.id;
     delete data.entityLabel;
-    delete data.entityName;
     delete data.entityType;
+    delete data.id;
+    delete data.entityName;
     let infoPrint = JSON.stringify(data,null,4);
     infoPrint = infoPrint.replaceAll('"','').replace('{','').replace('}','')
-    
-    
+
+    // data needed to dash jump
+    let infoFetch = encodeURIComponent(JSON.stringify({entityId,entityName}));
+
+
+
     let imgStyles="display: block; margin-left: auto; margin-right: auto;";
-    
+
     widgetContext.dialogs
     .alert('QR Generado',
-           `<br><img style="${imgStyles}" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${infoFetch}">
-           <pre>${infoPrint}</pre>`)
+        `<br><img style="${imgStyles}" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${infoFetch}">
+        <pre>${infoPrint}</pre>`)
     .subscribe();
-    
+
 }
 
-function entityTable_headerAction_readQRCode(params) {
+function entityTable_headerAction_processQrCode(params) {
     // Function body to process result of QR code scanning. 
     // - code - scanned QR code
     // - format - scanned QR code format
@@ -93,9 +93,17 @@ function entityTable_headerAction_readQRCode(params) {
 
     function showQrCodeDialog(title, code, format) {
         setTimeout(function() {
+            alert(typeof code)
+            let codeJSON = JSON.parse(code)
+            alert(typeof codeJSON)
+            alert(Object.keys(codeJSON))
             widgetContext.dialogs
-            .alert(title, `<pre>${code}</pre>`)
-            .subscribe();
+            .alert(title, `
+                <pre>${JSON.stringify(codeJSON,null,4)}</pre>`)
+            .subscribe(()=>{
+                // let params = { entityId:codeJSON.id, entityName:codeJSON.entityName };
+                // widgetContext.stateController.openState('diligenciar_checklist', params, false);
+            });
         }, 150);
     }
 }
