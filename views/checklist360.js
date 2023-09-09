@@ -85,25 +85,22 @@ function rowActionButton_popEntityQRCode() {
 }
 
 function entityTable_headerAction_processQrCode(params) {
-    // Function body to process result of QR code scanning. 
-    // - code - scanned QR code
-    // - format - scanned QR code format
-
-    showQrCodeDialog('Vehículo para diligenciar', code, format);
-
-    function showQrCodeDialog(title, code, format) {
-        setTimeout(function() {
-            alert(typeof code)
-            let codeJSON = JSON.parse(code)
-            alert(typeof codeJSON)
-            alert(Object.keys(codeJSON))
+    
+    setTimeout(function() {
+    
+        try {
+            let { entityId, entityName } =  JSON.parse(code)
             widgetContext.dialogs
-            .alert(title, `
-                <pre>${JSON.stringify(codeJSON,null,4)}</pre>`)
+            .alert('Lectura código QR', `<pre>Check vehículo ${entityName}</pre>`)
             .subscribe(()=>{
-                // let params = { entityId:codeJSON.id, entityName:codeJSON.entityName };
-                // widgetContext.stateController.openState('diligenciar_checklist', params, false);
+                let params = { entityId, entityName };
+                widgetContext.stateController.openState('diligenciar_checklist', params, false);
             });
-        }, 150);
-    }
+        }catch(e){
+            widgetContext.dialogs
+            .alert('Lectura código QR', `<pre>QR no válido para MENZIES GSE</pre>`)
+            .subscribe()
+        }
+        
+    }, 150);
 }
