@@ -1,7 +1,15 @@
-function auxDash_simpleCard_settings_widgetCss(params) {
+function auxDash_simpleCard_settings_widgetCss() {
     return{
         "tbDatasource-value":{
             "font-weight":600
+        }
+    }
+}
+
+function auxDash_updtLumtAtts_settings_widgetCss() {
+    return{
+        'input:disabled':{
+            'font-weight': 900
         }
     }
 }
@@ -21,3 +29,4 @@ function auxDash_multAttsUpdate_dataDeltaHrsToNextMntto_getValue() {
     
     return hrsProxMntoA - hrsActuales;
 }
+
