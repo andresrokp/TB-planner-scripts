@@ -10,11 +10,11 @@ var counter = 1;
 //-----------------------------------------------------------------
 // main execution
 
-const csvFilePath = process.env.CSV_FILE_PATH;
-let startRow = parseInt(process.argv[2]);
-let endRow = parseInt(process.argv[3]);
-let delayTime = parseInt(process.argv[4]);
+const csvFilePath = process.env.CSV_FILE_PATH + process.argv[2] +'.csv';
+let startRow = parseInt(process.argv[3]);
+let endRow = parseInt(process.argv[4]);
 let deviceToken = process.argv[5];
+let delayTime = parseInt(process.argv[6] || '1000');
 // 2520 2540 
 // 2525 2555
 // 2 8000
