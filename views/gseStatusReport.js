@@ -20,10 +20,22 @@ function mainTable_ignition() {
     }    
 }
 
-function mainTable_dataHorometer2() {
+function mainTable_dataHrsToMntto() {
+    
     function cellContent() {
         return entity.proxMnttoA - Math.floor(entity["Horom."]/3600);
     }
+    
+    function cellStyle() {
+        let valueCalc = entity.proxMnttoA - Math.floor(entity["Horom."]/3600);
+        let style = {}
+        
+        if (valueCalc < 30) style.color = 'red'
+        if (valueCalc < 10) style.fontWeight = 800;
+        
+        return style;
+    }
+    
 }
 
 function mainTable_dataName() {
