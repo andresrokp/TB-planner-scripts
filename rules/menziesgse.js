@@ -101,6 +101,10 @@ function variablesProcessing(){
     if(msg.power < 8) delete msg.power
 
     //----------------------------------------------------------
+    //TEMPERATURE
+    if(msg.temp1 < 40) delete msg.temp1
+
+    //----------------------------------------------------------
     //DRIVER
     if(metadata.driverUniqueId){
         if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
@@ -127,6 +131,15 @@ function variablesProcessing(){
         if(metadata.emergency.replaceAll('"','') == msg.emergency)
             delete msg.emergency
     }
+
+    //----------------------------------------------------------
+    //SPEED
+    msg.speed = msg.speed * 1.6 // from miles to Km
+    if(msg.speed > 100) delete msg.speed
+
+    //----------------------------------------------------------
+    //ACCELERATIONS
+    msg.resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
 
     //TODO: refactor the repetition filtering
     // >> An iteration over an array of keys
