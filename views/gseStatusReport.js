@@ -16,7 +16,7 @@ function auxDash_updtLumtAtts_settings_widgetCss() {
 
 
 function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_setValue() {
-    let hrsActuales = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['3'];
+    let hrsActuales = Math.floor(ctx.data[2].data[0][1]/3600)
     let hrsToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['4'];
     
     return Math.floor(hrsActuales + hrsToNext);
