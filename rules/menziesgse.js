@@ -98,10 +98,12 @@ function variablesProcessing(){
 
     //----------------------------------------------------------
     //POWER
+    msg.power = Math.floor(msg.power*10)/10
     if(msg.power < 8) delete msg.power
 
     //----------------------------------------------------------
     //TEMPERATURE
+    msg.temp1 = Math.floor(msg.temp1*10)/10
     if(msg.temp1 < 40) delete msg.temp1
 
     //----------------------------------------------------------
@@ -139,7 +141,8 @@ function variablesProcessing(){
 
     //----------------------------------------------------------
     //ACCELERATIONS
-    msg.resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
+    let resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
+    msg.resultanteXYZ = Math.floor(resultanteXYZ*10)/10;
 
     //TODO: refactor the repetition filtering
     // >> An iteration over an array of keys
