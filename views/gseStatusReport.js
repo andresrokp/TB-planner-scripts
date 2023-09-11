@@ -30,3 +30,6 @@ function auxDash_multAttsUpdate_dataDeltaHrsToNextMntto_getValue() {
     return hrsProxMntoA - hrsActuales;
 }
 
+function auxDash_multAttsUpdate_dataEnTaller_setValue(){
+    return !ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['1']
+}
