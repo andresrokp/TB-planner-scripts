@@ -35,7 +35,7 @@ function mainTable_dataHrsToMntto() {
         
         return style;
     }
-    
+
 }
 
 function mainTable_dataName() {
@@ -52,6 +52,22 @@ function mainTable_dataFuelPercentage() {
     if(percentage < 0) return 0;
     return percentage    
 }
+
+function mainTable_widgetCss(){
+    /*mat-header-row thead font-weight mat-header-cell*/
+    return {
+        '.mat-sort-header-content':{
+            'font-weight': 700,
+            'color': black
+        }
+    }
+}
+
+
+// 
+// AUX DASH
+// 
+
 
 function auxDash_simpleCard_settings_widgetCss() {
     return{
