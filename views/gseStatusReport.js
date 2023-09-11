@@ -34,7 +34,12 @@ function mainTable_dataName() {
     }
 }
 
-
+function mainTable_dataFuelPercentage() {
+    let percentage = ((value-entity.min_fuel)/(entity.max_fuel-entity.min_fuel) * 100).toFixed(1);
+    if(percentage > 100) return 100;
+    if(percentage < 0) return 0;
+    return percentage    
+}
 
 function auxDash_simpleCard_settings_widgetCss() {
     return{
