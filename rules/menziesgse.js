@@ -123,8 +123,8 @@ function variablesProcessing(){
     //----------------------------------------------------------
     //GEOFENCES
     if(metadata.geofenceIds){
-        if(metadata.geofenceIds.replaceAll('"','') == msg.geofenceIds)
-            delete msg.geofenceIds
+        if(metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','') == msg.geofenceIds.toString())
+            { delete msg.geofenceIds }
     }
 
     //----------------------------------------------------------
@@ -137,11 +137,12 @@ function variablesProcessing(){
     //----------------------------------------------------------
     //SPEED
     msg.speed = msg.speed * 1.6 // from miles to Km
+    msg.speed = Math.floor(msg.speed*10)/10 // from miles to Km
     if(msg.speed > 100) delete msg.speed
 
     //----------------------------------------------------------
     //ACCELERATIONS
-    let resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
+    var resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
     msg.resultanteXYZ = Math.floor(resultanteXYZ*10)/10;
 
     //TODO: refactor the repetition filtering
