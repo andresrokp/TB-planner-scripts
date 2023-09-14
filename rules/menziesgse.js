@@ -122,6 +122,28 @@ function variablesProcessing(){
 
     //----------------------------------------------------------
     //GEOFENCES
+
+    if(msg.geofenceIds){
+        var mapaDeCercas = {
+            36:"SJD",
+            37:"SJD - Terminal 2",
+            38:"SJD - Terminal 1",
+            39:"La Mesa",
+            40:"San Javier",
+            41:"La Gran Vía",
+            42:"El Colegio",
+            43:"Anapioma",
+            45:"Apulo",
+            47:"Girardot",
+            48:"Tocaima",
+            49:"Ricaurte",
+        };
+        msg.geofenceIds.forEach( function (e,i)
+            {
+                msg.geofenceIds[i] = mapaDeCercas[msg.geofenceIds[i]] || msg.geofenceIds[i];
+                
+            });
+    }
     if(metadata.geofenceIds){
         if(metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','') == msg.geofenceIds.toString())
             { delete msg.geofenceIds }
