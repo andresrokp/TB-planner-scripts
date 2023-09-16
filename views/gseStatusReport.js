@@ -55,12 +55,28 @@ function mainTable_dataFuelPercentage() {
 
 function mainTable_widgetCss(){
     /*mat-header-row thead font-weight mat-header-cell*/
-    return {
-        '.mat-sort-header-content':{
-            'font-weight': 700,
-            'color': black
+    return `
+        /*celdas de la cabecera*/
+        mat-header-cell{
         }
-    }
+
+        .mat-sort-header-container{
+            font-weight: 700;
+            color: black;
+            display: flex; /* Flexbox to center */
+            align-items: center; /* Para centrar vertical */
+            justify-content: center; /* Para centrar horizontally */
+        }
+
+        .mat-sort-header-content{
+        }
+
+        /*Celdas del cuerpo*/
+
+        mat-cell{
+            text-align: center;
+        }
+    `
 }
 
 
