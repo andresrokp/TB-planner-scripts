@@ -59,7 +59,7 @@ function mainTable_widgetCss(){
         /*celdas de la cabecera*/
         mat-header-cell{
         }
-
+        
         .mat-sort-header-container{
             font-weight: 700;
             color: black;
@@ -67,15 +67,19 @@ function mainTable_widgetCss(){
             align-items: center; /* Para centrar vertical */
             justify-content: center; /* Para centrar horizontally */
         }
-
+        
         .mat-sort-header-content{
         }
-
+        
+        .mat-sort-header-arrow[style*="opacity: 0;"] {
+            display: none;
+        }
+        
         /*Celdas del cuerpo*/
-
+        
         mat-cell{
             text-align: center;
-        }
+        }    
     `
 }
 
