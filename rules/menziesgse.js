@@ -122,7 +122,10 @@ function variablesProcessing(){
 
     //----------------------------------------------------------
     //GEOFENCES
-
+    if(metadata.geofenceIds){
+        if(metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','') == msg.geofenceIds.toString())
+            { delete msg.geofenceIds }
+    }
     if(msg.geofenceIds){
         var mapaDeCercas = {
             36:"SJD",
@@ -140,13 +143,9 @@ function variablesProcessing(){
         };
         msg.geofenceIds.forEach( function (e,i)
             {
-                msg.geofenceIds[i] = mapaDeCercas[msg.geofenceIds[i]] || msg.geofenceIds[i];
+                msg.geofenceNames[i] = mapaDeCercas[msg.geofenceIds[i]] || msg.geofenceIds[i];
                 
             });
-    }
-    if(metadata.geofenceIds){
-        if(metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','') == msg.geofenceIds.toString())
-            { delete msg.geofenceIds }
     }
 
     //----------------------------------------------------------
