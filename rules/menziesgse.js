@@ -186,6 +186,16 @@ function switchAlarmaFuel(){
     return ['major']
 }
 
+function longStringsSanitizer() {
+    for(var key in msg) {
+        if (typeof msg[key] === 'string' && msg[key].length > 100) {
+          msg[key] = msg[key].slice(0, 100);
+        }
+    }
+    
+    return {msg: msg, metadata: metadata, msgType: msgType};
+}
+
 
 
 
