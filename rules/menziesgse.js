@@ -191,6 +191,9 @@ function longStringsSanitizer() {
         if (typeof msg[key] === 'string' && msg[key].length > 100) {
           msg[key] = msg[key].slice(0, 100);
         }
+        if (msg[key] == null) {
+          msg[key] = 0;
+        }
     }
     
     return {msg: msg, metadata: metadata, msgType: msgType};
