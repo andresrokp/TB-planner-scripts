@@ -104,3 +104,98 @@ function mainTable_headerAction_readQrCode(params) {
         
     }, 150);
 }
+
+function auxDash_inputForm_takePhoto() {
+    // Function body to process image obtained as a result of mobile action (take photo, take image from gallery, etc.). 
+    // - imageUrl - image URL in base64 data format
+
+    showImageDialog('Photo', imageUrl);
+    saveEntityImageAttribute('fotografia', imageUrl);
+
+    function showImageDialog(title, imageUrl) {
+        setTimeout(function() {
+            widgetContext.customDialog.customDialog(imageDialogTemplate, ImageDialogController, {imageUrl: imageUrl, title: title}).subscribe();
+        }, 100);
+    }
+
+    function saveEntityImageAttribute(attributeName, imageUrl) {
+        if (entityId) {
+            let attributes = [{
+                key: attributeName, value: imageUrl
+            }];
+            widgetContext.attributeService.saveEntityAttributes(entityId, "SERVER_SCOPE", attributes).subscribe(
+            function() {
+                widgetContext.showSuccessToast('Fotografía guardada!');
+            },
+            function(error) {
+                widgetContext.dialogs.alert('Falla en guardado', JSON.stringify(error));
+            }
+            );
+        }
+    }
+
+    var
+    imageDialogTemplate =
+        '<div aria-label="Image">' +
+        '<form #theForm="ngForm">' +
+        '<mat-toolbar fxLayout="row" color="primary">' +
+        '<h2>{{title}}</h2>' +
+        '<span fxFlex></span>' +
+        '<button mat-icon-button (click)="close()">' +
+        '<mat-icon>close</mat-icon>' +
+        '</button>' +
+        '</mat-toolbar>' +
+        '<div mat-dialog-content>' +
+        '<div class="mat-content mat-padding">' +
+        '<div fxLayout="column" fxFlex>' +
+        '<div style="padding-top: 20px;">' +
+        '<img [src]="imageUrl" style="height: 300px;"/>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div mat-dialog-actions fxLayout="row">' +
+        '<span fxFlex></span>' +
+        '<button mat-button (click)="close()" style="margin-right:20px;">Close</button>' +
+        '</div>' +
+        '</form>' +
+        '</div>';
+
+    function ImageDialogController(instance) {
+    let vm = instance;
+    vm.title = vm.data.title;
+    vm.imageUrl = vm.data.imageUrl;
+    vm.close = function ()
+    {
+        vm.dialogRef.close(null);
+    }
+    }
+
+    console.log(imageUrl);
+    reduceImgSize(imageUrl);
+    
+    function reduceImgSize(imgData64){
+        
+        const imgDOM = new Image();
+        imgDOM.src = imgData64;
+        
+        imgDOM.onLoad(()=>{
+            
+            const newWidth = imgDOM.width * 0.25;
+            const newHeight = imgDOM.height * 0.25;
+            
+            const aCanvasToLeverage = document.createElement('canvas');
+            const theCtxToManipulate = aCanvasToLeverage.getContext('2d');
+            
+            theCtxToManipulate.width = newWidth;
+            theCtxToManipulate.height = newHeight;
+            
+            theCtxToManipulate.drawImage(imgDOM,0,0,newWidth,newHeight);
+            
+            const imgNowReducedInBase64 = aCanvasToLeverage.toDataUrl('image/jpeg',1);
+            
+            console.log(imgNowReducedInBase64);
+            
+        })
+    }
+}
