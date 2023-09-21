@@ -109,7 +109,7 @@ function auxDash_inputForm_takePhoto() {
     // Function body to process image obtained as a result of mobile action (take photo, take image from gallery, etc.). 
     // - imageUrl - image URL in base64 data format
 
-    showImageDialog('Photo', imageUrl);
+    // showImageDialog('Photo', imageUrl);
     saveEntityImageAttribute('fotografia', imageUrl);
 
     function showImageDialog(title, imageUrl) {
@@ -171,31 +171,46 @@ function auxDash_inputForm_takePhoto() {
     }
     }
 
-    console.log(imageUrl);
+    let dataBytes = imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/,'');
+
+    alert(`Original: ${(atob(dataBytes).length/1024).toFixed(2)} kB`);
+
+        
     reduceImgSize(imageUrl);
-    
     function reduceImgSize(imgData64){
         
         const imgDOM = new Image();
-        imgDOM.src = imgData64;
         
         imgDOM.onLoad(()=>{
+            
+            alert('inicia onLodeo');
             
             const newWidth = imgDOM.width * 0.25;
             const newHeight = imgDOM.height * 0.25;
             
             const aCanvasToLeverage = document.createElement('canvas');
+            alert('create canvas'+aCanvasToLeverage.tagName);
             const theCtxToManipulate = aCanvasToLeverage.getContext('2d');
+            alert('tomó el ctx');
             
             theCtxToManipulate.width = newWidth;
             theCtxToManipulate.height = newHeight;
+            
+            alert('newWidth - '+newWidth);
+            alert('newHeight - '+newHeight);
             
             theCtxToManipulate.drawImage(imgDOM,0,0,newWidth,newHeight);
             
             const imgNowReducedInBase64 = aCanvasToLeverage.toDataUrl('image/jpeg',1);
             
-            console.log(imgNowReducedInBase64);
+            let dataBytesReduced = imgNowReducedInBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/,'');
+            alert('dataBytesReduced - '+dataBytesReduced.splice(0,40));
+            
+            alert(`Reduced: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`);
             
         })
+        
+        imgDOM.src = imgData64;
+        alert('imgDOM.src - '+imgDOM.src.slice(0,40));
     }
 }
