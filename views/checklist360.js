@@ -176,41 +176,54 @@ function auxDash_inputForm_takePhoto() {
     alert(`Original: ${(atob(dataBytes).length/1024).toFixed(2)} kB`);
 
         
-    reduceImgSize(imageUrl);
+    reduceImgSize(imageUrl)
+    .then((response)=>{
+        alert('response - '+response)
+    });
     function reduceImgSize(imgData64){
         
-        const imgDOM = new Image();
-        
-        imgDOM.onLoad(()=>{
+        return new Promise((res,rej)=>{
+                
             
-            alert('inicia onLodeo');
+            const imgDOM = new Image();
+            alert('imgDOM.tagName 11 - '+imgDOM.tagName);
             
-            const newWidth = imgDOM.width * 0.25;
-            const newHeight = imgDOM.height * 0.25;
+            imgDOM.onload = ()=>{
+                
+                alert('inicia onLodeo');
+                
+                const newWidth = imgDOM.width * 0.25;
+                const newHeight = imgDOM.height * 0.25;
+                
+                const aCanvasToLeverage = document.createElement('canvas');
+                alert('create canvas'+aCanvasToLeverage.tagName);
+                const theCtxToManipulate = aCanvasToLeverage.getContext('2d');
+                alert('tomó el ctx');
+                
+                theCtxToManipulate.width = newWidth;
+                theCtxToManipulate.height = newHeight;
+                
+                alert('newWidth - '+newWidth);
+                alert('newHeight - '+newHeight);
+                
+                theCtxToManipulate.drawImage(imgDOM,0,0,newWidth,newHeight);
+                alert('supuestamente dibujó');
+                
+                const imgNowReducedInBase64 = aCanvasToLeverage.toDataURL('image/jpeg',1);
+                alert('imgNowReducedInBase64 - '+imgNowReducedInBase64.slice(0,50));
+                alert('typeof imgNowReducedInBase64 - '+typeof imgNowReducedInBase64);
+                
+                const dataBytesReduced = imgNowReducedInBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+                alert('dataBytesReduced - '+dataBytesReduced.slice(0,50));
+                
+                alert(`Reduced: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`);
+                
+                res(dataBytesReduced.slice(0,50))
+            }
             
-            const aCanvasToLeverage = document.createElement('canvas');
-            alert('create canvas'+aCanvasToLeverage.tagName);
-            const theCtxToManipulate = aCanvasToLeverage.getContext('2d');
-            alert('tomó el ctx');
-            
-            theCtxToManipulate.width = newWidth;
-            theCtxToManipulate.height = newHeight;
-            
-            alert('newWidth - '+newWidth);
-            alert('newHeight - '+newHeight);
-            
-            theCtxToManipulate.drawImage(imgDOM,0,0,newWidth,newHeight);
-            
-            const imgNowReducedInBase64 = aCanvasToLeverage.toDataUrl('image/jpeg',1);
-            
-            let dataBytesReduced = imgNowReducedInBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/,'');
-            alert('dataBytesReduced - '+dataBytesReduced.splice(0,40));
-            
-            alert(`Reduced: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`);
-            
+            imgDOM.src = imgData64;
+            alert('imgDOM.tagName 22 - '+imgDOM.tagName);
+            alert('imgDOM.src - '+imgDOM.src.slice(0,40));
         })
-        
-        imgDOM.src = imgData64;
-        alert('imgDOM.src - '+imgDOM.src.slice(0,40));
     }
 }
