@@ -109,8 +109,12 @@ function auxDash_inputForm_takePhoto() {
     // Function body to process image obtained as a result of mobile action (take photo, take image from gallery, etc.). 
     // - imageUrl - image URL in base64 data format
 
-    // showImageDialog('Photo', imageUrl);
-
+    reduceImgSize(imageUrl)
+    .then((reducedImgURL)=>{
+        alert('response - '+reducedImgURL.slice(0,100))
+        showImageDialog('Photo', reducedImgURL);
+        saveEntityImageAttribute('fotografia', reducedImgURL);
+    });
 
     function showImageDialog(title, imageUrl) {
         setTimeout(function() {
@@ -171,59 +175,44 @@ function auxDash_inputForm_takePhoto() {
     }
     }
 
+    // know input img size
     let dataBytes = imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/,'');
-
     alert(`Tamaño Original: ${(atob(dataBytes).length/1024).toFixed(2)} kB`);
 
-        
-    reduceImgSize(imageUrl)
-    .then((reducedImgURL)=>{
-        alert('response - '+reducedImgURL.slice(0,100))
-        saveEntityImageAttribute('fotografia', reducedImgURL);
-    });
     function reduceImgSize(imgData64){
         
-        return new Promise((res,rej)=>{
-                
-            
+        return new Promise((resolve)=>{
             const imgDOM = new Image();
-            // alert('imgDOM.tagName 11 - '+imgDOM.tagName);
+            // alert('imgDOM.tagName 11 - '+imgDOM.tagName); //confirm image creation
             imgDOM.src = imgData64;
-            // alert('imgDOM.tagName 22 - '+imgDOM.tagName);
-            alert('imgDOM.src original - '+imgDOM.src.slice(0,40));
+            // alert('imgDOM.src original - '+imgDOM.src.slice(0,100)); //see original data string
             
             imgDOM.onload = ()=>{
                 
-                alert('inicia onLodeo');
-                
-                const newWidth = imgDOM.width * 0.25;
-                const newHeight = imgDOM.height * 0.25;
+                const newWidth = imgDOM.width * 0.2;
+                const newHeight = imgDOM.height * 0.2;
                 
                 const aCanvasToLeverage = document.createElement('canvas');
-                // alert('create canvas'+aCanvasToLeverage.tagName);
+                // alert('create canvas'+aCanvasToLeverage.tagName);  //confirm canvas creation
                 
+                // set Canvas dimensions, this is the resizing boundary
                 aCanvasToLeverage.width = newWidth;
                 aCanvasToLeverage.height = newHeight;
                 
+                // get the 2d drawing Context of the Canvas
                 const theCtxToManipulate = aCanvasToLeverage.getContext('2d');
-                // alert('tomó el ctx');
                 
-                // alert('newWidth - '+newWidth);
-                // alert('newHeight - '+newHeight);
-                
+                // draw the image inside the context
                 theCtxToManipulate.drawImage(imgDOM,0,0,newWidth,newHeight);
-                // alert('supuestamente dibujó');
                 
+                // extract the canvas' content as a Data URL
                 const imgNowReducedInBase64 = aCanvasToLeverage.toDataURL('image/jpeg',1);
-                // alert('imgNowReducedInBase64 - '+imgNowReducedInBase64.slice(0,50));
-                // alert('typeof imgNowReducedInBase64 - '+typeof imgNowReducedInBase64);
+                // alert('imgNowReducedInBase64 - '+imgNowReducedInBase64.slice(0,100));  // log a sample of the reduced base64 img
                 
                 const dataBytesReduced = imgNowReducedInBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
-                // alert('dataBytesReduced - '+dataBytesReduced.slice(0,50));
+                // alert(`Reduced: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`); // logs size of reduced img
                 
-                alert(`Reduced: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`);
-                
-                res(imgNowReducedInBase64)
+                resolve(imgNowReducedInBase64);
             }
             
         })
