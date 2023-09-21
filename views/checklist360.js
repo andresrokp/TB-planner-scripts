@@ -1,4 +1,4 @@
-function saveChecklist360Teltry() {
+function auxDash_attsCardAction_saveChecklist360Teltry() {
     console.log(widgetContext);
 
     // Confirmation alert
@@ -53,7 +53,7 @@ function saveChecklist360Teltry() {
 
 
 
-function rowActionButton_popEntityQRCode() {
+function mainTable_rowActionButton_generateQRCode() {
 
     // console.log('widgetContext',widgetContext);
 
@@ -84,7 +84,7 @@ function rowActionButton_popEntityQRCode() {
 
 }
 
-function entityTable_headerAction_processQrCode(params) {
+function mainTable_headerAction_readQrCode(params) {
     
     setTimeout(function() {
     
