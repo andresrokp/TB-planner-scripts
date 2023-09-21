@@ -188,6 +188,9 @@ function auxDash_inputForm_takePhoto() {
             
             const imgDOM = new Image();
             // alert('imgDOM.tagName 11 - '+imgDOM.tagName);
+            imgDOM.src = imgData64;
+            // alert('imgDOM.tagName 22 - '+imgDOM.tagName);
+            alert('imgDOM.src original - '+imgDOM.src.slice(0,40));
             
             imgDOM.onload = ()=>{
                 
@@ -198,11 +201,12 @@ function auxDash_inputForm_takePhoto() {
                 
                 const aCanvasToLeverage = document.createElement('canvas');
                 // alert('create canvas'+aCanvasToLeverage.tagName);
+                
+                aCanvasToLeverage.width = newWidth;
+                aCanvasToLeverage.height = newHeight;
+                
                 const theCtxToManipulate = aCanvasToLeverage.getContext('2d');
                 // alert('tomó el ctx');
-                
-                theCtxToManipulate.width = newWidth;
-                theCtxToManipulate.height = newHeight;
                 
                 // alert('newWidth - '+newWidth);
                 // alert('newHeight - '+newHeight);
@@ -222,9 +226,6 @@ function auxDash_inputForm_takePhoto() {
                 res(imgNowReducedInBase64)
             }
             
-            imgDOM.src = imgData64;
-            // alert('imgDOM.tagName 22 - '+imgDOM.tagName);
-            alert('imgDOM.src original - '+imgDOM.src.slice(0,40));
         })
     }
 }
