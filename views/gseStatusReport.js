@@ -120,14 +120,31 @@ function auxDash_updtLumtAtts_settings_widgetCss() {
 
 function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_setValue() {
     let hrsActuales = Math.floor(ctx.data[2].data[0][1]/3600)
-    let hrsToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['4'];
+    let hrsToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['5'];
     
     return Math.floor(hrsActuales + hrsToNext);
 }
 
+function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_fecha_setValue() {
+    // Get both sides of the month variable
+    const monthsLoadedDDBB = ctx.data[5].data[0][1];
+    const monthsInForm = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['6'];
+    // Tells is the user changed the input month
+    const userChangedMonths = (monthsLoadedDDBB != monthsInForm);
+
+    if (userChangedMonths) {
+        const ahora = new Date();
+        // add number of moths to today's date
+        const despues = new Date(ahora.setMonth( ahora.getMonth() + monthsInForm));
+        return despues;
+    }else{
+        return value;
+    }
+}
+
 
 function auxDash_multAttsUpdate_dataDeltaHrsToNextMntto_getValue() {
-    let hrsProxMntoA = ctx.data[4].data[0][1]
+    let hrsProxMntoA = ctx.data[6].data[0][1]
     let hrsActuales = Math.floor(ctx.data[2].data[0][1]/3600)
     
     return hrsProxMntoA - hrsActuales;
