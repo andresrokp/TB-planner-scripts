@@ -98,14 +98,23 @@ function auxDash_simpleCard_settings_widgetCss() {
 }
 
 function auxDash_updtLumtAtts_settings_widgetCss() {
-    return{
-        'input:disabled':{
-            'font-weight': 900
-        },        
-        'input:enabled':{
-            'font-weight': 700
+    return`
+        /* leverage the state psudo class and take the elements acording to its enabling */
+
+        input:disabled{
+            font-weight: 900;
         }
-    }
+        
+        input:enabled{
+            font-weight: 700;
+        }
+        
+        /* All form's input elements are wrapped into <divss> that are inside a parent <div>. In succession this parent div is the unique child of a <fieldset>. To manipulate the wrapping behavior of the form elements we have to override the inline width with the following important */
+        
+        fieldset > div > div{
+            width:50% !important;
+        }
+    `
 }
 
 
