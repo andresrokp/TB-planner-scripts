@@ -21,17 +21,18 @@ let entityRelationService = $injector.get(
 openEditEntityDialog();
 
 function openEditEntityDialog() {
+    // this is the "main" element. Is a dialog component wich is loaded with an html template and a model controller to merge in an Angular-ish way
   customDialog
     .customDialog(htmlTemplate, EditEntityDialogController)
     .subscribe();
 }
 
 function EditEntityDialogController(instance) {
+    // a convenient rename vm = view model
   let vm = instance;
 
   vm.entityName = entityName;
   vm.entityType = entityId.entityType;
-  vm.additionalParams = additionalParams[1];
   vm.entitySearchDirection = {
     from: "FROM",
     to: "TO",
@@ -40,13 +41,16 @@ function EditEntityDialogController(instance) {
   vm.oldRelationsData = [];
   vm.relationsToDelete = [];
   vm.entity = {};
+  // le meto una nueva cosa al modelo to have it available in the view. El additionalParams[1] es el iButton Tag... el asignado en vm debería llamarse iButtonValue o algo así mejor
+  vm.additionalParams = additionalParams[1];
 
-  // esto está altamente relacionado con la estructura de la Form
+  // esto está altamente relacionado con la estructura de la Form. Los null son para limpiar los campos . 'fb' means 'FormBuilder' is a calling to the Angular's REACTIVE Form Module . 'vm.editEntityFormGroup' ends being the main variable bag of the things inside the form . Thats why its object definition has the same shape of the input fields 
   vm.editEntityFormGroup = vm.fb.group({
     entityName: ["", [vm.validators.required]],
     entityType: [null],
     entityLabel: [null],
     type: ["", [vm.validators.required]],
+    // it seems this shit can be nested!!
     attributes: vm.fb.group({
       // como se llame aquí, se debe llamar el mat-form-field>input>formControlName
       pruebaEscritura: [null],
@@ -57,6 +61,7 @@ function EditEntityDialogController(instance) {
       number: [null, [vm.validators.pattern(/^-?[0-9]+$/)]],
       booleanValue: [false],
     }),
+    // also can be streamed!!
     oldRelations: vm.fb.array([]),
     relations: vm.fb.array([]),
   });

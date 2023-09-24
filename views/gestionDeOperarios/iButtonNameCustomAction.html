@@ -54,7 +54,12 @@
                 </mat-form-field>
                 <mat-form-field fxFlex class="mat-block">
                     <mat-label>{{additionalParams}}</mat-label>
-                    <!-- Puedo embeber lo que le agregué al vm y que puse en el vm.editEntityFormGroup = vm.fb.group({}) -->
+                    <!-- Puedo embeber lo que le agregué al vm y que puse en el vm.editEntityFormGroup = vm.fb.group({})
+                    Aquí additionalParams viene directo del vm, y trae el valor del iButton Tag asignado en 'vm.additionalParams = additionalParams[1];... el jalado del vm debería llamarse iButtonValue o algo así mejor'
+                    'formControlName' looks for the property inside the [formGroup] declared in the form html definition above as 'editEntityFormGroup'
+                    The property.
+                    STOP!! analize: we are now inside the 'formGroupName="attributes"'. check it out
+                    -->
                     <input type="text" step="any" matInput formControlName="{{additionalParams}}">
                 </mat-form-field>
             </div>
