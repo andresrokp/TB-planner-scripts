@@ -106,12 +106,17 @@ function mainTable_headerAction_readQrCode(params) {
 }
 
 function auxDash_inputForm_takePhoto() {
-    // Function body to process image obtained as a result of mobile action (take photo, take image from gallery, etc.). 
     // - imageUrl - image URL in base64 data format
 
     reduceImgSize(imageUrl)
     .then((reducedImgURL)=>{
-        alert('response - '+reducedImgURL.slice(0,100))
+        // know input img size
+        const dataBytes = imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/,'');
+        const dataBytesReduced = reducedImgURL.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+        
+        alert(`Tamaño Original: ${(atob(dataBytes).length/1024).toFixed(2)} kB => Tamaño Optimizado: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`);
+        
+        // alert(``); // logs size of reduced img
         showImageDialog('Photo', reducedImgURL);
         saveEntityImageAttribute('fotografia', reducedImgURL);
     });
@@ -175,10 +180,6 @@ function auxDash_inputForm_takePhoto() {
     }
     }
 
-    // know input img size
-    let dataBytes = imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/,'');
-    alert(`Tamaño Original: ${(atob(dataBytes).length/1024).toFixed(2)} kB`);
-
     function reduceImgSize(imgData64){
         
         return new Promise((resolve)=>{
@@ -207,10 +208,6 @@ function auxDash_inputForm_takePhoto() {
                 
                 // extract the canvas' content as a Data URL
                 const imgNowReducedInBase64 = aCanvasToLeverage.toDataURL('image/jpeg',1);
-                // alert('imgNowReducedInBase64 - '+imgNowReducedInBase64.slice(0,100));  // log a sample of the reduced base64 img
-                
-                const dataBytesReduced = imgNowReducedInBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
-                // alert(`Reduced: ${(atob(dataBytesReduced).length/1024).toFixed(2)} kB`); // logs size of reduced img
                 
                 resolve(imgNowReducedInBase64);
             }
