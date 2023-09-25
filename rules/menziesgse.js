@@ -127,10 +127,11 @@ function variablesProcessing(){
             { delete msg.geofenceIds }
     }
     if(msg.geofenceIds){
+        msg.geofenceNames = [];
         var mapaDeCercas = {
             36:"SJD",
-            37:"SJD - Terminal 2",
-            38:"SJD - Terminal 1",
+            37:"Terminal 2",
+            38:"Terminal 1",
             39:"La Mesa",
             40:"San Javier",
             41:"La Gran Vía",
