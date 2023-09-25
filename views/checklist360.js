@@ -13,7 +13,7 @@ function auxDash_attsCardAction_saveChecklist360Teltry() {
     console.log('-----------------\nkeys',keys)
     
     // get SHARED attributes
-    attributeService.getEntityAttributes(entityId, 'SHARED_SCOPE', keys).subscribe(
+    attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
         async function(atts){
             
             console.log('loaded atts',atts);
@@ -48,7 +48,7 @@ function auxDash_attsCardAction_saveChecklist360Teltry() {
                 // })
             })
         }
-    ); 
+    );  
 }
 
 
