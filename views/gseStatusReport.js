@@ -46,6 +46,13 @@ function mainTable_dataName() {
     }
 }
 
+function mainTable_dataUbicacion() {
+    function cellContent() {
+        if (!value) return '-';
+        return JSON.parse(value).join(', ') || 'Ciudad';
+    }
+}
+
 function mainTable_dataFuelPercentage() {
     let percentage = ((value-entity.min_fuel)/(entity.max_fuel-entity.min_fuel) * 100).toFixed(1);
     if(percentage > 100) return 100;
