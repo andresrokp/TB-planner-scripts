@@ -53,6 +53,16 @@ function auxDash_BufferAttsCardTable () {
         );
     }
 
+
+
+    function settings_widgetStyle() {
+        return `
+            #labelCell0, #labelCell6, #labelCell12, #labelCell20, #labelCell26, #labelCell34, #labelCell40 {
+                color: #1F3567;
+                font-weight: 600;
+            }
+        `        
+    }
     
 }
 
