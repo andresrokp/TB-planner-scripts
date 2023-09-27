@@ -120,6 +120,20 @@ function mainTable_headerAction_readQrCode(params) {
     }, 150);
 }
 
+function mainTable_rowClickAction_goToAuxDash() {
+    if (entityName.includes('GPU')) {
+        openDash('check_gpu');
+    } else if (entityName.includes('CBL')) {
+        openDash('check_belt');
+    } else {
+        openDash('diligenciar_checklist')
+    }
+    
+    function openDash(statedId) {
+        var params = {entityId, entityName};
+        widgetContext.stateController.openState(statedId, params, false);
+    }
+}
 
 
 
