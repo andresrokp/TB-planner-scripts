@@ -125,6 +125,18 @@ function mainTable_rowClickAction_goToAuxDash() {
         openDash('check_gpu');
     } else if (entityName.includes('CBL')) {
         openDash('check_belt');
+    } else if (entityName.includes('ASU')) {
+        openDash('check_asu');
+    } else if (entityName.includes('ACU')) {
+        openDash('check_acu');
+    } else if (entityName.includes('MC-')) {
+        openDash('check_forklift');
+    } else if (entityName.includes('PUT')) {
+        openDash('check_car');
+    } else if (entityName.includes('LSC')) {
+        openDash('check_lav');
+    } else if (entityName.includes('PST')) {
+        openDash('check_steps');
     } else {
         openDash('diligenciar_checklist')
     }
