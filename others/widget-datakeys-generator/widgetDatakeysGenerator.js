@@ -56,7 +56,7 @@ function writeJsonToFile(myJsonArray, filename) {
 // --------- Inicio ejecución
 
 // json reading
-const filename = 'others/widget-datasource-generator/widgetDatasource.json'; // Replace with the path to your JSON file
+const filename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Replace with the path to your JSON file
 const inputArray = readInputArrayFromFile(filename);
 console.log(inputArray);
 
@@ -67,7 +67,7 @@ const datakeysObj = {
 };
 
 // write object in file
-const outFile = 'others/widget-datasource-generator/widgetGeneratedDatakeys.json'
+const outFile = 'others/widget-datakeys-generator/formGeneratedDatakeys.json'
 writeJsonToFile(datakeysObj, outFile)
 
 console.log(JSON.stringify(datakeysObj, null, 2));
