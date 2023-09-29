@@ -1,0 +1,22 @@
+[
+    {"label": "Sin Golpes o rayones", "name": "golpesRayones"},
+    {"label": "Calcas Safety legibles", "name": "calcasSafety"},
+    {"label": "Extintor fijo y vigente", "name": "extintorFijo"},
+    {"label": "Cinturones operativos", "name": "cinturonesInstalados"},
+    {"label": "Luces faros delanteros", "name": "lucesFarosDelanteros"},
+    {"label": "Luces de stop", "name": "lucesStop"},
+    {"label": "Torreta", "name": "torretaFunciona"},
+    {"label": "Luces reversa y alarma", "name": "lucesReversaAlarma"},
+    {"label": "Tablero de Instrumentación", "name": "tableroIndicadores"},
+    {"label": "Frenos funcionan", "name": "frenosFuncionan"},
+    {"label": "Llantas en buenas condiciones", "name": "llantasBuenEstado"},
+    {"label": "Nivel mayor a 1/4*", "name": "nivelCombustible"},
+    {"label": "Ningun birlos faltantes en ruedas", "name": "birlosFaltantesRuedas"},
+    {"label": "Limpiaparabrisas funciona", "name": "limpiaparabrisasFunciona"},
+    {"label": "No fugas o derrames visible", "name": "fugaDerrameVisible"},
+    {"label": "Equipo libre de FOD", "name": "equipoLibreFOD"},
+    {"label": "Nivel líquido de frenos*", "name": "nivelLiquidoFrenos"},
+    {"label": "Nivel aceite de motor*", "name": "nivelAceiteMotor"},
+    {"label": "Nivel refrigerante*", "name": "nivelRefrigerante"}
+]
+  
