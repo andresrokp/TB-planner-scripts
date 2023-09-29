@@ -28,25 +28,23 @@ function mainTable_dataiButton2_cellContent(params) {
 
 
 function mainTable_cellAction_saveRowToCustomer(){
-  console.log('widgetContext',widgetContext);
-  const confirmacion = confirm('¿Confirmar guardar la información?');
+  // console.log("entityId", entityId);
+  // console.log('widgetContext',widgetContext);
+  // console.log('additionalParams',additionalParams); // Contains de data values
+
+  const confirmacion = confirm('¿Confirma guardar la información?');
   if (!confirmacion) return;
-  
-  console.log('additionalParams',additionalParams); // Contains de data values
-  
-  
-  console.log("entityId", entityId);
-  console.log("additionalParams", additionalParams);
-  console.log("widgetContext", widgetContext);
-  
+
+  // brings the APIs to use
   let $injector = widgetContext.$scope.$injector;
   let deviceService = $injector.get(widgetContext.servicesMap.get("deviceService"));
   let attributeService = $injector.get(widgetContext.servicesMap.get("attributeService"));
-  
+
+  // get datakey names
   const compoundDataKeys = widgetContext.datasources[0].dataKeys;
-  const dataKeys = compoundDataKeys.map(dk => dk.name);
-  console.log("dataKeys", dataKeys); // Contains de datakey names
-  
+  const dataKeys = compoundDataKeys.map(dk => dk.name); // Contains the datakey names
+  // console.log("dataKeys", dataKeys);
+
   let attributesArray = [{
         key: additionalParams[1], //take the iButton
         value: {
@@ -54,21 +52,20 @@ function mainTable_cellAction_saveRowToCustomer(){
             [dataKeys[2]] : additionalParams[3]  //relates nombreEmpleado
         }
   }]; //TODO: make this crap less hardcoded...
-  
-  console.log("attributesArray", attributesArray);
-  
+  // console.log("attributesArray", attributesArray);
+
   // jala el Device, toma el customerId y guarda copia en él
   deviceService.getDevice(entityId.id).subscribe((resp) => {
-      console.log("customerId", resp.customerId);
-      // attributeService.saveEntityAttributes(
-      //     resp.customerId,
-      //     "SERVER_SCOPE",
-      //     attributesArray
-      // );
-      // attributeService.saveEntityAttributes(
-      //     entityId,
-      //     "SERVER_SCOPE",
-      //     attributesArray
-      // );
-  });  
+      // console.log("customerId", resp.customerId);
+      attributeService.saveEntityAttributes(
+          resp.customerId,
+          "SERVER_SCOPE",
+          attributesArray
+      ).subscribe();
+      attributeService.saveEntityAttributes(
+          entityId,
+          "SERVER_SCOPE",
+          attributesArray
+      ).subscribe(); //... it happens that subscribe() is hyper necessary
+  });
 }
