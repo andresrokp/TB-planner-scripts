@@ -63,6 +63,18 @@ function convertToTbBuffer(dataKey) {
   };
 }
 
+// Function to get the structure for History
+function convertToTbHistory(dataKey) {
+  return {
+    "name": dataKey.name,
+    "type": "timeseries",
+    "label": dataKey.name,
+    "color": "#2196f3",
+    "settings": {},
+    "_hash": Math.random()
+  };
+}
+
 function writeJsonToFile(myJsonArray, filename) {
     // convert the object in string
     const myStringArray = JSON.stringify(myJsonArray,null,2);
@@ -93,3 +105,9 @@ const datakeysObjBuffer = {
   "dataKeys": inputArray.map(convertToTbBuffer)
 };
 writeJsonToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/bufferGeneratedDatakeys.json')
+
+// build and write for HISTORY structure
+writeJsonToFile({"dataKeys": inputArray.map(convertToTbHistory)},'others/widget-datakeys-generator/historyGeneratedDatakeys.json')
+
+
+// TODO: ...some day refactor and unify the processes
