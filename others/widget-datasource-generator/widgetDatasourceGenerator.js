@@ -21,19 +21,19 @@ function convertToTbForm(dataKey) {
         "label": dataKey.label,
         "color": "#2196f3",
         "settings": {
-        "dataKeyHidden": false,
-        "dataKeyType": "server",
-        "dataKeyValueType": "select",
-        "required": true,
-        "isEditable": "editable",
-        "selectOptions": [
-            {"value": "1", "label": "CUMPLE"},
-            {"value": "-1", "label": "NO CUMPLE"},
-            {"value": "0", "label": "NO APLICA"}
-        ],
-        "useCustomIcon": false,
-        "useGetValueFunction": false,
-        "useSetValueFunction": false
+            "dataKeyHidden": false,
+            "dataKeyType": "server",
+            "dataKeyValueType": "select",
+            "required": true,
+            "isEditable": "editable",
+            "selectOptions": [
+                {"value": "1", "label": "CUMPLE"},
+                {"value": "-1", "label": "NO CUMPLE"},
+                {"value": "0", "label": "NO APLICA"}
+            ],
+            "useCustomIcon": false,
+            "useGetValueFunction": false,
+            "useSetValueFunction": false
         },
         "_hash": Math.random(),
         "aggregationType": null,
@@ -44,6 +44,14 @@ function convertToTbForm(dataKey) {
         "postFuncBody": null
     };
 }
+
+function writeJsonToFile(myJsonArray, filename) {
+    // convert the object in string
+    const myStringArray = JSON.stringify(myJsonArray,null,2);
+    // write the file
+    fs.writeFileSync(filename,myStringArray,'utf-8')
+}
+
 // --------------------------
 // --------- Inicio ejecución
 
@@ -58,5 +66,8 @@ const datakeysObj = {
 "dataKeys": arrayDatakeys
 };
 
+// write object in file
+const outFile = 'others/widget-datasource-generator/widgetGeneratedDatakeys.json'
+writeJsonToFile(datakeysObj, outFile)
 
 console.log(JSON.stringify(datakeysObj, null, 2));
