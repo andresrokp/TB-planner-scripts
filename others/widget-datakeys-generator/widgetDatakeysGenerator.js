@@ -45,6 +45,24 @@ function convertToTbForm(dataKey) {
     };
 }
 
+// Function to get the structure for Buffer
+function convertToTbBuffer(dataKey) {
+  return {
+      "name": dataKey.name,
+      "type": "attribute",
+      "label": dataKey.label,
+      "color": "#3f51b5",
+      "settings": {},
+      "_hash": Math.random(),
+      "aggregationType": null,
+      "units": null,
+      "decimals": null,
+      "funcBody": null,
+      "usePostProcessing": null,
+      "postFuncBody": null
+  };
+}
+
 function writeJsonToFile(myJsonArray, filename) {
     // convert the object in string
     const myStringArray = JSON.stringify(myJsonArray,null,2);
@@ -60,14 +78,18 @@ const filename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Repl
 const inputArray = readInputArrayFromFile(filename);
 console.log(inputArray);
 
-// array form conversion
-const arrayDatakeys = inputArray.map(convertToTbForm)
-const datakeysObj = {
-"dataKeys": arrayDatakeys
+// array for FORM structure
+const arrayDatakeysF = inputArray.map(convertToTbForm)
+const datakeysObjF = {
+"dataKeys": arrayDatakeysF
 };
-
 // write object in file
-const outFile = 'others/widget-datakeys-generator/formGeneratedDatakeys.json'
-writeJsonToFile(datakeysObj, outFile)
+const outFileF = 'others/widget-datakeys-generator/formGeneratedDatakeys.json'
+writeJsonToFile(datakeysObjF, outFileF)
 
-console.log(JSON.stringify(datakeysObj, null, 2));
+
+// build and write for BUFFER structure
+const datakeysObjBuffer = {
+  "dataKeys": inputArray.map(convertToTbBuffer)
+};
+writeJsonToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/bufferGeneratedDatakeys.json')
