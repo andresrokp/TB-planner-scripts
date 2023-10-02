@@ -114,8 +114,30 @@ function mainTable_headerAction_readQrCode(params) {
             widgetContext.dialogs
             .alert('Lectura código QR', `<pre>Check vehículo ${entityName}</pre>`)
             .subscribe(()=>{
-                let params = { entityId, entityName };
-                widgetContext.stateController.openState('diligenciar_checklist', params, false);
+                if (entityName.includes('XQT') || entityName.includes('MC-') || entityName.includes('FLT')) {
+                    openDash('check_tractor');
+                } else if (entityName.includes('GPU')) {
+                    openDash('check_gpu');
+                } else if (entityName.includes('CBL')) {
+                    openDash('check_belt');
+                } else if (entityName.includes('ASU')) {
+                    openDash('check_asu');
+                } else if (entityName.includes('ACU')) {
+                    openDash('check_acu');
+                } else if (entityName.includes('PUT')) {
+                    openDash('check_car');
+                } else if (entityName.includes('LSC')) {
+                    openDash('check_lav');
+                } else if (entityName.includes('PST')) {
+                    openDash('check_steps');
+                } else {
+                    openDash('diligenciar_checklist')
+                }
+                
+                function openDash(statedId) {
+                    var params = {entityId, entityName};
+                    widgetContext.stateController.openState(statedId, params, false);
+                }
             });
         }catch(e){
             widgetContext.dialogs
