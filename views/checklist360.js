@@ -53,6 +53,12 @@ function auxDash_BufferAttsCardTable () {
         );
     }
 
+    function data_all_PostProcessing() {
+        return value == 1.0000001 ? "C"
+            : value == 1.0000002 ? "NA"
+                : "NC";        
+    }
+
 
 
     function settings_widgetStyle() {
