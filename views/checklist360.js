@@ -77,6 +77,7 @@ function auxDash_BufferAttsCardTable () {
 function mainTable_rowActionButton_generateQRCode() {
 
     // console.log('widgetContext',widgetContext);
+    console.log('additionalParams',additionalParams);
 
     let data = {...additionalParams.entity};
 
@@ -91,7 +92,8 @@ function mainTable_rowActionButton_generateQRCode() {
     infoPrint = infoPrint.replaceAll('"','').replace('{','').replace('}','')
 
     // data needed to dash jump
-    let infoFetch = encodeURIComponent(JSON.stringify({entityId,entityName}));
+    const estacion = additionalParams.entity['Estación'];
+    let infoFetch = encodeURIComponent(JSON.stringify({entityId,entityName,estacion}));
 
 
 
@@ -102,7 +104,6 @@ function mainTable_rowActionButton_generateQRCode() {
         `<br><img style="${imgStyles}" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${infoFetch}">
         <pre>${infoPrint}</pre>`)
     .subscribe();
-
 }
 
 function mainTable_headerAction_readQrCode(params) {
