@@ -14,7 +14,7 @@ function auxDash_BufferAttsCardTable () {
         let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
         console.log('-----------------\nkeys',keys)
         
-        // get SHARED attributes
+        // get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
             async function(atts){
                 
@@ -23,34 +23,32 @@ function auxDash_BufferAttsCardTable () {
                 
                 let valuesHash = {};
                 for (let keyPkg of atts){
-                    // // si la key no es un Simple letrero y el value no existe
-                    // if (!keyPkg.key.includes('-<') && !keyPkg.value){
-                    //     alert("ERROR: Hay valores no definidos");
-                    //     return;
-                    // }
                     valuesHash[keyPkg.key] = keyPkg.value;
                 }
                 let nowDate = new Date().getTime();
                 valuesHash.ts_id = nowDate;
                 
                 let telemetryHashArray = [ {key:'ts',value:nowDate}, {key:'values',value:valuesHash} ];
-                console.log('telemetryHashArray',telemetryHashArray)
+                // console.log('telemetryHashArray',telemetryHashArray)
                 
-                // save esa mondá, clear form via att deletion, and wait 1 second to refresh
+                // save esa mondá, prompt a confirmation dialog, clear form via att deletion, and wait 1 second to refresh
                 attributeService.saveEntityTimeseries(entityId, 'ANY', telemetryHashArray)
                 .subscribe( function(resp){
-                    console.log('resp',resp);
+                    const valuesAsString = JSON.stringify(valuesHash,null,2)
+                    const valuesToPrint = valuesAsString.replaceAll('"','').replace('{','').replace('}','');
+                    widgetContext.dialogs.alert('Datos Guardados',`<pre>${valuesToPrint}</pre>`).subscribe();
+                    
                     // // ---------- Clear Form ----------
                     // // format keys list as obj array
                     // keys = keys.map(k => ({'key':k}));
                     // // delete and then refresh
-                    // attributeService.deleteEntityAttributes(entityId, 'SHARED_SCOPE', keys)
+                    // attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
                     // .subscribe(function () {
                     //     ()=>{setTimeout(widgetContext.updateAliases(),1000)};
                     // })
                 })
             }
-        );
+        ); 
     }
 
     function data_all_PostProcessing() {
