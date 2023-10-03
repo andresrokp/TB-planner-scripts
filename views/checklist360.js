@@ -3,40 +3,64 @@ function auxDash_BufferAttsCardTable () {
     function action_saveChecklist360Teltry() {
         console.log(widgetContext);
 
-        // Confirmation alert
+        // >Confirmation alert
         let choose = confirm('¿Confirma el guardado de la información?');
         if (!choose) return;
         
+        // >APIs loading
         let $injector = widgetContext.$scope.$injector;
         let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
         
-        // get all widget's key names
+        // >Get all widget's datakey names
         let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
-        console.log('-----------------\nkeys',keys)
+        // console.log('-----------------\nkeys',keys)
         
-        // get SERVER attributes
+        // >Get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
             async function(atts){
+                // console.log('loaded atts',atts);
                 
-                console.log('loaded atts',atts);
                 await new Promise(resolve => setTimeout(resolve, 1000)); 
                 
+                // >Build the main values structure
                 let valuesHash = {};
                 for (let keyPkg of atts){
                     valuesHash[keyPkg.key] = keyPkg.value;
                 }
                 let nowDate = new Date().getTime();
                 valuesHash.ts_id = nowDate;
+                // console.log('valuesHash',valuesHash)
                 
+                // >Wrap the value structure in a TB shape
                 let telemetryHashArray = [ {key:'ts',value:nowDate}, {key:'values',value:valuesHash} ];
                 // console.log('telemetryHashArray',telemetryHashArray)
                 
-                // save esa mondá, prompt a confirmation dialog, clear form via att deletion, and wait 1 second to refresh
+                // >Save esa vaina
                 attributeService.saveEntityTimeseries(entityId, 'ANY', telemetryHashArray)
                 .subscribe( function(resp){
-                    const valuesAsString = JSON.stringify(valuesHash,null,2)
-                    const valuesToPrint = valuesAsString.replaceAll('"','').replace('{','').replace('}','');
-                    widgetContext.dialogs.alert('Datos Guardados',`<pre>${valuesToPrint}</pre>`).subscribe();
+                    // console.log('resp',resp);
+                    
+                    // >Build a printable string of the structure
+                    const widgetData = widgetContext.data; // Takes the rendered widget info
+                    let widgetHash = {};
+                    let imgurl = '';
+                    for (let data of widgetData){// iterate over the real rendered values
+                        if (data.dataKey.name == 'fotografia' ){
+                            // This looks stupid, but a direct insertion of it's data value implies the later JSON cleaning ends deleting the doble quotes of the <img/>. So its better to clavarle un placeholder aquí para que no joda.
+                            widgetHash[data.dataKey.label] = 'IMGURL';
+                            imgurl = data.data[0][1];
+                        }else{
+                            widgetHash[data.dataKey.label] = data.data[0][1];
+                        }
+                    }
+                    // console.log('widgetHash',widgetHash)
+                    const valuesAsString = JSON.stringify(widgetHash,null,2)
+                    // console.log('valuesAsString',valuesAsString)
+                    const valuesToPrint = valuesAsString.replaceAll('"','').replaceAll(',','').replace('{','').replace('}','').replace('IMGURL',imgurl);
+                    // console.log('valuesToPrint',valuesToPrint)
+                    
+                    // >Triggers a feedback dialog
+                    widgetContext.dialogs.alert('Datos guardados correctamente',`<pre>${valuesToPrint}</pre>`).subscribe();
                     
                     // // ---------- Clear Form ----------
                     // // format keys list as obj array
