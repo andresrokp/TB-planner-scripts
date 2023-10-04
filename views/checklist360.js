@@ -365,3 +365,18 @@ function auxDash_checkInputForm () {
         
     }
 }
+
+
+function auxDash_history_actionCell_showPhoto(params) {
+    console.log('additionalParams',additionalParams);
+    console.log('widgetContext',widgetContext);
+
+    const attsServ = widgetContext.$scope.$injector.get(widgetContext.servicesMap.get('attributeService'))
+
+    const ts = additionalParams[0];
+
+    attsServ.getEntityTimeseries(entityId,['fotografia','comentarios'],ts-2,ts+2)
+            .subscribe(function(telemetry){
+                console.log(telemetry)
+            })
+}
