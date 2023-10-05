@@ -86,9 +86,12 @@ function auxDash_BufferAttsCardTable () {
     }
 
     function data_all_PostProcessing() {
-        return value == 1.0000001 ? "C"
-            : value == 1.0000002 ? "NA"
-                : "NC";        
+        const valueMap = {
+            1.0000001:"C",
+            1.0000002: "NA",
+            0: "NC"
+        };
+        return valueMap[value] || "";    
     }
 
 
