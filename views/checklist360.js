@@ -3,6 +3,37 @@ function auxDash_BufferAttsCardTable () {
     function action_saveChecklist360Teltry() {
         console.log(widgetContext);
 
+        // >Build a printable string of the data to submit
+        const widgetData = widgetContext.data; // Takes the rendered widget info
+        let widgetHash = {};
+        let imgurl = '';
+        for (let data of widgetData){// iterate over the real rendered values
+            if (!data.data[0][1] && data.dataKey.name != 'check' && data.dataKey.name != 'otros'){
+                alert('Faltan datos por suministrar');
+                return;
+            }
+            if (data.dataKey.name == 'fotografia' ){
+                // This looks stupid, but a direct insertion of it's data value implies the later JSON cleaning ends deleting the doble quotes of the <img/>. So its better to clavarle un placeholder aquí para que no joda.
+                if (data.data[0][1].length < 100) {
+                    alert('Faltan datos por suministrar');
+                    return;
+                }
+                widgetHash[data.dataKey.label] = 'IMGURL';
+                imgurl = data.data[0][1];
+            }else{
+                widgetHash[data.dataKey.label] = data.data[0][1];
+            }
+        }
+        // console.log('widgetHash',widgetHash)
+        const valuesAsString = JSON.stringify(widgetHash,null,2)
+        // console.log('valuesAsString',valuesAsString)
+        const valuesToPrint = valuesAsString.replaceAll('"','').replaceAll(',','').replace('{','').replace('}','').replace('IMGURL',imgurl);
+        // console.log('valuesToPrint',valuesToPrint)
+                    
+        // >Get all widget's datakey names
+        let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
+        // console.log('-----------------\nkeys',keys)
+        
         // >Confirmation alert
         let choose = confirm('¿Confirma el guardado de la información?');
         if (!choose) return;
@@ -11,16 +42,12 @@ function auxDash_BufferAttsCardTable () {
         let $injector = widgetContext.$scope.$injector;
         let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
         
-        // >Get all widget's datakey names
-        let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
-        // console.log('-----------------\nkeys',keys)
-        
         // >Get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
-            async function(atts){
+            function(atts){
                 // console.log('loaded atts',atts);
                 
-                await new Promise(resolve => setTimeout(resolve, 1000)); 
+                // await new Promise(resolve => setTimeout(resolve, 500)); 
                 
                 // >Build the main values structure
                 let valuesHash = {};
@@ -35,41 +62,24 @@ function auxDash_BufferAttsCardTable () {
                 let telemetryHashArray = [ {key:'ts',value:nowDate}, {key:'values',value:valuesHash} ];
                 // console.log('telemetryHashArray',telemetryHashArray)
                 
+                // TODO: calc performance
+                
                 // >Save esa vaina
                 attributeService.saveEntityTimeseries(entityId, 'ANY', telemetryHashArray)
                 .subscribe( function(resp){
                     // console.log('resp',resp);
                     
-                    // >Build a printable string of the structure
-                    const widgetData = widgetContext.data; // Takes the rendered widget info
-                    let widgetHash = {};
-                    let imgurl = '';
-                    for (let data of widgetData){// iterate over the real rendered values
-                        if (data.dataKey.name == 'fotografia' ){
-                            // This looks stupid, but a direct insertion of it's data value implies the later JSON cleaning ends deleting the doble quotes of the <img/>. So its better to clavarle un placeholder aquí para que no joda.
-                            widgetHash[data.dataKey.label] = 'IMGURL';
-                            imgurl = data.data[0][1];
-                        }else{
-                            widgetHash[data.dataKey.label] = data.data[0][1];
-                        }
-                    }
-                    // console.log('widgetHash',widgetHash)
-                    const valuesAsString = JSON.stringify(widgetHash,null,2)
-                    // console.log('valuesAsString',valuesAsString)
-                    const valuesToPrint = valuesAsString.replaceAll('"','').replaceAll(',','').replace('{','').replace('}','').replace('IMGURL',imgurl);
-                    // console.log('valuesToPrint',valuesToPrint)
+                    // ---------- Clear Form ----------
+                    // >Format keys list as obj array
+                    keys = keys.map(k => ({'key':k}));
+                    // >Delete and then refresh
+                    attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
+                    .subscribe(function () {
+                        ()=>{setTimeout(widgetContext.updateAliases(),1500)};
+                    })
                     
                     // >Triggers a feedback dialog
                     widgetContext.dialogs.alert('Datos guardados correctamente',`<pre>${valuesToPrint}</pre>`).subscribe();
-                    
-                    // // ---------- Clear Form ----------
-                    // // format keys list as obj array
-                    // keys = keys.map(k => ({'key':k}));
-                    // // delete and then refresh
-                    // attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
-                    // .subscribe(function () {
-                    //     ()=>{setTimeout(widgetContext.updateAliases(),1000)};
-                    // })
                 })
             }
         ); 
