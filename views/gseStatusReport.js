@@ -4,18 +4,12 @@ function mainTable_dataEmergency() {
     }
 }
 
-function mainTable_ignition() {
+function mainTable_OnOff() {
     function cellContent() {
-        let url="https://www.sighums.com/wp-content/uploads/2019/01/sighumscenter.png"
-        switch (value) {
-            case 'true':
-                url = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Toggle_green.png";
-                break;
-            case 'false':
-                url="https://upload.wikimedia.org/wikipedia/commons/2/21/Toggle_grey.png";
-                break;
-            default:
-        }        
+        let isActive = (Date.now() - value) < 300000;
+
+        let url = isActive ? "https://upload.wikimedia.org/wikipedia/commons/c/cf/Toggle_green.png" : "https://upload.wikimedia.org/wikipedia/commons/2/21/Toggle_grey.png";
+        
         return `<img style="height:25px;" src="${url}"/>`;
     }    
 }
@@ -60,13 +54,14 @@ function mainTable_dataFuelPercentage() {
     return percentage    
 }
 
-function mainTable_widgetCss(){
+function mainTable_widgetCssStyle(){
     /*mat-header-row thead font-weight mat-header-cell*/
     return `
         /*celdas de la cabecera*/
         mat-header-cell{
         }
         
+        /* table head style to center the titles and set it black and bold ; estilo de la cabcera de la tabla para centrar, poner negros y negrita los títulos */
         .mat-sort-header-container{
             font-weight: 700;
             color: black;
