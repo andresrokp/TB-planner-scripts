@@ -6,7 +6,7 @@ function mainTable_dataEmergency() {
 
 function mainTable_OnOff() {
     function cellContent() {
-        let isActive = (Date.now() - value) < 300000;
+        let isActive = entity.active == 'true' ? true : false; //(Date.now() - value) < 20000;
 
         let url = isActive ? "https://upload.wikimedia.org/wikipedia/commons/c/cf/Toggle_green.png" : "https://upload.wikimedia.org/wikipedia/commons/2/21/Toggle_grey.png";
         
