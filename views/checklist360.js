@@ -44,8 +44,8 @@ function auxDash_BufferAttsCardTable () {
         
         // >Get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
-            function(atts){
-                // console.log('loaded atts',atts);
+            async function(atts){
+                console.log('loaded atts',atts);
                 
                 // await new Promise(resolve => setTimeout(resolve, 500)); 
                 
@@ -59,30 +59,48 @@ function auxDash_BufferAttsCardTable () {
                 // console.log('valuesHash',valuesHash)
                 
                 // >Wrap the value structure in a TB shape
-                let telemetryHashArray = [ {key:'ts',value:nowDate}, {key:'values',value:valuesHash} ];
-                // console.log('telemetryHashArray',telemetryHashArray)
+                const apiShapeHashArray = [ {key:'ts',value:nowDate}, {key:'values',value:valuesHash} ];
+                const msgWithPostShape = {'ts':nowDate,'values':valuesHash};
+                console.log('apiShapeHashArray',apiShapeHashArray);
+                console.log('postShapeHashArray',msgWithPostShape);
                 
                 // TODO: calc performance
                 
-                // >Save esa vaina
-                attributeService.saveEntityTimeseries(entityId, 'ANY', telemetryHashArray)
+                // >SAVE esa vaina
+                attributeService.saveEntityTimeseries(entityId, 'ANY', apiShapeHashArray)
                 .subscribe( function(resp){
                     // console.log('resp',resp);
                     
-                    // ---------- Clear Form ----------
-                    // >Format keys list as obj array
-                    keys = keys.map(k => ({'key':k}));
-                    // >Delete and then refresh
-                    attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
-                    .subscribe(function () {
-                        ()=>{setTimeout(widgetContext.updateAliases(),1500)};
-                    })
-                    
                     // >Triggers a feedback dialog
                     widgetContext.dialogs.alert('Datos guardados correctamente',`<pre>${valuesToPrint}</pre>`).subscribe();
-                })
+                    
+                    // // ---------- Clear Form ----------
+                    // // >Format keys list as obj array
+                    // keys = keys.map(k => ({'key':k}));
+                    // // >Delete and then refresh
+                    // attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
+                    // .subscribe(function () {
+                    //     ()=>{setTimeout(widgetContext.updateAliases(),1500)};
+                    // })
+                });
+                
+                // envío paralelo por rest, quitar la foto para que la RuCh no colapse
+                delete msgWithPostShape.values.fotografia;
+                await postTelemetry(msgWithPostShape);
             }
         ); 
+        
+        async function postTelemetry(telemetryData) {
+          const url = `https://api.sighums.com/api/v1/o0mjl4pwbpm2rr7h4ich/telemetry`;
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(telemetryData),
+          });
+          
+          if (response.ok) { console.log(response.status, 'Telemetry posted successfully', telemetryData); }
+          else { console.log('Failed to post telemetry:', response.status); }
+        }
     }
 
     function data_all_PostProcessing() {
