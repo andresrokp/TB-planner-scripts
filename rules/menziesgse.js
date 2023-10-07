@@ -1,19 +1,23 @@
-function msgTypeSelector() {
-    let isChecklist = msg.nivelAceiteMotor || msg.nivelCombustible || msg.lucesFrontales;
-
-    let isTelemetry = msg.driverUniqueId || msg.geofenceIds || msg.fuel || msg.battery
-
-    if(msgType === 'POST_ATTRIBUTES_REQUEST') {
-        return ['atts'];
-    }
-    if(msgType === 'POST_TELEMETRY_REQUEST' && isTelemetry && !isChecklist ) {
+function switchScript_msgTypeSelector() {
+    var isTelemetry = msg.driverUniqueId || msg.geofenceIds || msg.fuel || msg.battery;
+    if(!isChecklist && isTelemetry && msgType === 'POST_TELEMETRY_REQUEST') {
         return ['teltry'];
     }
-    if (isChecklist && !isTelemetry){
-        return['check']
-    }
-    return ['none']
     
+    var isChecklist = msg.calcasSafety || msg.correoDiligenciante || msg.lucesFrontales;
+    if (isChecklist && !isTelemetry){
+        return['check'];
+    }
+    
+    var isEcopetrol = metadata.deviceType == 'VEHICULOS_ECOP';
+    
+    if (isEcopetrol){
+        return['ecop'];
+    } else if(msgType === 'POST_ATTRIBUTES_REQUEST') {
+        return ['atts'];
+    } else {
+        return ['none'];
+    }
 }
 
 
