@@ -17,6 +17,14 @@ function msgTypeSelector() {
 }
 
 
+function filterScript_checkNoCumple() {
+    for (var e in msg){
+        if (msg[e] == 0) return true;
+    }
+    return false    
+}
+
+
 function transformMessage(message, metadata, msgType) {
     // Extract necessary information from the message object
     const { position, device } = message;
