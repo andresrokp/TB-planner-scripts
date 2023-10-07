@@ -3,6 +3,11 @@ function auxDash_BufferAttsCardTable () {
     function action_saveChecklist360Teltry() {
         console.log(widgetContext);
 
+        // >APIs loading
+        let $injector = widgetContext.$scope.$injector;
+        let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
+        let deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));
+        
         // >Build a printable string of the data to submit
         const widgetData = widgetContext.data; // Takes the rendered widget info
         let widgetHash = {};
@@ -37,10 +42,6 @@ function auxDash_BufferAttsCardTable () {
         // >Confirmation alert
         let choose = confirm('¿Confirma el guardado de la información?');
         if (!choose) return;
-        
-        // >APIs loading
-        let $injector = widgetContext.$scope.$injector;
-        let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
         
         // >Get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
@@ -85,13 +86,17 @@ function auxDash_BufferAttsCardTable () {
                 });
                 
                 // envío paralelo por rest, quitar la foto para que la RuCh no colapse
-                delete msgWithPostShape.values.fotografia;
-                await postTelemetry(msgWithPostShape);
+                delete valuesHash.fotografia;
+                deviceService.getDeviceCredentials(entityId.id,true).subscribe( async function (rCredentials) {
+                        console.log('rCredentials',rCredentials);
+                        const token = rCredentials.credentialsId;
+                        await postTelemetry(valuesHash, token);
+                })
             }
         ); 
         
-        async function postTelemetry(telemetryData) {
-          const url = `https://api.sighums.com/api/v1/o0mjl4pwbpm2rr7h4ich/telemetry`;
+        async function postTelemetry(telemetryData, token) {
+          const url = `https://${window.location.host}/api/v1/${token}/telemetry`;
           const response = await fetch(url, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
