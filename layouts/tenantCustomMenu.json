@@ -2,15 +2,14 @@
   "disabledMenuItems": [
     "login_white_labeling",
     "asset_groups",
-    "device_groups",
+    "",
     "edge_groups",
-    "dashboard_groups",
+    "customers_groups",
     "scheduler",
-    "audit_log",
-    "customer_groups",
+    "",
     "roles",
     "widget_library",
-    "customers_hierarchy",
+    "",
     "rule_chains",
     "converters",
     "integrations",
@@ -19,18 +18,17 @@
     "mail_templates",
     "custom_translation",
     "self_registration",
+    "alarms",
     "settings",
     "settings_applications",
     "white_labeling",
     "custom_menu",
     "home_settings",
-    "alarms",
     "dashboards",
-    "customers",
-    "users",
+    "entity_views",
+    "assets",
     "edges",
     "alerts",
-    "entities",
     "notifications_center"
   ],
   "menuItems": [
@@ -40,7 +38,7 @@
       "materialIcon": "miscellaneous_services",
       "iframeUrl": null,
       "dashboardId": "69f21a50-3938-11ee-9a5a-27a2b74c1c5f",
-      "hideDashboardToolbar": true,
+      "hideDashboardToolbar": false,
       "setAccessToken": false,
       "childMenuItems": [
         {
@@ -54,7 +52,7 @@
           "childMenuItems": []
         },
         {
-          "name": "GSE Status Report",
+          "name": "Reporte de Estatus GSE",
           "iconUrl": null,
           "materialIcon": "equalizer",
           "iframeUrl": "",
@@ -91,7 +89,7 @@
       "materialIcon": "emoji_transportation",
       "iframeUrl": null,
       "dashboardId": "50f03200-3936-11ee-9a5a-27a2b74c1c5f",
-      "hideDashboardToolbar": true,
+      "hideDashboardToolbar": false,
       "setAccessToken": false,
       "childMenuItems": [
         {
@@ -110,7 +108,7 @@
           "materialIcon": "assignment",
           "iframeUrl": "",
           "dashboardId": "f0557830-4289-11ee-9a5a-27a2b74c1c5f",
-          "hideDashboardToolbar": true,
+          "hideDashboardToolbar": false,
           "setAccessToken": false,
           "childMenuItems": []
         },
@@ -120,7 +118,7 @@
           "materialIcon": "airline_seat_recline_normal",
           "iframeUrl": "",
           "dashboardId": "56e69810-3a0e-11ee-9a5a-27a2b74c1c5f",
-          "hideDashboardToolbar": true,
+          "hideDashboardToolbar": false,
           "setAccessToken": false,
           "childMenuItems": []
         },
@@ -141,8 +139,8 @@
       "iconUrl": null,
       "materialIcon": "connecting_airports",
       "iframeUrl": null,
-      "dashboardId": "00a0c770-3edf-11ee-9a5a-27a2b74c1c5f",
-      "hideDashboardToolbar": true,
+      "dashboardId": "83f72970-39f8-11ee-9a5a-27a2b74c1c5f",
+      "hideDashboardToolbar": false,
       "setAccessToken": false,
       "childMenuItems": [
         {
@@ -150,7 +148,7 @@
           "iconUrl": null,
           "materialIcon": "flight_land",
           "iframeUrl": "",
-          "dashboardId": "",
+          "dashboardId": "83f72970-39f8-11ee-9a5a-27a2b74c1c5f",
           "hideDashboardToolbar": false,
           "setAccessToken": false,
           "childMenuItems": []
@@ -161,7 +159,7 @@
           "materialIcon": "assignment",
           "iframeUrl": "",
           "dashboardId": "f0557830-4289-11ee-9a5a-27a2b74c1c5f",
-          "hideDashboardToolbar": true,
+          "hideDashboardToolbar": false,
           "setAccessToken": false,
           "childMenuItems": []
         }
@@ -173,7 +171,7 @@
       "materialIcon": "health_and_safety",
       "iframeUrl": null,
       "dashboardId": "b237d460-39f8-11ee-9a5a-27a2b74c1c5f",
-      "hideDashboardToolbar": true,
+      "hideDashboardToolbar": false,
       "setAccessToken": false,
       "childMenuItems": [
         {
