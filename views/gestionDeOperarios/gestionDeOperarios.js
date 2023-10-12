@@ -28,44 +28,54 @@ function mainTable_dataiButton2_cellContent(params) {
 
 
 function mainTable_cellAction_saveRowToCustomer(){
-  // console.log("entityId", entityId);
-  // console.log('widgetContext',widgetContext);
-  // console.log('additionalParams',additionalParams); // Contains de data values
+    console.log('widgetContext',widgetContext);
+    const confirmacion = confirm('¿Confirmar guardar la información?');
+    if (!confirmacion) return;
 
-  const confirmacion = confirm('¿Confirma guardar la información?');
-  if (!confirmacion) return;
+    console.log('additionalParams',additionalParams); // Contains de data values
 
-  // brings the APIs to use
-  let $injector = widgetContext.$scope.$injector;
-  let deviceService = $injector.get(widgetContext.servicesMap.get("deviceService"));
-  let attributeService = $injector.get(widgetContext.servicesMap.get("attributeService"));
 
-  // get datakey names
-  const compoundDataKeys = widgetContext.datasources[0].dataKeys;
-  const dataKeys = compoundDataKeys.map(dk => dk.name); // Contains the datakey names
-  // console.log("dataKeys", dataKeys);
+    console.log("entityId", entityId);
+    console.log("additionalParams", additionalParams);
+    console.log("widgetContext", widgetContext);
 
-  let attributesArray = [{
-        key: additionalParams[1], //take the iButton
-        value: {
-            [dataKeys[1]] : additionalParams[2], //relates numEmpleado
-            [dataKeys[2]] : additionalParams[3]  //relates nombreEmpleado
-        }
-  }]; //TODO: make this crap less hardcoded...
-  // console.log("attributesArray", attributesArray);
+    let $injector = widgetContext.$scope.$injector;
+    let deviceService = $injector.get(widgetContext.servicesMap.get("deviceService"));
+    let attributeService = $injector.get(widgetContext.servicesMap.get("attributeService"));
 
-  // jala el Device, toma el customerId y guarda copia en él
-  deviceService.getDevice(entityId.id).subscribe((resp) => {
-      // console.log("customerId", resp.customerId);
-      attributeService.saveEntityAttributes(
-          resp.customerId,
-          "SERVER_SCOPE",
-          attributesArray
-      ).subscribe();
-      attributeService.saveEntityAttributes(
-          entityId,
-          "SERVER_SCOPE",
-          attributesArray
-      ).subscribe(); //... it happens that subscribe() is hyper necessary
-  });
+    const compoundDataKeys = widgetContext.datasources[0].dataKeys;
+    const dataKeys = compoundDataKeys.map(dk => dk.name);
+    console.log("dataKeys", dataKeys); // Contains de datakey names
+
+    const userData = {
+                [dataKeys[1]] : additionalParams[2], //relates numEmpleado
+                [dataKeys[2]] : additionalParams[3]  //relates nombreEmpleado
+            };
+
+    let attributesArray = [{
+            key: additionalParams[1], //take the iButton string
+            value: JSON.stringify(userData, null, 0)  // store a string version of the data object
+    }]; //TODO: make this crap less hardcoded...
+
+
+    console.log("attributesArray", attributesArray);
+
+    // jala el Device, toma el customerId y guarda copia en él
+    deviceService.getDevice(entityId.id).subscribe((resp) => {
+        console.log("customerId", resp.customerId);
+        
+        // >Save into Customer
+        attributeService.saveEntityAttributes(
+            resp.customerId,
+            "SERVER_SCOPE",
+            attributesArray
+        ).subscribe();
+        
+        // >Save into Device
+        attributeService.saveEntityAttributes(
+            entityId,
+            "SERVER_SCOPE",
+            attributesArray
+        ).subscribe();
+    });    
 }
