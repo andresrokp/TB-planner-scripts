@@ -132,7 +132,16 @@ function variablesProcessing(){
     //DRIVER
     if(metadata.driverUniqueId){
         if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
-            delete msg.driverUniqueId
+            delete msg.driverUniqueId;
+    }
+    if(msg.driverUniqueId)
+    {
+        if (metadata.driverData){
+            var driverData = JSON.parse(metadata.driverData);
+            msg.driverName = driverData.nombreEmpleado;
+        }else{
+            msg.driverName = 'Usuario desconocido'
+        }
     }
 
     // //----------------------------------------------------------
