@@ -28,6 +28,16 @@ function filterScript_checkNoCumple() {
     return false    
 }
 
+function filterScript_buenaFecha() {
+    var today = new Date();
+    var currentYear = today.getFullYear();
+
+    var fixTime = new Date(msg.position.fixTime);
+    var fixTimeYear = fixTime.getFullYear();
+
+    return currentYear == fixTimeYear;    
+}
+
 
 function transformMessage(message, metadata, msgType) {
     // Extract necessary information from the message object
