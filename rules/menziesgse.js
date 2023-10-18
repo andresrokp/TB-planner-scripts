@@ -258,4 +258,22 @@ function filterNonLoggedDriverAlarm() {
     return false;    
 }
 
+function filterScript_onlyiButtonTaller() {
+    var msgMto = {};
+
+    if ( msg.driverName.test(/entrada/i) ) {
+        msgMto = {
+            enTaller: true,
+            enServicio: false
+        };
+    } else {
+        msgMto = {
+            enTaller: false,
+            enServicio: true
+        };
+    }
+    
+    return {msg: msgMto, metadata: metadata, msgType: "POST ATTRIBUTE DATA"};
+}
+
 
