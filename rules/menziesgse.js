@@ -231,6 +231,31 @@ function longStringsSanitizer() {
     return {msg: msg, metadata: metadata, msgType: msgType};
 }
 
-
+function filterNonLoggedDriverAlarm() {
+    if (metadata.buzzer) {
+    
+        var buzzerData = JSON.parse(metadata.buzzer);
+        
+        var hasTrueValue = false;
+        var firstTimestamp = 0;
+        var lastTimestamp = 0;
+        
+        buzzerData.forEach ( function (entry) {
+            if (entry.value === true) {
+                if (!hasTrueValue) {
+                    firstTimestamp = entry.ts;
+                }
+                lastTimestamp = entry.ts;
+                hasTrueValue = true;
+            }
+        });
+    
+        if (hasTrueValue && lastTimestamp - firstTimestamp > 20000) {
+            return true;
+        }
+        
+    }
+    return false;    
+}
 
 
