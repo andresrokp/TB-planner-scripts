@@ -143,6 +143,7 @@ function variablesProcessing(){
             msg.driverName = 'Usuario desconocido'
         }
     }
+    if (msg.buzzer) msg.driverName = 'Conductor no logueado'
 
     // //----------------------------------------------------------
     // //IGNITION
