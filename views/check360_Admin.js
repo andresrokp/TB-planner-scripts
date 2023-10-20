@@ -30,3 +30,21 @@ function auxDash_history_dataCumplimiento(params) {
 
     return Math.round(good / (good+bad) * 100);
 }
+
+
+function resultadosTablita() {
+
+    function cellStyle() {
+        if (value === 0) return {color:'red', fontWeight: 600};
+        if (value === 1) return {fontWeight: 600};
+        return {};
+    }
+    function cellContent() {
+        const valueMap = {
+            1:"C",
+            0: "NC"
+        };
+        return valueMap[value] || "NA";
+    }
+    
+}
