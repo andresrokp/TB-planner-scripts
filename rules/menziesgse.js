@@ -278,3 +278,12 @@ function filterScript_onlyiButtonTaller() {
 }
 
 
+function script_adaptNoCumpleListForAlarm() {
+    var noCumpleList = [];
+    
+    for (var prop in msg){
+        if (prop === 0) noCumpleList.push(prop);
+    }
+    
+    return {msg: {noCumpleList:noCumpleList}, metadata: metadata, msgType: msgType};
+}
