@@ -16,21 +16,17 @@ function auxDash_history_actionCell_showPhoto(params) {
 
 
 function auxDash_history_dataCumplimiento(params) {
-    // console.log('rowData',rowData);
-    // console.log('ctx',ctx);
-
-    let acum = 0;
-    let cosas = Object.keys(rowData).length - 5;
+    let good = 0;
+    let bad = 0;
 
     for (let dato in rowData){
-        // console.log('dato',dato);
-        // console.log('rowData.dato',rowData.dato);
-        if ( rowData[dato] == 1.0000001 || rowData[dato] == 1.0000002) {
-            acum++;
+        if ( rowData[dato] === 1) {
+            good++;
+        }
+        if ( rowData[dato] === 0) {
+            bad++;
         }
     }
 
-    // console.log('acum',acum);
-    // console.log('cosas',cosas);
-    return Math.round(acum / cosas * 100);
+    return Math.round(good / (good+bad) * 100);
 }
