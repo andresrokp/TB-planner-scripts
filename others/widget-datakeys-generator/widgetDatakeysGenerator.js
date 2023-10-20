@@ -97,6 +97,26 @@ function templateAdminHistoryTablita(dataKey) {
   }
 }
 
+// TODO: random color - add icon in widget title
+function templateAdminPlotChart(dataKey) {
+  return {
+    "name": dataKey.name,
+    "type": "timeseries",
+    "label": dataKey.label,
+    "color": "#4caf50", //TODO: Random Color!!
+    "settings": {},
+    "_hash": 0.0001688967158188781,
+    "aggregationType": null,
+    "units": null,
+    "decimals": null,
+    "funcBody": null,
+    "usePostProcessing": true,
+    "postFuncBody": "return value*100;"
+  }
+}
+
+
+
 function writeJsonToFile(myJsonArray, filename) {
     // convert the object in string
     const myStringArray = JSON.stringify(myJsonArray,null,2);
@@ -130,6 +150,10 @@ writeJsonToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/bufferGener
 
 // build and write for HISTORY structure
 writeJsonToFile({"dataKeys": inputArray.map(templateAdminHistoryTablita)},'others/widget-datakeys-generator/historyGeneratedDatakeys.json')
+
+// for Admin Plot graph template
+writeJsonToFile({"dataKeys": inputArray.map(templateAdminPlotChart)},'others/widget-datakeys-generator/adminPlotChartDatakeys.json')
+
 
 
 // TODO: ...some day refactor and unify the processes
