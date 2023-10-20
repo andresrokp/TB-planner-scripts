@@ -97,15 +97,17 @@ function templateAdminHistoryTablita(dataKey) {
   }
 }
 
-// TODO: random color - add icon in widget title
+
+const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
+let colorIndex = 0
 function templateAdminPlotChart(dataKey) {
   return {
     "name": dataKey.name,
     "type": "timeseries",
     "label": dataKey.label,
-    "color": "#4caf50", //TODO: Random Color!!
+    "color": colorList[colorIndex++],
     "settings": {},
-    "_hash": 0.0001688967158188781,
+    "_hash": Math.random(),
     "aggregationType": null,
     "units": null,
     "decimals": null,
