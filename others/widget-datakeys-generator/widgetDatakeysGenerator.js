@@ -64,15 +64,37 @@ function convertToTbBuffer(dataKey) {
 }
 
 // Function to get the structure for History
-function convertToTbHistory(dataKey) {
+// function convertToTbHistory(dataKey) {
+//   return {
+//     "name": dataKey.name,
+//     "type": "timeseries",
+//     "label": dataKey.name,
+//     "color": "#2196f3",
+//     "settings": {},
+//     "_hash": Math.random()
+//   };
+// }
+
+function templateAdminHistoryTablita(dataKey) {
   return {
     "name": dataKey.name,
     "type": "timeseries",
-    "label": dataKey.name,
+    "label": dataKey.label,
     "color": "#2196f3",
-    "settings": {},
-    "_hash": Math.random()
-  };
+    "settings": {
+      "useCellStyleFunction": true,
+      "cellStyleFunction": "if (value === 0) return {color:'red', fontWeight: 600};",
+      "useCellContentFunction": true,
+      "cellContentFunction": "return value == 1.0000001 ? \"C\"\n        : value == 1.0000002 ? \"NA\"\n            : \"NC\";"
+    },
+    "_hash": Math.random(),
+    "aggregationType": null,
+    "units": null,
+    "decimals": null,
+    "funcBody": null,
+    "usePostProcessing": null,
+    "postFuncBody": null
+  }
 }
 
 function writeJsonToFile(myJsonArray, filename) {
@@ -107,7 +129,7 @@ const datakeysObjBuffer = {
 writeJsonToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/bufferGeneratedDatakeys.json')
 
 // build and write for HISTORY structure
-writeJsonToFile({"dataKeys": inputArray.map(convertToTbHistory)},'others/widget-datakeys-generator/historyGeneratedDatakeys.json')
+writeJsonToFile({"dataKeys": inputArray.map(templateAdminHistoryTablita)},'others/widget-datakeys-generator/historyGeneratedDatakeys.json')
 
 
 // TODO: ...some day refactor and unify the processes
