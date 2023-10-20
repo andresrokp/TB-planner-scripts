@@ -110,11 +110,11 @@ function auxDash_BufferAttsCardTable () {
 
     function data_all_PostProcessing() {
         const valueMap = {
-            1.0000001:"C",
-            1.0000002: "NA",
+            1:"C",
+            '-': "NA",
             0: "NC"
         };
-        return valueMap[value] || "";    
+        return valueMap[value] || "";  
     }
 
 
