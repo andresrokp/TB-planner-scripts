@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function readInputArrayFromFile(filename) {
+function readDatakeyValuesArrayFromFile(filename) {
   try {
     // read text, parse and return
     const jsonText = fs.readFileSync(filename,'utf-8');
@@ -14,7 +14,7 @@ function readInputArrayFromFile(filename) {
 }
 
 // Function to convert a label/name object to the datasource form
-function convertToTbForm(dataKey) {
+function turnToOperInputForm(dataKey) {
     return {
         "name": dataKey.name,
         "type": "attribute",
@@ -46,7 +46,7 @@ function convertToTbForm(dataKey) {
 }
 
 // Function to get the structure for Buffer
-function convertToTbBuffer(dataKey) {
+function turnToOperBuffer(dataKey) {
   return {
       "name": dataKey.name,
       "type": "attribute",
@@ -63,19 +63,8 @@ function convertToTbBuffer(dataKey) {
   };
 }
 
-// Function to get the structure for History
-// function convertToTbHistory(dataKey) {
-//   return {
-//     "name": dataKey.name,
-//     "type": "timeseries",
-//     "label": dataKey.name,
-//     "color": "#2196f3",
-//     "settings": {},
-//     "_hash": Math.random()
-//   };
-// }
 
-function templateAdminHistoryTablita(dataKey) {
+function turnToAdminHistoryTablita(dataKey) {
   return {
     "name": dataKey.name,
     "type": "timeseries",
@@ -100,7 +89,7 @@ function templateAdminHistoryTablita(dataKey) {
 
 const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
 let colorIndex = 0
-function templateAdminPlotChart(dataKey) {
+function turnToAdminPlotChart(dataKey) {
   return {
     "name": dataKey.name,
     "type": "timeseries",
@@ -119,7 +108,7 @@ function templateAdminPlotChart(dataKey) {
 
 
 
-function writeJsonToFile(myJsonArray, filename) {
+function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
     // convert the object in string
     const myStringArray = JSON.stringify(myJsonArray,null,2);
     // write the file
@@ -129,32 +118,32 @@ function writeJsonToFile(myJsonArray, filename) {
 // --------------------------
 // --------- Inicio ejecución
 
-// json reading
+// input datakey names json reading
 const filename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Replace with the path to your JSON file
-const inputArray = readInputArrayFromFile(filename);
+const inputArray = readDatakeyValuesArrayFromFile(filename);
 console.log(inputArray);
 
-// array for FORM structure
-const arrayDatakeysF = inputArray.map(convertToTbForm)
+// build array for Oper Form structure
+const arrayDatakeysF = inputArray.map(turnToOperInputForm)
 const datakeysObjF = {
-"dataKeys": arrayDatakeysF
+  "dataKeys": arrayDatakeysF
 };
 // write object in file
-const outFileF = 'others/widget-datakeys-generator/formGeneratedDatakeys.json'
-writeJsonToFile(datakeysObjF, outFileF)
+const outFileF = 'others/widget-datakeys-generator/operInputFormDatakeys.json'
+writeDatakeyJsonArrayToFile(datakeysObjF, outFileF)
 
 
-// build and write for BUFFER structure
+// build and write for Oper Buffer structure
 const datakeysObjBuffer = {
-  "dataKeys": inputArray.map(convertToTbBuffer)
+  "dataKeys": inputArray.map(turnToOperBuffer)
 };
-writeJsonToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/bufferGeneratedDatakeys.json')
+writeDatakeyJsonArrayToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/operBufferDatakeys.json')
 
-// build and write for HISTORY structure
-writeJsonToFile({"dataKeys": inputArray.map(templateAdminHistoryTablita)},'others/widget-datakeys-generator/historyGeneratedDatakeys.json')
+// build and write for Admin History structure
+writeDatakeyJsonArrayToFile({"dataKeys": inputArray.map(turnToAdminHistoryTablita)},'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json')
 
 // for Admin Plot graph template
-writeJsonToFile({"dataKeys": inputArray.map(templateAdminPlotChart)},'others/widget-datakeys-generator/adminPlotChartDatakeys.json')
+writeDatakeyJsonArrayToFile({"dataKeys": inputArray.map(turnToAdminPlotChart)},'others/widget-datakeys-generator/adminPlotChartDatakeys.json')
 
 
 
