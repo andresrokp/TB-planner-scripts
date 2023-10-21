@@ -13,6 +13,10 @@ function readDatakeyValuesArrayFromFile(filename) {
   }
 }
 
+// 'global' variable to track color setting
+const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
+let colorIndex = 0
+
 // Function to convert a label/name object to the datasource form
 function turnToOperInputForm(dataKey) {
     return {
@@ -69,12 +73,12 @@ function turnToAdminHistoryTablita(dataKey) {
     "name": dataKey.name,
     "type": "timeseries",
     "label": dataKey.label,
-    "color": "#2196f3",
+    "color": colorList[colorIndex++],
     "settings": {
       "useCellStyleFunction": true,
-      "cellStyleFunction": "if (value === 0) return {color:'red', fontWeight: 600};",
+      "cellStyleFunction": "if (value === 0) return {color:'red', fontWeight: 600};\r\nif (value === 1) return {fontWeight: 600};\r\nreturn {};",
       "useCellContentFunction": true,
-      "cellContentFunction": "return value == 1.0000001 ? \"C\"\n        : value == 1.0000002 ? \"NA\"\n            : \"NC\";"
+      "cellContentFunction": "const valueMap = {\r\n    1:\"C\",\r\n    0: \"NC\"\r\n};\r\nreturn valueMap[value] || \"NA\";"
     },
     "_hash": Math.random(),
     "aggregationType": null,
@@ -87,8 +91,6 @@ function turnToAdminHistoryTablita(dataKey) {
 }
 
 
-const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
-let colorIndex = 0
 function turnToAdminPlotChart(dataKey) {
   return {
     "name": dataKey.name,
@@ -140,9 +142,11 @@ const datakeysObjBuffer = {
 writeDatakeyJsonArrayToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/operBufferDatakeys.json')
 
 // build and write for Admin History structure
+colorIndex = 0;
 writeDatakeyJsonArrayToFile({"dataKeys": inputArray.map(turnToAdminHistoryTablita)},'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json')
 
 // for Admin Plot graph template
+colorIndex = 0;
 writeDatakeyJsonArrayToFile({"dataKeys": inputArray.map(turnToAdminPlotChart)},'others/widget-datakeys-generator/adminPlotChartDatakeys.json')
 
 
