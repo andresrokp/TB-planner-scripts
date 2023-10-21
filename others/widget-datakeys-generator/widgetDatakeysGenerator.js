@@ -55,15 +55,15 @@ function turnToOperBuffer(dataKey) {
       "name": dataKey.name,
       "type": "attribute",
       "label": dataKey.label,
-      "color": "#3f51b5",
+      "color": colorList[colorIndex++],
       "settings": {},
       "_hash": Math.random(),
       "aggregationType": null,
       "units": null,
       "decimals": null,
       "funcBody": null,
-      "usePostProcessing": null,
-      "postFuncBody": null
+      "usePostProcessing": true,
+      "postFuncBody": "const valueMap = {\n    1:\"C\",\n    '-': \"NA\",\n    0: \"NC\"\n};\nreturn valueMap[value] || \"\";"
   };
 }
 
