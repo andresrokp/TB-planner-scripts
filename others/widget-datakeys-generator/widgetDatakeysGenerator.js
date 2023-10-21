@@ -23,7 +23,7 @@ function turnToOperInputForm(dataKey) {
         "name": dataKey.name,
         "type": "attribute",
         "label": dataKey.label,
-        "color": "#2196f3",
+        "color": colorList[colorIndex++],
         "settings": {
             "dataKeyHidden": false,
             "dataKeyType": "server",
@@ -31,9 +31,18 @@ function turnToOperInputForm(dataKey) {
             "required": true,
             "isEditable": "editable",
             "selectOptions": [
-                {"value": "1", "label": "CUMPLE"},
-                {"value": "-1", "label": "NO CUMPLE"},
-                {"value": "0", "label": "NO APLICA"}
+              {
+                "value": "1",
+                "label": "CUMPLE"
+              },
+              {
+                "value": "0",
+                "label": "NO CUMPLE"
+              },
+              {
+                "value": "-",
+                "label": "NO APLICA"
+              }
             ],
             "useCustomIcon": false,
             "useGetValueFunction": false,
@@ -136,6 +145,7 @@ writeDatakeyJsonArrayToFile(datakeysObjF, outFileF)
 
 
 // build and write for Oper Buffer structure
+colorIndex = 0
 const datakeysObjBuffer = {
   "dataKeys": inputArray.map(turnToOperBuffer)
 };
