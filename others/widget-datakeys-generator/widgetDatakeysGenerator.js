@@ -17,6 +17,34 @@ function readDatakeyValuesArrayFromFile(filename) {
 const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
 let colorIndex = 0
 
+// generate random guid
+function generateRandomHexId(length) {
+  const characters = '0123456789abcdef';
+  let hexId = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    hexId += characters.charAt(randomIndex);
+  }
+
+  return hexId;
+}
+
+function generateRandomLowercaseHexGuid() {
+  // Create a GUID-like pattern: d6e2c4a9-d6e2-c4a9-d6e2-c4a9d6e2c4a9
+  const parts = [
+    generateRandomHexId(8),
+    generateRandomHexId(4),
+    generateRandomHexId(4),
+    generateRandomHexId(4),
+    generateRandomHexId(12)
+  ];
+
+  // Join the parts with hyphens and convert
+  return parts.join('-');
+}
+
+
 // Function to convert a label/name object to the datasource form
 function turnToOperInputForm(dataKey) {
     return {
@@ -137,6 +165,7 @@ console.log(inputArray);
 // build array for Oper Form structure
 const arrayDatakeysF = inputArray.map(turnToOperInputForm)
 const datakeysObjF = {
+  "w_id":generateRandomLowercaseHexGuid(),
   "dataKeys": arrayDatakeysF
 };
 // write object in file
@@ -147,17 +176,30 @@ writeDatakeyJsonArrayToFile(datakeysObjF, outFileF)
 // build and write for Oper Buffer structure
 colorIndex = 0
 const datakeysObjBuffer = {
+  "w_id":generateRandomLowercaseHexGuid(),
   "dataKeys": inputArray.map(turnToOperBuffer)
 };
 writeDatakeyJsonArrayToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/operBufferDatakeys.json')
 
 // build and write for Admin History structure
 colorIndex = 0;
-writeDatakeyJsonArrayToFile({"dataKeys": inputArray.map(turnToAdminHistoryTablita)},'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json')
+writeDatakeyJsonArrayToFile(
+  {
+    "w_id":generateRandomLowercaseHexGuid(),
+    "dataKeys": inputArray.map(turnToAdminHistoryTablita)
+  }
+  ,'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json'
+)
 
 // for Admin Plot graph template
 colorIndex = 0;
-writeDatakeyJsonArrayToFile({"dataKeys": inputArray.map(turnToAdminPlotChart)},'others/widget-datakeys-generator/adminPlotChartDatakeys.json')
+writeDatakeyJsonArrayToFile(
+  {
+    "w_id":generateRandomLowercaseHexGuid(),
+    "dataKeys": inputArray.map(turnToAdminPlotChart)
+  }
+  ,'others/widget-datakeys-generator/adminPlotChartDatakeys.json'
+)
 
 
 
