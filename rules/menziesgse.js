@@ -142,8 +142,8 @@ function variablesProcessing(){
         }else{
             msg.driverName = 'Usuario desconocido'
         }
+        if (msg.buzzer) msg.driverName = 'Conductor no logueado'
     }
-    if (msg.buzzer) msg.driverName = 'Conductor no logueado'
 
     // //----------------------------------------------------------
     // //IGNITION
@@ -173,10 +173,19 @@ function variablesProcessing(){
             47:"Girardot",
             48:"Tocaima",
             49:"Ricaurte",
+            50: "Terminal 1", //VER
+            51: "Taller", //VER
+            52: "Terminal 2", //MEX
+            53: "Terminal 1", //MEX
+            54: "VER",
+            55: "GDL",
+            56: "MEX",
+            57: "Terminal 2", //GDL
+            58: "Terminal 1", //GDL
         };
         msg.geofenceIds.forEach( function (e,i)
             {
-                msg.geofenceNames[i] = mapaDeCercas[msg.geofenceIds[i]] || msg.geofenceIds[i];
+                msg.geofenceNames[i] = mapaDeCercas[e] || msg.geofenceIds[i];
                 
             });
     }
