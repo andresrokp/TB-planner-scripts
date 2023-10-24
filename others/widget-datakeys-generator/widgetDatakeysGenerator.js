@@ -13,24 +13,6 @@ function readDatakeyValuesArrayFromFile(filename) {
   }
 }
 
-function getFileListFromFolder(folderPath) {
-  
-  let jsonArray = [];
-
-  const filesList = fs.readdirSync(folderPath);
-  filesList.sort();
-
-  filesList.forEach( file =>{
-    if (file.endsWith('.json')){
-      const filePath = `${folderPath}/${file}`;
-      const jsonContent = readDatakeyValuesArrayFromFile(filePath);
-      jsonArray.push(jsonContent);
-    }
-  });
-  
-  return jsonArray;
-
-}
 
 // 'global' variable to track color setting
 const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
@@ -177,57 +159,14 @@ function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
 // --------- Inicio ejecución-----------
 
 
-// input datakey names json reading
+// input datakey names json loading
 const inputFilename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Replace with the path to your JSON file
 const inputArray = readDatakeyValuesArrayFromFile(inputFilename);
 console.log(inputArray);
 // widget template loading
 const folderPath = 'others/widget-datakeys-generator/original_templates';
-
-
-// this will be up and should respond to the iterative process
-function buildDatakeysArraysAndGenerateFiles () {
-
-  // build array for Oper Form structure
-  const arrayDatakeysF = inputArray.map(turnToOperInputForm)
-  const datakeysObjF = {
-    "w_id":generateRandomLowercaseHexGuid(),
-    "dataKeys": arrayDatakeysF
-  };
-  // write object in file
-  const outFileF = 'others/widget-datakeys-generator/operInputFormDatakeys.json'
-  writeDatakeyJsonArrayToFile(datakeysObjF, outFileF)
-
-
-  // build and write for Oper Buffer structure
-  colorIndex = 0
-  const datakeysObjBuffer = {
-    "w_id":generateRandomLowercaseHexGuid(),
-    "dataKeys": inputArray.map(turnToOperBuffer)
-  };
-  writeDatakeyJsonArrayToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/operBufferDatakeys.json')
-
-  // build and write for Admin History structure
-  colorIndex = 0;
-  writeDatakeyJsonArrayToFile(
-    {
-      "w_id":generateRandomLowercaseHexGuid(),
-      "dataKeys": inputArray.map(turnToAdminHistoryTablita)
-    }
-    ,'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json'
-  )
-
-  // for Admin Plot graph template
-  colorIndex = 0;
-  writeDatakeyJsonArrayToFile(
-    {
-      "w_id":generateRandomLowercaseHexGuid(),
-      "dataKeys": inputArray.map(turnToAdminPlotChart)
-    }
-    ,'others/widget-datakeys-generator/adminPlotChartDatakeys.json'
-  )
-
-}
+const filesList = fs.readdirSync(folderPath);
+filesList.sort();
 
 
 // Ordered array to associate generators and pick
@@ -251,19 +190,21 @@ const dataKeyGenerators = [
 ];
 
 
-const widgetsJsonArray = getFileListFromFolder(folderPath);
-// console.log(widgetsJsonArray);
-
 // iterate over the widgets and process it
-widgetsJsonArray.forEach( ( wg, idx ) =>{
-  // Take the propper generator
-  const dataKeyGenerator = dataKeyGenerators[idx];
-    
-  wg.widget.id = generateRandomLowercaseHexGuid()
-  const arrayDatakeys = inputArray.map(dataKeyGenerator.builder);
-  wg.widget.config.datasources[0].dataKeys = arrayDatakeys;
-  
-  writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
+filesList
+  .filter(file => file.endsWith('.json'))
+  .forEach( ( file, idx ) =>{
+
+    const widgetPath = `${folderPath}/${file}`;
+    const wg = readDatakeyValuesArrayFromFile(widgetPath);
+
+    const dataKeyGenerator = dataKeyGenerators[idx];
+    const arrayDatakeys = inputArray.map(dataKeyGenerator.builder);
+    wg.widget.config.datasources[0].dataKeys = arrayDatakeys;
+      
+    wg.widget.id = generateRandomLowercaseHexGuid()
+        
+    writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
 })
 
 // console.log(widgetsJsonArray);
