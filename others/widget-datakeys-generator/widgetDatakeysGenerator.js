@@ -199,10 +199,11 @@ filesList
     const wg = readDatakeyValuesArrayFromFile(widgetPath);
 
     const dataKeyGenerator = dataKeyGenerators[idx];
+    colorIndex = 0;
     const arrayDatakeys = inputArray.map(dataKeyGenerator.builder);
     wg.widget.config.datasources[0].dataKeys = arrayDatakeys;
       
-    wg.widget.id = generateRandomLowercaseHexGuid()
+    wg.widget.id = generateRandomLowercaseHexGuid();
         
     writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
 })
