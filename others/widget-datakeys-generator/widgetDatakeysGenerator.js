@@ -230,13 +230,40 @@ function buildDatakeysArraysAndGenerateFiles () {
 }
 
 
+// Ordered array to associate generators and pick
+const dataKeyGenerators = [
+  {
+    builder: turnToOperInputForm,
+    outFile: 'others/widget-datakeys-generator/1_operInputFormDatakeys.json',
+  },
+  {
+    builder: turnToOperBuffer,
+    outFile: 'others/widget-datakeys-generator/2_operBufferDatakeys.json',
+  },
+  {
+    builder: turnToAdminHistoryTablita,
+    outFile: 'others/widget-datakeys-generator/3_adminHistoryTablitaDatakeys.json',
+  },
+  {
+    builder: turnToAdminPlotChart,
+    outFile: 'others/widget-datakeys-generator/4_adminPlotChartDatakeys.json',
+  },
+];
+
+
 const widgetsJsonArray = getFileListFromFolder(folderPath);
-console.log(widgetsJsonArray);
+// console.log(widgetsJsonArray);
 
 // iterate over the widgets and process it
-widgetsJsonArray.forEach( ( wg ) =>{
+widgetsJsonArray.forEach( ( wg, idx ) =>{
+  // Take the propper generator
+  const dataKeyGenerator = dataKeyGenerators[idx];
+    
   wg.widget.id = generateRandomLowercaseHexGuid()
-  // buildDatakeysArraysAndGenerateFiles()
+  const arrayDatakeys = inputArray.map(dataKeyGenerator.builder);
+  wg.widget.config.datasources[0].dataKeys = arrayDatakeys;
+  
+  writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
 })
 
-console.log(widgetsJsonArray);
+// console.log(widgetsJsonArray);
