@@ -13,6 +13,15 @@ function readDatakeyValuesArrayFromFile(filename) {
   }
 }
 
+function getFileListFromFolder(folderPath) {
+  
+  const filesList = fs.readdirSync(folderPath);
+  filesList.sort();
+  
+  return filesList;
+
+}
+
 // 'global' variable to track color setting
 const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
 let colorIndex = 0
@@ -154,53 +163,64 @@ function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
     fs.writeFileSync(filename,myStringArray,'utf-8')
 }
 
-// --------------------------
-// --------- Inicio ejecución
+// -------------------------------------
+// --------- Inicio ejecución-----------
+
 
 // input datakey names json reading
-const filename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Replace with the path to your JSON file
-const inputArray = readDatakeyValuesArrayFromFile(filename);
+const inputFilename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Replace with the path to your JSON file
+const inputArray = readDatakeyValuesArrayFromFile(inputFilename);
 console.log(inputArray);
-
-// build array for Oper Form structure
-const arrayDatakeysF = inputArray.map(turnToOperInputForm)
-const datakeysObjF = {
-  "w_id":generateRandomLowercaseHexGuid(),
-  "dataKeys": arrayDatakeysF
-};
-// write object in file
-const outFileF = 'others/widget-datakeys-generator/operInputFormDatakeys.json'
-writeDatakeyJsonArrayToFile(datakeysObjF, outFileF)
+// widget template loading
+const folderPath = 'others/widget-datakeys-generator/original_templates';
 
 
-// build and write for Oper Buffer structure
-colorIndex = 0
-const datakeysObjBuffer = {
-  "w_id":generateRandomLowercaseHexGuid(),
-  "dataKeys": inputArray.map(turnToOperBuffer)
-};
-writeDatakeyJsonArrayToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/operBufferDatakeys.json')
+// this will be up and wraped in a iterative function
+function buildDatakeysArraysAndGenerateFiles () {
 
-// build and write for Admin History structure
-colorIndex = 0;
-writeDatakeyJsonArrayToFile(
-  {
+  // build array for Oper Form structure
+  const arrayDatakeysF = inputArray.map(turnToOperInputForm)
+  const datakeysObjF = {
     "w_id":generateRandomLowercaseHexGuid(),
-    "dataKeys": inputArray.map(turnToAdminHistoryTablita)
-  }
-  ,'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json'
-)
+    "dataKeys": arrayDatakeysF
+  };
+  // write object in file
+  const outFileF = 'others/widget-datakeys-generator/operInputFormDatakeys.json'
+  writeDatakeyJsonArrayToFile(datakeysObjF, outFileF)
 
-// for Admin Plot graph template
-colorIndex = 0;
-writeDatakeyJsonArrayToFile(
-  {
+
+  // build and write for Oper Buffer structure
+  colorIndex = 0
+  const datakeysObjBuffer = {
     "w_id":generateRandomLowercaseHexGuid(),
-    "dataKeys": inputArray.map(turnToAdminPlotChart)
-  }
-  ,'others/widget-datakeys-generator/adminPlotChartDatakeys.json'
-)
+    "dataKeys": inputArray.map(turnToOperBuffer)
+  };
+  writeDatakeyJsonArrayToFile(datakeysObjBuffer, 'others/widget-datakeys-generator/operBufferDatakeys.json')
+
+  // build and write for Admin History structure
+  colorIndex = 0;
+  writeDatakeyJsonArrayToFile(
+    {
+      "w_id":generateRandomLowercaseHexGuid(),
+      "dataKeys": inputArray.map(turnToAdminHistoryTablita)
+    }
+    ,'others/widget-datakeys-generator/adminHistoryTablitaDatakeys.json'
+  )
+
+  // for Admin Plot graph template
+  colorIndex = 0;
+  writeDatakeyJsonArrayToFile(
+    {
+      "w_id":generateRandomLowercaseHexGuid(),
+      "dataKeys": inputArray.map(turnToAdminPlotChart)
+    }
+    ,'others/widget-datakeys-generator/adminPlotChartDatakeys.json'
+  )
+
+}
 
 
+const fileList = getFileListFromFolder(folderPath);
+console.log(fileList);
 
-// TODO: ...some day refactor and unify the processes
+// buildDatakeysArraysAndGenerateFiles()
