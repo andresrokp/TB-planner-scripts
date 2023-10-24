@@ -15,10 +15,20 @@ function readDatakeyValuesArrayFromFile(filename) {
 
 function getFileListFromFolder(folderPath) {
   
+  let jsonArray = [];
+
   const filesList = fs.readdirSync(folderPath);
   filesList.sort();
+
+  filesList.forEach( file =>{
+    if (file.endsWith('.json')){
+      const filePath = `${folderPath}/${file}`;
+      const jsonContent = readDatakeyValuesArrayFromFile(filePath);
+      jsonArray.push(jsonContent);
+    }
+  });
   
-  return filesList;
+  return jsonArray;
 
 }
 
@@ -220,7 +230,7 @@ function buildDatakeysArraysAndGenerateFiles () {
 }
 
 
-const fileList = getFileListFromFolder(folderPath);
-console.log(fileList);
+const jsonArray = getFileListFromFolder(folderPath);
+console.log(jsonArray);
 
 // buildDatakeysArraysAndGenerateFiles()
