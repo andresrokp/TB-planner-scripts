@@ -185,7 +185,7 @@ console.log(inputArray);
 const folderPath = 'others/widget-datakeys-generator/original_templates';
 
 
-// this will be up and wraped in a iterative function
+// this will be up and should respond to the iterative process
 function buildDatakeysArraysAndGenerateFiles () {
 
   // build array for Oper Form structure
@@ -230,7 +230,13 @@ function buildDatakeysArraysAndGenerateFiles () {
 }
 
 
-const jsonArray = getFileListFromFolder(folderPath);
-console.log(jsonArray);
+const widgetsJsonArray = getFileListFromFolder(folderPath);
+console.log(widgetsJsonArray);
 
-// buildDatakeysArraysAndGenerateFiles()
+// iterate over the widgets and process it
+widgetsJsonArray.forEach( ( wg ) =>{
+  wg.widget.id = generateRandomLowercaseHexGuid()
+  // buildDatakeysArraysAndGenerateFiles()
+})
+
+console.log(widgetsJsonArray);
