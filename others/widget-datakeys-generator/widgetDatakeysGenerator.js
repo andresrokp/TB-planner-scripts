@@ -173,18 +173,26 @@ filesList.sort();
 const dataKeyGenerators = [
   {
     builder: turnToOperInputForm,
+    headElements: 1, // elements to keep at the begining
+    tailElements: 5, // elements in the original datakeys array to keep at the end
     outFile: 'others/widget-datakeys-generator/1_operInputFormDatakeys.json',
   },
   {
     builder: turnToOperBuffer,
+    headElements: 1, // mark the start of the splice
+    tailElements: 5, // used to determine the quantity to delete in splice
     outFile: 'others/widget-datakeys-generator/2_operBufferDatakeys.json',
   },
   {
     builder: turnToAdminHistoryTablita,
+    headElements: 0,
+    tailElements: 4,
     outFile: 'others/widget-datakeys-generator/3_adminHistoryTablitaDatakeys.json',
   },
   {
     builder: turnToAdminPlotChart,
+    headElements: 0,
+    tailElements: 0,
     outFile: 'others/widget-datakeys-generator/4_adminPlotChartDatakeys.json',
   },
 ];
@@ -200,8 +208,11 @@ filesList
 
     const dataKeyGenerator = dataKeyGenerators[idx];
     colorIndex = 0;
-    const arrayDatakeys = inputArray.map(dataKeyGenerator.builder);
-    wg.widget.config.datasources[0].dataKeys = arrayDatakeys;
+    const generatedDatakeys = inputArray.map(dataKeyGenerator.builder);
+    let wgCurrentDatakeys = wg.widget.config.datasources[0].dataKeys
+    const start = dataKeyGenerator.headElements;
+    const toDelete = wgCurrentDatakeys.length - dataKeyGenerator.headElements - dataKeyGenerator.tailElements;
+    wgCurrentDatakeys.splice(start, toDelete, ...generatedDatakeys);
       
     wg.widget.id = generateRandomLowercaseHexGuid();
         
