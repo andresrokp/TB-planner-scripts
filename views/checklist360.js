@@ -7,7 +7,7 @@ function auxDash_BufferAttsCardTable () {
         let $injector = widgetContext.$scope.$injector;
         let attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));
         let deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));
-        
+
         // >Build a printable string of the data to submit
         const widgetData = widgetContext.data; // Takes the rendered widget info
         let widgetHash = {};
@@ -38,11 +38,11 @@ function auxDash_BufferAttsCardTable () {
         // >Get all widget's datakey names
         let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
         // console.log('-----------------\nkeys',keys)
-        
+
         // >Confirmation alert
         let choose = confirm('¿Confirma el guardado de la información?');
         if (!choose) return;
-        
+
         // >Get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
             async function(atts){
@@ -51,60 +51,63 @@ function auxDash_BufferAttsCardTable () {
                 // await new Promise(resolve => setTimeout(resolve, 500)); 
                 
                 // >Build the main values structure
-                let valuesHash = {};
+                let valuesHashForPost = {};
+                let valuesArrayForApi = [];
                 for (let keyPkg of atts){
-                    valuesHash[keyPkg.key] = keyPkg.value;
+                    if (keyPkg.value != '-'){
+                        // add to a simple post hash
+                        valuesHashForPost[keyPkg.key] = keyPkg.value;
+                        // add to a more complex api array
+                        valuesArrayForApi.push({key:keyPkg.key, value:keyPkg.value});
+                    }
                 }
                 let nowDate = new Date().getTime();
-                valuesHash.ts_id = nowDate;
-                // console.log('valuesHash',valuesHash)
-                
-                // >Wrap the value structure in a TB shape
-                const apiShapeHashArray = [ {key:'ts',value:nowDate}, {key:'values',value:valuesHash} ];
-                const msgWithPostShape = {'ts':nowDate,'values':valuesHash};
-                console.log('apiShapeHashArray',apiShapeHashArray);
-                console.log('postShapeHashArray',msgWithPostShape);
+                valuesHashForPost.ts_id = nowDate;
+                valuesHashForPost.isCheck = true;
+                console.log('valuesHashForPost',valuesHashForPost);
+                console.log('valuesArrayForApi',valuesArrayForApi);
                 
                 // TODO: calc performance
                 
                 // >SAVE esa vaina
-                attributeService.saveEntityTimeseries(entityId, 'ANY', apiShapeHashArray)
+                attributeService.saveEntityTimeseries(entityId, 'ANY', valuesArrayForApi)
                 .subscribe( function(resp){
                     // console.log('resp',resp);
                     
                     // >Triggers a feedback dialog
                     widgetContext.dialogs.alert('Datos guardados correctamente',`<pre>${valuesToPrint}</pre>`).subscribe();
                     
-                    // // ---------- Clear Form ----------
-                    // // >Format keys list as obj array
-                    // keys = keys.map(k => ({'key':k}));
-                    // // >Delete and then refresh
-                    // attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
-                    // .subscribe(function () {
-                    //     ()=>{setTimeout(widgetContext.updateAliases(),1500)};
-                    // })
+                    // ---------- Clear Form ----------
+                    // >Format keys list as obj array
+                    keys = keys.map(k => ({'key':k}));
+                    // >Delete and then refresh
+                    attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
+                    .subscribe(function () {
+                        ()=>{setTimeout(widgetContext.updateAliases(),1500)};
+                    })
+                    
+                    // envío paralelo por rest, quitar la foto para que la RuCh no colapse
+                    delete valuesHashForPost.fotografia;
+                    deviceService.getDeviceCredentials(entityId.id,true).subscribe( async function (rCredentials) {
+                            console.log('rCredentials',rCredentials);
+                            const token = rCredentials.credentialsId;
+                            await postTelemetry(valuesHashForPost, token);
+                    });
                 });
                 
-                // envío paralelo por rest, quitar la foto para que la RuCh no colapse
-                delete valuesHash.fotografia;
-                deviceService.getDeviceCredentials(entityId.id,true).subscribe( async function (rCredentials) {
-                        console.log('rCredentials',rCredentials);
-                        const token = rCredentials.credentialsId;
-                        await postTelemetry(valuesHash, token);
-                })
             }
         ); 
-        
+
         async function postTelemetry(telemetryData, token) {
-          const url = `https://${window.location.host}/api/v1/${token}/telemetry`;
-          const response = await fetch(url, {
+        const url = `https://${window.location.host}/api/v1/${token}/telemetry`;
+        const response = await fetch(url, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(telemetryData),
-          });
-          
-          if (response.ok) { console.log(response.status, 'Telemetry posted successfully', telemetryData); }
-          else { console.log('Failed to post telemetry:', response.status); }
+        });
+        
+        if (response.ok) { console.log(response.status, 'Telemetry posted successfully', telemetryData); }
+        else { console.log('Failed to post telemetry:', response.status); }
         }
     }
 
