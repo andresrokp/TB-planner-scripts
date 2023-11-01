@@ -155,6 +155,14 @@ function variablesProcessing(){
     //----------------------------------------------------------
     //GEOFENCES
     if(metadata.geofenceIds){
+        
+        // A logging schema to debug. HAVE TO DELETE THIS PROPS IN NEXT NODE SCRIPT!!
+        msg.logToDeleteOriginalMeta = metadata.geofenceIds;
+        msg.logToDeleteJSON = JSON.parse(metadata.geofenceIds).toString();
+        msg.logToDeleteReplace = metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','');
+        msg.logToDeleteOriginalData = msg.geofenceIds;
+        msg.logToDeleteStringData = msg.geofenceIds.toString();
+        
         if(metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','') == msg.geofenceIds.toString())
             { delete msg.geofenceIds }
     }
@@ -182,6 +190,10 @@ function variablesProcessing(){
             56: "MEX",
             57: "Terminal 2", //GDL
             58: "Terminal 1", //GDL
+            59: "Terminal 1", //BOG
+            60: "T. Carga",
+            61: "Terminal 2", //BOG
+            62: "BOG"
         };
         msg.geofenceIds.forEach( function (e,i)
             {
@@ -207,9 +219,6 @@ function variablesProcessing(){
     //ACCELERATIONS
     var resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
     msg.resultanteXYZ = Math.floor(resultanteXYZ*10)/10;
-
-    //TODO: refactor the repetition filtering
-    // >> An iteration over an array of keys
 
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
