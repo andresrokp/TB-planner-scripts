@@ -247,6 +247,13 @@ function longStringsSanitizer() {
         }
     }
     
+    // DELETION OF THE LOGGING STRATEGY FROM PREVIOUS NODE SCRIPT
+    delete msg.logToDeleteOriginalMeta;
+    delete msg.logToDeleteJSON;
+    delete msg.logToDeleteReplace;
+    delete msg.logToDeleteOriginalData;
+    delete msg.logToDeleteStringData;
+    
     return {msg: msg, metadata: metadata, msgType: msgType};
 }
 
