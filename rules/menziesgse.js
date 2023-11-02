@@ -156,12 +156,12 @@ function variablesProcessing(){
     //GEOFENCES
     if(metadata.geofenceIds){
         
-        // A logging schema to debug. HAVE TO DELETE THIS PROPS IN NEXT NODE SCRIPT!!
-        msg.logToDeleteOriginalMeta = metadata.geofenceIds;
-        msg.logToDeleteJSON = JSON.parse(metadata.geofenceIds).toString();
-        msg.logToDeleteReplace = metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','');
-        msg.logToDeleteOriginalData = msg.geofenceIds;
-        msg.logToDeleteStringData = msg.geofenceIds.toString();
+        // A logging schema to debug
+        // msg.logToDeleteOriginalMeta = metadata.geofenceIds;
+        // msg.logToDeleteJSON = JSON.parse(metadata.geofenceIds).toString();
+        // msg.logToDeleteReplace = metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','');
+        // msg.logToDeleteOriginalData = msg.geofenceIds;
+        // msg.logToDeleteStringData = msg.geofenceIds.toString();
         
         if(metadata.geofenceIds.replaceAll('"','').replace('[','').replace(']','') == msg.geofenceIds.toString())
             { delete msg.geofenceIds }
@@ -219,6 +219,45 @@ function variablesProcessing(){
     //ACCELERATIONS
     var resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
     msg.resultanteXYZ = Math.floor(resultanteXYZ*10)/10;
+
+    //----------------------------------------------------------
+    //KILOMETRAJE
+    // Function to calculate geodetic distance between two points
+    function calculateDistance(lat1, lon1, alt1, lat2, lon2, alt2) {
+        // Define the WGS84 parameters
+        var WGS84 = {
+        a: 6378137,  // Semi-major axis (equatorial radius) in meters
+        b: 6356752.3142,  // Semi-minor axis (polar radius) in meters
+        };
+        // Convert latitude and longitude from degrees to radians
+        var lat1Rad = lat1 * (Math.PI / 180);
+        var lon1Rad = lon1 * (Math.PI / 180);
+        var lat2Rad = lat2 * (Math.PI / 180);
+        var lon2Rad = lon2 * (Math.PI / 180);
+        // Calculate the differences in latitude and longitude
+        var dLat = lat2Rad - lat1Rad;
+        var dLon = lon2Rad - lon1Rad;
+        // Calculate the haversine of half the differences
+        var a = Math.pow(Math.sin(dLat / 2),2) + Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.pow( Math.sin(dLon / 2) , 2);
+        // Calculate the central angle using the haversine formula
+        var centralAngle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        // Calculate the distance on the ellipsoid's surface
+        var surfaceDistance = WGS84.a * centralAngle;
+        // Calculate the altitude difference
+        // var altDiff = Math.abs(alt2 - alt1);
+        // Calculate the geodetic distance considering altitude
+        // var geodeticDistance = Math.sqrt(surfaceDistance ** 2 + altDiff ** 2);
+        
+        return surfaceDistance; //geodeticDistance
+    }
+
+    // Ejecución:
+    msg.lat1 = parseFloat(msg.latitude);
+    msg.lon1 = parseFloat(msg.longitude);
+    msg.lat2 = parseFloat(metadata.latitude.replace(/"/g, ""));
+    msg.lon2 = parseFloat(metadata.longitude.replace(/"/g, ""));
+    var deltaDistancia = calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0);
+    msg.deltaDistancia = deltaDistancia;
 
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
