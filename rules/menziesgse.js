@@ -254,12 +254,14 @@ function variablesProcessing(){
     // Ejecución:
     msg.lat1 = parseFloat(msg.latitude);
     msg.lon1 = parseFloat(msg.longitude);
-    msg.lat2 = parseFloat(metadata.latitude.replace(/"/g, ""));
-    msg.lon2 = parseFloat(metadata.longitude.replace(/"/g, ""));
+
+    msg.lat2 = parseFloat(( metadata.latitude||msg.latitude.toString() ).replace(/"/g, ""));
+    msg.lon2 = parseFloat(( metadata.longitude||msg.longitude.toString() ).replace(/"/g, ""));
+
     var deltaDistancia = calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0);
     msg.deltaDistancia = deltaDistancia;
 
-    var prevAcumuladoDistancia = parseFloat(metadata.acumuladoDistancia.replace(/"/g, "") || '0');
+    var prevAcumuladoDistancia = parseFloat((metadata.acumuladoDistancia || "0").replace(/"/g, ""));
     var acumuladoDistancia = prevAcumuladoDistancia + deltaDistancia;
     msg.acumuladoDistancia = acumuladoDistancia;
 
