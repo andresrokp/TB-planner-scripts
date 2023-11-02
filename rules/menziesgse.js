@@ -259,6 +259,10 @@ function variablesProcessing(){
     var deltaDistancia = calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0);
     msg.deltaDistancia = deltaDistancia;
 
+    var prevAcumuladoDistancia = parseFloat(metadata.acumuladoDistancia.replace(/"/g, "") || '0');
+    var acumuladoDistancia = prevAcumuladoDistancia + deltaDistancia;
+    msg.acumuladoDistancia = acumuladoDistancia;
+
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
