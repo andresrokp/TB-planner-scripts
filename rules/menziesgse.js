@@ -261,8 +261,8 @@ function variablesProcessing(){
     var deltaDistancia = calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0);
     msg.deltaDistancia = deltaDistancia;
 
-    var prevAcumuladoDistancia = parseFloat((metadata.acumuladoDistancia || "0").replace(/"/g, ""));
-    var acumuladoDistancia = prevAcumuladoDistancia + deltaDistancia;
+    var prevAcumuladoDistancia = parseFloat((metadata.acumuladoDistancia || "0.00012345").replace(/"/g, ""));
+    var acumuladoDistancia = prevAcumuladoDistancia + (deltaDistancia || 0);
     msg.acumuladoDistancia = acumuladoDistancia;
 
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
