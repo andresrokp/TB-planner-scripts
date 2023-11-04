@@ -48,3 +48,13 @@ function resultadosTablita() {
     }
     
 }
+
+function auxDash_alarmas_renderDetalles(){
+    var noCumpleList = [];
+
+    for (var prop in value){
+        if (value[prop] === 0) noCumpleList.push(prop);
+    }
+
+    return '<b>-' + noCumpleList.join('<br>-') + '</b>';
+}
