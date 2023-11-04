@@ -193,7 +193,13 @@ function variablesProcessing(){
             59: "Terminal 1", //BOG
             60: "T. Carga",
             61: "Terminal 2", //BOG
-            62: "BOG"
+            62: "BOG",
+            63: "SJD-Ciudad, San Bernabé",
+            64: "SJD-Ciudad, San José Viejo",
+            65: "SJD-Ciudad, El Zacatal",
+            66: "SJD-Ciudad, Santa Rosa",
+            69: "SJD-Ciudad, Las Veredas",
+            70: "CUN"
         };
         msg.geofenceIds.forEach( function (e,i)
             {
@@ -258,12 +264,12 @@ function variablesProcessing(){
     msg.lat2 = parseFloat(( metadata.latitude||msg.latitude.toString() ).replace(/"/g, ""));
     msg.lon2 = parseFloat(( metadata.longitude||msg.longitude.toString() ).replace(/"/g, ""));
 
-    var deltaDistancia = calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0);
+    var deltaDistancia = Math.round( calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0) * 100) / 100000; //Km
     msg.deltaDistancia = deltaDistancia;
 
-    var prevAcumuladoDistancia = parseFloat((metadata.acumuladoDistancia || "0.00012345").replace(/"/g, ""));
+    var prevAcumuladoDistancia = parseFloat((metadata.acumuladoDistancia || "0").replace(/"/g, ""));
     var acumuladoDistancia = prevAcumuladoDistancia + (deltaDistancia || 0);
-    msg.acumuladoDistancia = acumuladoDistancia;
+    msg.acumuladoDistancia = Math.round( acumuladoDistancia * 10000 ) / 10000;
 
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
