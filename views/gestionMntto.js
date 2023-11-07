@@ -16,7 +16,7 @@ function auxDash_simpleCard_settings_widgetCss() {
     }
 }
 
-function auxDash_updtLumtAtts_settings_widgetCss() {
+function auxDash_updMultAtts_settings_widgetCss() {
     return`
         /* leverage the state psudo class and take the elements acording to its enabling */
 
@@ -37,11 +37,16 @@ function auxDash_updtLumtAtts_settings_widgetCss() {
 }
 
 
-function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_setValue() {
+function auxDash_multAttsUpdate_inputHorasProxMto_getValue() {
+    // Esto es suceptible al orden de los campos en los datasource
+    // data posee los datos originales de la DDBB antes de entrar a la vm de Angular
+
+    // valor en el input disabled de la derecha
+    let hrsProxMntoA = ctx.data[5].data[0][1]
+    // valor en el input disabled arriba; del alternador
     let hrsActuales = Math.floor(ctx.data[2].data[0][1]/3600)
-    let hrsToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['5'];
-    
-    return Math.floor(hrsActuales + hrsToNext);
+
+    return hrsProxMntoA - hrsActuales;
 }
 
 function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_fecha_setValue() {
