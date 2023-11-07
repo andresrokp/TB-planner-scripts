@@ -61,6 +61,20 @@ function auxDash_multAttsUpdate_viewProxEnHrs_setValue() {
     return Math.floor(hrsActuales + hrsToNext);
 }
 
+function auxDash_multAttsUpdate_inputSemanasProx_getValue() {
+    //helper: take millis > calc diference > round up
+    function calculateWeeksDifference(date1, date2) {
+        const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000;
+        const timeDifference = date2 - date1;
+        const weeksDifference = timeDifference / millisecondsInWeek;
+        return Math.round(weeksDifference * 100) / 100;
+    }
+    
+    const fechaProxMntto = new Date(ctx.data[7].data[0][1] || 1);
+    const fechaActual = new Date();
+    return calculateWeeksDifference(fechaActual, fechaProxMntto);
+}
+
 function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_fecha_setValue() {
     // Get both sides of the month variable
     const monthsLoadedDDBB = ctx.data[5].data[0][1];
