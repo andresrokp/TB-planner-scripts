@@ -49,6 +49,18 @@ function auxDash_multAttsUpdate_inputHorasProxMto_getValue() {
     return hrsProxMntoA - hrsActuales;
 }
 
+function auxDash_multAttsUpdate_viewProxEnHrs_setValue() {
+    // Se actualiza solo al guardar la Form
+
+    // toma lo que marca el alternador de la DDBB
+    let hrsActuales = Math.floor(ctx.data[2].data[0][1]/3600)
+
+    //toma lo que está en el input de la Form de horas
+    let hrsToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['5'];
+
+    return Math.floor(hrsActuales + hrsToNext);
+}
+
 function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_fecha_setValue() {
     // Get both sides of the month variable
     const monthsLoadedDDBB = ctx.data[5].data[0][1];
