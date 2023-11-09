@@ -262,8 +262,8 @@ function variablesProcessing(){
     msg.lat1 = parseFloat(msg.latitude);
     msg.lon1 = parseFloat(msg.longitude);
 
-    msg.lat2 = parseFloat(( metadata.latitude||msg.latitude.toString() ).replace(/"/g, ""));
-    msg.lon2 = parseFloat(( metadata.longitude||msg.longitude.toString() ).replace(/"/g, ""));
+    msg.lat2 = parseFloat(( metadata.latitude|| (msg.latitude || '0').toString() ).replace(/"/g, ""));
+    msg.lon2 = parseFloat(( metadata.longitude|| (msg.longitude || '0').toString() ).replace(/"/g, ""));
 
     var deltaDistancia = Math.round( calculateDistance(msg.lat1, msg.lon1, 0, msg.lat2, msg.lon2, 0) * 100) / 100000; //Km
     msg.deltaDistancia = deltaDistancia;
