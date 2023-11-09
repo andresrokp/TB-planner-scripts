@@ -226,6 +226,7 @@ function variablesProcessing(){
     var resultanteXYZ = Math.sqrt(Math.pow(msg.axisX, 2) + Math.pow(msg.axisY, 2) + Math.pow(msg.axisZ, 2));
     msg.resultanteXYZ = Math.floor(resultanteXYZ*10)/10;
 
+
     //----------------------------------------------------------
     //KILOMETRAJE
     // Function to calculate geodetic distance between two points
@@ -270,6 +271,13 @@ function variablesProcessing(){
     var prevAcumuladoDistancia = parseFloat((metadata.acumuladoDistancia || "0").replace(/"/g, ""));
     var acumuladoDistancia = prevAcumuladoDistancia + (deltaDistancia || 0);
     msg.acumuladoDistancia = Math.round( acumuladoDistancia * 10000 ) / 10000;
+
+
+    //----------------------------------------------------------
+    //HOROMETRO
+
+    var ajusteHorometro = parseFloat((metadata.ss_ajusteHorometro || "0").replace(/"/g, ""));
+    msg.horometerAltAdjusted = msg.horometerAlt + ajusteHorometro;
 
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
