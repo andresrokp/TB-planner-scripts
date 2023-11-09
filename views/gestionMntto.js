@@ -51,13 +51,13 @@ function auxDash_multAttsUpdate_inputHorasProxMto_getValue() {
 
 function auxDash_multAttsUpdate_viewProxEnHrs_setValue() {
     // Se actualiza solo al guardar la Form
-
+    
     // toma lo que marca el alternador de la DDBB
     let hrsActuales = Math.floor(ctx.data[2].data[0][1]/3600)
-
+    
     //toma lo que está en el input de la Form de horas
     let hrsToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['5'];
-
+    
     return Math.floor(hrsActuales + hrsToNext);
 }
 
@@ -101,4 +101,23 @@ function auxDash_multAttsUpdate_dataDeltaHrsToNextMntto_getValue() {
 
 function auxDash_multAttsUpdate_dataEnTaller_setValue(){
     return !ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['1']
+}
+
+
+function auxDash_multAttsUpdate_inputKilometrosProxMto_getValue() {
+    // valor en el input disabled de la derecha
+    let kmProxMntoA = ctx.data[9].data[0][1];
+    // valor en el input disabled arriba; del alternador
+    let kmActuales = Math.round( ctx.data[3].data[0][1] );
+    
+    return (kmProxMntoA - kmActuales);
+}
+
+
+function auxDash_multAttsUpdate_viewProxKilometros_setValue() {
+    // toma lo que marca el km satelital de la DDBB
+    let kmActuales = Math.round( ctx.data[3].data[0][1] );
+    //toma lo que está en el input de la Form de km
+    let kmToNext = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['9'];
+    return kmActuales+kmToNext;
 }
