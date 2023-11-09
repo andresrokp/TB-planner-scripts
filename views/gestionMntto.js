@@ -75,21 +75,20 @@ function auxDash_multAttsUpdate_inputSemanasProx_getValue() {
     return calculateWeeksDifference(fechaActual, fechaProxMntto);
 }
 
-function auxDash_multAttsUpdate_dataAbsoluteProxMnttoA_fecha_setValue() {
-    // Get both sides of the month variable
-    const monthsLoadedDDBB = ctx.data[5].data[0][1];
-    const monthsInForm = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['6'];
-    // Tells is the user changed the input month
-    const userChangedMonths = (monthsLoadedDDBB != monthsInForm);
-
-    if (userChangedMonths) {
-        const ahora = new Date();
-        // add number of moths to today's date
-        const despues = new Date(ahora.setMonth( ahora.getMonth() + monthsInForm));
-        return despues;
-    }else{
-        return value;
+function auxDash_multAttsUpdate_viewProxSemanas_setValue() {
+    // helper: take millis > add dates
+    function calculateFutureDate(weeksToAdd) {
+        const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000; // Milliseconds in a week
+        const now = new Date(); // Get the current date
+        const futureDate = new Date(now.getTime() + weeksToAdd*millisecondsInWeek);
+        return futureDate;
     }
+    
+    // take value in the box
+    const weeksInForm = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['7'];
+    const futureDate = calculateFutureDate(weeksInForm);
+    
+    return futureDate;
 }
 
 
