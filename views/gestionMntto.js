@@ -77,16 +77,16 @@ function auxDash_multAttsUpdate_inputDiasProx_getValue() {
 
 function auxDash_multAttsUpdate_viewProxSemanas_setValue() {
     // helper: take millis > add dates
-    function calculateFutureDate(weeksToAdd) {
-        const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000; // Milliseconds in a week
+    function calculateFutureDate(daysToAdd) {
+        const millisecondsInDay = 24 * 60 * 60 * 1000; // Milliseconds in a day
         const now = new Date(); // Get the current date
-        const futureDate = new Date(now.getTime() + weeksToAdd*millisecondsInWeek);
+        const futureDate = new Date(now.getTime() + daysToAdd * millisecondsInDay);
         return futureDate;
     }
     
     // take value in the box
-    const weeksInForm = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['7'];
-    const futureDate = calculateFutureDate(weeksInForm);
+    const daysInForm = ctx.$scope.multipleInputWidget.multipleInputFormGroup.value['7'];
+    const futureDate = calculateFutureDate(daysInForm);
     
     return futureDate;
 }
