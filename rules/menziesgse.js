@@ -346,19 +346,13 @@ function filterNonLoggedDriverAlarm() {
 function filterScript_onlyiButtonTaller() {
     var msgMto = {};
 
-    if ( msg.driverName.test(/entrada/i) ) {
-        msgMto = {
-            enTaller: true,
-            enServicio: false
-        };
+    if ( /salida/i.test(msg.driverName) ) {
+        msgMto.isOperativo = true
     } else {
-        msgMto = {
-            enTaller: false,
-            enServicio: true
-        };
+        msgMto.isOperativo = false;
     }
     
-    return {msg: msgMto, metadata: metadata, msgType: "POST ATTRIBUTE DATA"};
+    return {msg: msgMto, metadata: metadata, msgType: "POST_ATTRIBUTES_REQUEST"};
 }
 
 
