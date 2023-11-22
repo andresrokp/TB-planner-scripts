@@ -61,18 +61,18 @@ function auxDash_multAttsUpdate_viewProxEnHrs_setValue() {
     return Math.floor(hrsActuales + hrsToNext);
 }
 
-function auxDash_multAttsUpdate_inputSemanasProx_getValue() {
+function auxDash_multAttsUpdate_inputDiasProx_getValue() {
     //helper: take millis > calc diference > round up
-    function calculateWeeksDifference(date1, date2) {
-        const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000;
+    function calculateDaysDifference(date1, date2) {
+        const millisecondsInDay = 24 * 60 * 60 * 1000; // Milliseconds in a day
         const timeDifference = date2 - date1;
-        const weeksDifference = timeDifference / millisecondsInWeek;
-        return Math.round(weeksDifference * 100) / 100;
+        const daysDifference = timeDifference / millisecondsInDay;
+        return Math.round(daysDifference);
     }
     
     const fechaProxMntto = new Date(ctx.data[7].data[0][1] || 1);
     const fechaActual = new Date();
-    return calculateWeeksDifference(fechaActual, fechaProxMntto);
+    return calculateDaysDifference(fechaActual, fechaProxMntto);
 }
 
 function auxDash_multAttsUpdate_viewProxSemanas_setValue() {
