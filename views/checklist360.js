@@ -395,10 +395,13 @@ function auxDash_checkInputForm () {
                     font-weight: 500;
                 }
     
-                /*Pinta todos los labels (letreritos de declaración) de todos los inputs*/
-                /*mat-label{*/
-                /*    color: red !important;*/
-                /*}*/
+                
+                /*Para mostrar corronchamente todo el texto de la pregunta*/
+                label{
+                    position: relative;     /*El label toma espacio real en el doc flow*/
+                    text-wrap: wrap;        /*Para bajar el texto en overflow de la view*/
+                    top: 0px !important;    /*Para quitar el desfase por defecto y alinearlo con la cajetilla*/
+                }
             `    
         }
         
