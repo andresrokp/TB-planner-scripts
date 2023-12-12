@@ -1,4 +1,5 @@
 const fs = require('fs');
+require('dotenv').config();
 
 function readDatakeyValuesArrayFromFile(filename) {
   try {
@@ -159,56 +160,60 @@ function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
 // --------- Inicio ejecución-----------
 
 
-// input datakey names json loading
-const inputFilename = 'others/widget-datakeys-generator/widgetDatakeys.json'; // Replace with the path to your JSON file
-const inputArray = readDatakeyValuesArrayFromFile(inputFilename);
-console.log(inputArray);
-// widget template loading
-const folderPath = 'others/widget-datakeys-generator/original_templates';
-const filesList = fs.readdirSync(folderPath);
-filesList.sort();
+// The file where lies the information to follow
+const inputDatakeysLabelsFilepath = 'others/widget-datakeys-generator/widgetDatakeys.json';
+const inputDatakeysLabelsArray = readDatakeyValuesArrayFromFile(inputDatakeysLabelsFilepath);
+console.log(inputDatakeysLabelsArray);
+
+// the Windows folder for web transactions
+const mainFolderPath = process.env.CHECKLIST_PATH;
+const inputJsonTemplatesDirName = mainFolderPath + 'original_templates/'
+const outputWidgetsDirName = mainFolderPath + 'generated_widgets/'
+// widget templates names loading
+const jsonTemplateFilenamesList = fs.readdirSync(inputJsonTemplatesDirName);
+jsonTemplateFilenamesList.sort();
 
 
-// Ordered array to associate generators and pick
+// ordered array to associate generators and slice. The order matter to comply with the sorted filenames
 const dataKeyGenerators = [
   {
     builder: turnToOperInputForm,
     headElements: 1, // elements to keep at the begining
     tailElements: 5, // elements in the original datakeys array to keep at the end
-    outFile: 'others/widget-datakeys-generator/1_operInputFormDatakeys.json',
+    outFile: outputWidgetsDirName + '1_operInputFormDatakeys.json',
   },
   {
     builder: turnToOperBuffer,
     headElements: 1, // mark the start of the splice
     tailElements: 5, // used to determine the quantity to delete in splice
-    outFile: 'others/widget-datakeys-generator/2_operBufferDatakeys.json',
+    outFile: outputWidgetsDirName + '2_operBufferDatakeys.json',
   },
   {
     builder: turnToAdminHistoryTablita,
     headElements: 0,
     tailElements: 4,
-    outFile: 'others/widget-datakeys-generator/3_adminHistoryTablitaDatakeys.json',
+    outFile: outputWidgetsDirName + '3_adminHistoryTablitaDatakeys.json',
   },
   {
     builder: turnToAdminPlotChart,
     headElements: 0,
     tailElements: 0,
-    outFile: 'others/widget-datakeys-generator/4_adminPlotChartDatakeys.json',
+    outFile: outputWidgetsDirName + '4_adminPlotChartDatakeys.json',
   },
 ];
 
 
 // iterate over the widgets and process it
-filesList
+jsonTemplateFilenamesList
   .filter(file => file.endsWith('.json'))
-  .forEach( ( file, idx ) =>{
+  .forEach( ( filename, idx ) =>{
 
-    const widgetPath = `${folderPath}/${file}`;
+    const widgetPath = `${mainFolderPath}/${filename}`;
     const wg = readDatakeyValuesArrayFromFile(widgetPath);
 
     const dataKeyGenerator = dataKeyGenerators[idx];
     colorIndex = 0;
-    const generatedDatakeys = inputArray.map(dataKeyGenerator.builder);
+    const generatedDatakeys = inputDatakeysLabelsArray.map(dataKeyGenerator.builder);
     let wgCurrentDatakeys = wg.widget.config.datasources[0].dataKeys
     const start = dataKeyGenerator.headElements;
     const toDelete = wgCurrentDatakeys.length - dataKeyGenerator.headElements - dataKeyGenerator.tailElements;
