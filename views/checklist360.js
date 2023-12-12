@@ -128,6 +128,10 @@ function auxDash_BufferAttsCardTable () {
                 color: #1F3567;
                 font-weight: 600;
             }
+
+            td{
+                text-wrap: wrap;
+            }
         `        
     }
     
