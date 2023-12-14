@@ -34,7 +34,9 @@ function auxDash_BufferAttsCardTable () {
         // console.log('valuesAsString',valuesAsString)
         const valuesToPrint = valuesAsString.replaceAll('"','').replaceAll(',','').replace('{','').replace('}','').replace('IMGURL',imgurl);
         // console.log('valuesToPrint',valuesToPrint)
-                    
+
+        // - Data saving -
+
         // >Get all widget's datakey names
         let keys = widgetContext.datasources[0].dataKeys.map(dk => dk.name);
         // console.log('-----------------\nkeys',keys)
@@ -46,7 +48,7 @@ function auxDash_BufferAttsCardTable () {
         // >Get SERVER attributes
         attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', keys).subscribe(
             async function(atts){
-                console.log('loaded atts',atts);
+                // console.log('loaded atts',atts);
                 
                 // await new Promise(resolve => setTimeout(resolve, 500)); 
                 
@@ -61,38 +63,47 @@ function auxDash_BufferAttsCardTable () {
                         valuesArrayForApi.push({key:keyPkg.key, value:keyPkg.value});
                     }
                 }
+                
+                // Adjustment for post Rule Chain
                 let nowDate = new Date().getTime();
                 valuesHashForPost.ts_id = nowDate;
                 valuesHashForPost.isCheck = true;
+
                 console.log('valuesHashForPost',valuesHashForPost);
                 console.log('valuesArrayForApi',valuesArrayForApi);
                 
-                // TODO: calc performance
+                // TODO: calc performance and REFACTOR
                 
-                // >SAVE esa vaina
-                attributeService.saveEntityTimeseries(entityId, 'ANY', valuesArrayForApi)
-                .subscribe( function(resp){
-                    // console.log('resp',resp);
+                // >SAVE esa vaina por rest, quitar la foto para que la RuCh no colapse
+                delete valuesHashForPost.fotografia;
+                deviceService.getDeviceCredentials(entityId.id,true).subscribe( async function (rCredentials) {
+                    // console.log('rCredentials',rCredentials);
+                    const token = rCredentials.credentialsId;
+                    // console.log('valuesHashForPost',valuesHashForPost);
+                    const r = await postTelemetry(valuesHashForPost, token);
+                    // console.log('r',r);
                     
-                    // >Triggers a feedback dialog
-                    widgetContext.dialogs.alert('Datos guardados correctamente',`<pre>${valuesToPrint}</pre>`).subscribe();
                     
-                    // ---------- Clear Form ----------
-                    // >Format keys list as obj array
-                    keys = keys.map(k => ({'key':k}));
-                    // >Delete and then refresh
-                    attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
-                    .subscribe(function () {
-                        ()=>{setTimeout(widgetContext.updateAliases(),1500)};
-                    })
-                    
-                    // envío paralelo por rest, quitar la foto para que la RuCh no colapse
-                    delete valuesHashForPost.fotografia;
-                    deviceService.getDeviceCredentials(entityId.id,true).subscribe( async function (rCredentials) {
-                            console.log('rCredentials',rCredentials);
-                            const token = rCredentials.credentialsId;
-                            await postTelemetry(valuesHashForPost, token);
-                    });
+                    // envío paralelo por API.
+                    if (r){
+                        attributeService.saveEntityTimeseries(entityId, 'ANY', valuesArrayForApi)
+                        .subscribe( function(resp){
+                            // console.log('resp',resp);
+                            
+                            // >Triggers a feedback dialog
+                            widgetContext.dialogs.alert('Datos guardados correctamente',`<pre>${valuesToPrint}</pre>`).subscribe();
+                            
+                            // // ---------- Clear Form ----------
+                            // // >Format keys list as obj array
+                            // keys = keys.map(k => ({'key':k}));
+                            // // >Delete and then refresh
+                            // attributeService.deleteEntityAttributes(entityId, 'SERVER_SCOPE', keys)
+                            // .subscribe(function () {
+                            //     ()=>{setTimeout(widgetContext.updateAliases(),1500)};
+                            // })
+                                    
+                        });
+                    }
                 });
                 
             }
@@ -108,6 +119,8 @@ function auxDash_BufferAttsCardTable () {
         
         if (response.ok) { console.log(response.status, 'Telemetry posted successfully', telemetryData); }
         else { console.log('Failed to post telemetry:', response.status); }
+        
+        return response;
         }
     }
 
