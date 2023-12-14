@@ -130,20 +130,27 @@ function variablesProcessing(){
 
     //----------------------------------------------------------
     //DRIVER
-    if(metadata.driverUniqueId){
-        if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
-            delete msg.driverUniqueId;
-    }
+    // Si hay registro del tracker
     if(msg.driverUniqueId)
     {
+        // Si hay un tag:user en el customer atts
         if (metadata.driverData){
             var driverData = JSON.parse(metadata.driverData);
             msg.driverName = driverData.nombreEmpleado;
         }else{
+            // no hay un tag:user en el customer att
             msg.driverName = 'Usuario desconocido'
         }
-        if (msg.buzzer) msg.driverName = 'Conductor no logueado'
+        // Si el tracker manda señal de buzzer
+        if (msg.buzzer) msg.driverName = 'Conductor no logueado';
+        // Si terminó habiendo un nombre escrito
+        if(msg.driverName && metadata.driverUniqueId){
+            // si el tag no está repetido reciente, asinga onChange
+            if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
+                msg.driverNameOnChange = msg.driverName;
+        }
     }
+
 
     // //----------------------------------------------------------
     // //IGNITION
