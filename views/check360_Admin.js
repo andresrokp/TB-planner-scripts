@@ -58,3 +58,21 @@ function auxDash_alarmas_renderDetalles(){
 
     return '<b>-' + noCumpleList.join('<br>-') + '</b>';
 }
+
+function aux_dash_reg_table_info_button(params) {
+    let pairs = [
+        { short: 'Header 1', full: 'Pregunta completa 1' },
+        { short: 'Header 2', full: 'Pregunta completa 2' },
+        { short: 'Header 3', full: 'Pregunta completa 3' }
+      ];
+      
+      let content = `
+        <div style="max-width: 400px; margin: 0 auto;">
+          <ul style="list-style: none; padding: 0;">
+            ${pairs.map(pair => `<li><strong>${pair.short}:</strong> ${pair.full}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      
+      widgetContext.dialogs.alert('Relaciones de Cabeceras', content).subscribe();
+}
