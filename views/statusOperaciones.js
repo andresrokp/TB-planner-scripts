@@ -12,3 +12,26 @@ function sateliteMap(params) {
     }
 
 }
+
+function aux_dash(params) {
+
+    function mapa_historial_ubicacion(params) {
+        
+        function tooltip(params) {
+            
+            return /*
+                <b>${entityName}</b>
+                <br/>
+                <br/><b>Conductor:</b> ${driverName}
+                <br/><b>Ubicación:</b> ${geofenceNames}
+                <br/><b>Combustible:</b> ${fuel}
+                <br/><b>Kilometraje:</b> ${acumuladoDistancia}
+                <br/><b>Horómetro:</b> ${horometerAltAdjusted}
+                <br/><b>Velocidad:</b> ${speed:1}
+                <br/><b>Aceleración:</b> ${resultanteXYZ:1} mg
+                <br/><b>Btn Emergencias:</b> ${emergency}
+            */
+        }
+    }
+    
+}
