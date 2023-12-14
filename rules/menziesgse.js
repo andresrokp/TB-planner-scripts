@@ -145,9 +145,12 @@ function variablesProcessing(){
         if (msg.buzzer) msg.driverName = 'Conductor no logueado';
         // Si terminó habiendo un nombre escrito
         if(msg.driverName && metadata.driverUniqueId){
-            // si el tag no está repetido reciente, asinga onChange
+            // genera un replica de nombres
+            msg.driverNameOnChange = msg.driverName;
+            // si el tag está repetido reciente
             if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
-                msg.driverNameOnChange = msg.driverName;
+                // borra la replica si ya estaba recientemente
+                delete msg.driverNameOnChange
         }
     }
 
