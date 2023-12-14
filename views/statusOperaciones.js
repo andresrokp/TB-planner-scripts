@@ -11,6 +11,17 @@ function sateliteMap(params) {
         return "<div style='position: relative; white-space: nowrap; text-align: center; font-size: 10px; top: 25px;'><span style='margin-left: -500%;'></span><div style='border: solid "+color+"; border-radius: 5px; color: "+color+"; background-color: #fff; '>${entityName}</div><span style='margin-right: -500%;'></span></div>";
     }
 
+    function label_function(params) {
+        var active = dsData[dsIndex]['active'];
+        var emergency = dsData[dsIndex]['emergency'];
+        var color = '#f16362';
+        if (active === "true") color = '#328322';
+        if (active === "false") color = '#616161';
+        if (emergency === 1) color = '#f16362';
+        
+        return "<div style='position: relative; white-space: nowrap; text-align: center; font-size: 10px; top: 25px;'><span style='margin-left: -500%;'></span><div style='border: solid "+color+"; border-radius: 5px; color: "+color+"; background-color: #fff; '>${entityName}</div><span style='margin-right: -500%;'></span></div>";
+    }
+
     function marker_image(params) {
         // console.log("~~ data", data)
         // console.log("~~ dsData", dsData)
