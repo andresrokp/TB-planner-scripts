@@ -42,21 +42,31 @@
       "setAccessToken": false,
       "childMenuItems": [
         {
-          "name": "Checklist 360",
-          "iconUrl": null,
-          "materialIcon": "fact_check",
-          "iframeUrl": "",
-          "dashboardId": "cc4cadc0-e44f-11ed-9b83-e14509358390",
-          "hideDashboardToolbar": false,
-          "setAccessToken": false,
-          "childMenuItems": []
-        },
-        {
           "name": "Reporte de Estatus GSE",
           "iconUrl": null,
           "materialIcon": "equalizer",
           "iframeUrl": "",
           "dashboardId": "d302c2c0-e455-11ed-9b83-e14509358390",
+          "hideDashboardToolbar": false,
+          "setAccessToken": false,
+          "childMenuItems": []
+        },
+        {
+          "name": "Gestión MNTTO",
+          "iconUrl": null,
+          "materialIcon": "engineering",
+          "iframeUrl": "",
+          "dashboardId": "0731b4c0-791b-11ee-9b0b-51a9a928a995",
+          "hideDashboardToolbar": false,
+          "setAccessToken": false,
+          "childMenuItems": []
+        },
+        {
+          "name": "Checklist 360",
+          "iconUrl": null,
+          "materialIcon": "fact_check",
+          "iframeUrl": "",
+          "dashboardId": "cc4cadc0-e44f-11ed-9b83-e14509358390",
           "hideDashboardToolbar": false,
           "setAccessToken": false,
           "childMenuItems": []
@@ -93,7 +103,7 @@
       "setAccessToken": false,
       "childMenuItems": [
         {
-          "name": "Tracking GSE",
+          "name": "Seguimiento GSE",
           "iconUrl": null,
           "materialIcon": "pin_drop",
           "iframeUrl": "",
@@ -148,7 +158,7 @@
           "iconUrl": null,
           "materialIcon": "flight_land",
           "iframeUrl": "",
-          "dashboardId": "83f72970-39f8-11ee-9a5a-27a2b74c1c5f",
+          "dashboardId": "00a0c770-3edf-11ee-9a5a-27a2b74c1c5f",
           "hideDashboardToolbar": false,
           "setAccessToken": false,
           "childMenuItems": []
