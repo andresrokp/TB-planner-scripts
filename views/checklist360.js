@@ -69,6 +69,14 @@ function auxDash_BufferAttsCardTable () {
                 valuesHashForPost.ts_id = nowDate;
                 valuesHashForPost.isCheck = true;
 
+                
+                //Adjustment for DDBB % cumplimiento
+                const relevantChecklistItems = valuesArrayForApi.filter(item => item.value === "0" || item.value === "1");
+                const totalItems = relevantChecklistItems.length;
+                const cumplimientoItems = relevantChecklistItems.filter(item => item.value === "1").length;
+                const porcentajeCumplimiento = (cumplimientoItems / totalItems) * 100;
+                valuesArrayForApi.push({key:"porcentajeCumplimiento", value:porcentajeCumplimiento});
+
                 console.log('valuesHashForPost',valuesHashForPost);
                 console.log('valuesArrayForApi',valuesArrayForApi);
                 
