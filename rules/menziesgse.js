@@ -133,24 +133,28 @@ function variablesProcessing(){
     // Si hay registro del tracker
     if(msg.driverUniqueId)
     {
-        // Si hay un tag:user en el customer atts
+        // Si hay una relación tag:user en el customer atts
         if (metadata.driverData){
             var driverData = JSON.parse(metadata.driverData);
             msg.driverName = driverData.nombreEmpleado;
         }else{
             // no hay un tag:user en el customer att
-            msg.driverName = 'Usuario desconocido'
+            msg.driverName = 'Tag no registrado';
         }
         // Si el tracker manda señal de buzzer
-        if (msg.buzzer) msg.driverName = 'Conductor no logueado';
+        if (msg.buzzer){
+            msg.driverName = 'Conductor no logueado';
+            msg.driverUniqueId = 'no_log_tag';
+        }
         // Si terminó habiendo un nombre escrito
-        if(msg.driverName && metadata.driverUniqueId){
-            // genera un replica de nombres
-            msg.driverNameOnChange = msg.driverName;
-            // si el tag está repetido reciente
-            if(metadata.driverUniqueId.replaceAll('"','') == msg.driverUniqueId)
-                // borra la replica si ya estaba recientemente
-                delete msg.driverNameOnChange
+        
+        // Si hubo un registro antes, mirar si genera el de cambio
+        if(metadata.driverName){
+            // si el tag NO está repetido reciente
+            if(metadata.driverName.replaceAll('"','') !== msg.driverName){
+                // Genera la replica en el registro de cambio
+                msg.driverNameOnChange = msg.driverName;
+            }
         }
     }
 
