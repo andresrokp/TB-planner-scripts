@@ -65,6 +65,14 @@ function filterOnlyScheduledInsideTime(msg, metadata) {
     var isInAvianca = patterns.some(function(e){
         e.test(msg.aircraft_registration);
     });
+    
+    var isFedex = msg.airline_name.toLowerCase() == 'fedex';
+    
+    var isAvianca = /avianca/i.test(msg.airline_name);
+    
+    var isAerounion = /aerounion/i.test(msg.airline_name);
+    
+    return isInAvianca || isFedex || isAvianca || isAerounion; 
 }
 
 function msgTransformationToTelemetry(msg) {
