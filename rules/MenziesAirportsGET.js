@@ -43,16 +43,28 @@ let msg = {
 }
 
 function filterOnlyScheduledInsideTime(msg, metadata) {
-    var offset = parseInt(metadata.utcTimeOffset);
+    // TO FILTER FLIGTHS IN A TIME RANGE
+    // var offset = parseInt(metadata.utcTimeOffset);
+    // var presentTime = new Date().getTime();
+    // var intervalStart = presentTime +  (-0.2 + offset)*60*60*1000;
+    // var intervalEnd = presentTime +  (12 + offset)*60*60*1000;
+    // var scheduledTime = new Date(msg.arrival.scheduledTime).getTime();
+    // var isInTime = scheduledTime > intervalStart && scheduledTime < intervalEnd; 
 
-    var presentTime = new Date().getTime();
+    var patterns = [
+        /^N[^\w]*3[^\w]*3[^\w]*0[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*1[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*2[^\w]*Q[^\w]*T$/,
+        /^X[^\w]*A[^\w]*E[^\w]*F[^\w]*R$/,
+        /^N[^\w]*3[^\w]*3[^\w]*3[^\w]*Q[^\w]*T$/,
+        /^X[^\w]*A[^\w]*U[^\w]*Y[^\w]*R$/,
+        /^N[^\w]*3[^\w]*3[^\w]*4[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*5[^\w]*Q[^\w]*T$/,
+    ];
     
-    var intervalStart = presentTime +  (-2 + offset)*60*60*1000;
-    var intervalEnd = presentTime +  (48 + offset)*60*60*1000;
-    
-    var scheduledTime = new Date(msg.arrival.scheduledTime).getTime();
-    
-    return scheduledTime > intervalStart && scheduledTime < intervalEnd; 
+    var isInAvianca = patterns.some(function(e){
+        e.test(msg.aircraft_registration);
+    });
 }
 
 function msgTransformationToTelemetry(msg) {
