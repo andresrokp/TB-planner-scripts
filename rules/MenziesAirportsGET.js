@@ -41,6 +41,7 @@ let msg = {
         "terminal": "2"
     }
 }
+
 function filterOnlyScheduledInsideTime(msg, metadata) {
     var offset = parseInt(metadata.utcTimeOffset);
 
@@ -54,21 +55,19 @@ function filterOnlyScheduledInsideTime(msg, metadata) {
     return scheduledTime > intervalStart && scheduledTime < intervalEnd; 
 }
 
-
-
 function msgTransformationToTelemetry(msg) {
     var msgForTelemetry = {
-        airlineIataCode : msg.airline.iataCode,
-        airlineName : msg.airline.name,
-        departureIataCode : msg.departure.iataCode,
-        arrivalIataCode : msg.arrival.iataCode,
-        arrivalScheduledTime : msg.arrival.scheduledTime,
-        arrivalEstimatedTime : msg.arrival.estimatedTime,
-        arrivalGate : msg.arrival.gate,
-        arrivalBaggage : msg.arrival.baggage,
-        flightIataNumber : msg.flight.iataNumber,
-        flightStatus : msg.status,
+        ts : Date.now(),
+        values:{
+            flightIataNumber : msg.flight_number,
+            aircraft_registration : msg.aircraft_registration,
+            airlineName : msg.airline_name,
+            departureIataCode : msg.origin,
+            arrivalScheduledTime : msg.arrival_time,
+            arrivalEstimatedTime : msg.eta_time,
+            flightStatus : msg.status_text
+        }
     };
     
-    return {msg: msgForTelemetry, metadata: metadata, msgType: msgType};    
+    return {msg: msgForTelemetry, metadata: {}, msgType: msgType};  
 }
