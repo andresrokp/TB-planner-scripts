@@ -3,37 +3,35 @@ function main_table() {
     
     function action_generateQrCode(params) {
 
+        // console.log('widgetContext',widgetContext);
+        console.log('additionalParams',additionalParams);
 
-        function mainTable_rowActionButton_generateQRCode() {
+        let data = {...additionalParams.entity};
 
-            // console.log('widgetContext',widgetContext);
-            console.log('additionalParams',additionalParams);
-        
-            let data = {...additionalParams.entity};
-        
-            //remove standard values, and only leave the column named values
-            delete data.actionCellButtons
-            delete data.hasActions
-            delete data.entityLabel;
-            delete data.entityType;
-            delete data.id;
-            delete data.entityName;
-            let infoPrint = JSON.stringify(data,null,4);
-            infoPrint = infoPrint.replaceAll('"','').replace('{','').replace('}','')
-        
-            // data needed to dash jump
-            const estacion = additionalParams.entity['Estación'];
-            let infoFetch = encodeURIComponent(JSON.stringify({entityId,entityName,estacion}));
-        
-            let imgStyles="display: block; margin-left: auto; margin-right: auto;";
-        
-            widgetContext.dialogs
-            .alert('QR Generado',
-                `<br><img style="${imgStyles}" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${infoFetch}">
-                <pre>${infoPrint}</pre>`)
-            .subscribe();
-        }
+        //remove standard values, and only leave the column named values
+        delete data.actionCellButtons
+        delete data.hasActions
+        delete data.entityLabel;
+        delete data.entityType;
+        delete data.id;
+        delete data.entityName;
+        let infoPrint = JSON.stringify(data,null,4);
+        infoPrint = infoPrint.replaceAll('"','').replace('{','').replace('}','')
 
+        // data needed to dash jump
+        const estacion = additionalParams.entity['Estación'];
+        const gseType = additionalParams.entity['Tipo GSE'];
+        let infoFetch = encodeURIComponent(JSON.stringify({entityId,entityName,estacion,gseType}));
+
+
+
+        let imgStyles="display: block; margin-left: auto; margin-right: auto;";
+
+        widgetContext.dialogs
+        .alert('QR Generado',
+            `<br><img style="${imgStyles}" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${infoFetch}">
+            <pre>${infoPrint}</pre>`)
+        .subscribe();
 
     }
 }
