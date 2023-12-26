@@ -1,310 +1,310 @@
-identifier,short,question,qPosition,gseCode,gseType,checkRelated,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,4,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-frenoMano,Freno de mano,¿Está funcionando el freno de mano/estacionamiento adecuadamente?,6,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-brazoEngancheRemolque,Brazo y enganche de remolque,¿Están el brazo de remolque y el enganche de remolque en buenas condiciones y sin daños?,7,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",8,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-conexionesMangueraCabezal,Cables y conexiones de cabezal,¿Están en buenas condiciones las conexiones de la manguera y el cabezal?,9,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",10,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,4,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-frenoEstacionamiento,Freno de estacionamiento,¿Está funcionando el freno de estacionamiento?,5,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-barraTiro,Barra de tiro,¿La barra de tiro gira suevemente durante su manipulacion?,6,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",7,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-galometroManometro,Galómetro y monómetro,¿El galometro y manometro funcionan correctamente?,8,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-mangueraSuministro,Manguera de suministro,¿La manguera de suministro de agua potable se encuentra en buenas condiciones y sin signos visibles de infeccion?,9,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",10,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"PWC,WSC",CART - WATER,Agua Potable Remolcable,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,4,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-frenoEstacionamiento,Freno de estacionamiento,¿Está funcionando el freno de estacionamiento?,5,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-barraTiro,Barra de tiro,¿La barra de tiro gira suevemente durante su manipulacion?,6,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",7,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-galometroManometro,Galómetro y monómetro,¿El galometro y manometro funcionan correctamente?,8,LSC,,Aguas Negras Remolcable,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",9,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-mangueraBoquilla,Manguera y boquilla,¿Están la manguera y boquilla de eliminación de heces en condiciones de servicio?,10,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,LSC,CART - LAVATORY,Aguas Negras Remolcable,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,4,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-frenoMano,Freno de mano,¿Está funcionando el freno de mano/estacionamiento adecuadamente?,6,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-brazoEngancheRemolque,Brazo y enganche de remolque,¿Están el brazo de remolque y el enganche de remolque en buenas condiciones y sin daños?,7,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",8,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-conexionesMangueraCabezal,Cables y conexiones de cabezal,¿Están en buenas condiciones las conexiones de la manguera y el cabezal?,9,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",10,"ASU,GP",CART - AIR START UNIT (ASU),ASU,
-estadoGeneral,Estado General,"¿Está bien el estado general, es decir, sin daños?",1,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",3,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-frenoEstacionamiento,Freno de estacionamiento,¿Funciona correctamente el freno de estacionamiento?,4,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,5,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-cortinasBarras,Cortinas y barras deslizantes,¿Compruebe la fijacion de las cortinas y barras deslizantes?,6,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-tapasCojinetes,Tapas de los cojinetes,¿Están las tapas de los cojinetes de las ruedas en su lugar y presentes?,7,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-engancheTrasero,Enganche trasero,¿Está el enganche trasero en buenas condiciones de funcionamiento y equipado con bloqueo positivo (pasador accionado por resorte)?,8,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,9,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-libreCorrosion,Libre de corrosión,Esta libre de corrosion el piso y/o techo?,10,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad del operador?,5,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-cinturonConductor,Cinturones y abrazaderas,¿Están funcionando todos los cinturones de seguridad de los pasajeros?,6,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,10,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave?,11,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-barandelasSeguridad,Barandales de seguridad,¿Los barandales de seguridad funcionan sin daños?,12,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-sistemaAproximacion,Sistema de aproximación,¿Existe un sistema de aproximación de aeronaves instalado y en funcionamiento? Aplicable desde 2018,13,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,14,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",15,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,16,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",17,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,BUS,BUS - PASSENGER,Coach - Autobus,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,BUS,BUS - PASSENGER,Coach - Autobus,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,BUS,BUS - PASSENGER,Coach - Autobus,
-pasamanosCorreas,Pasamanos y correas,¿Están en buenas condiciones los pasamanos y correas dentro del autobús?,4,BUS,BUS - PASSENGER,Coach - Autobus,
-estadoGeneralInterior,Estado general al interior,"¿El estado general dentro del autobús es bueno, p.e. libre de FOD?",5,BUS,BUS - PASSENGER,Coach - Autobus,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,6,BUS,BUS - PASSENGER,Coach - Autobus,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad [área del conductor]?,7,BUS,BUS - PASSENGER,Coach - Autobus,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,8,BUS,BUS - PASSENGER,Coach - Autobus,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,9,BUS,BUS - PASSENGER,Coach - Autobus,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,10,BUS,BUS - PASSENGER,Coach - Autobus,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,11,BUS,BUS - PASSENGER,Coach - Autobus,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,12,BUS,BUS - PASSENGER,Coach - Autobus,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,BUS,BUS - PASSENGER,Coach - Autobus,
-limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Los limpiaparabrisas y el lavaparabrisas funcionan [motorizados]?,14,BUS,BUS - PASSENGER,Coach - Autobus,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,BUS,BUS - PASSENGER,Coach - Autobus,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,CBL,LOADER - BELT,Conveyor,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,CBL,LOADER - BELT,Conveyor,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,CBL,LOADER - BELT,Conveyor,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,CBL,LOADER - BELT,Conveyor,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,5,CBL,LOADER - BELT,Conveyor,
-gomaDelantera,Protección de goma delantera,"¿Hay protección de goma en la parte delantera, p. Ruedas de protección y ¿el estado es bueno?",6,CBL,LOADER - BELT,Conveyor,
-sistemaAproximacion,Sistema de aproximación,¿Existe un sistema de aproximación de aeronaves instalado y en funcionamiento? Aplicable desde 2017,7,CBL,LOADER - BELT,Conveyor,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,8,CBL,LOADER - BELT,Conveyor,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,9,CBL,LOADER - BELT,Conveyor,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,10,CBL,LOADER - BELT,Conveyor,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",11,CBL,LOADER - BELT,Conveyor,
-aceleradorCorreas,Acelerador y correas WASP/FAST,"¿Está funcionando el control del acelerador en el conveyor, incluidas las correas WASP/FAST?",12,CBL,LOADER - BELT,Conveyor,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,13,CBL,LOADER - BELT,Conveyor,
-barandelasExtension,Barandales con extensiones,¿Hay barandales equipados con extensiones para mitigar el espacio con el fuselaje en ambos lados?,14,CBL,LOADER - BELT,Conveyor,
-pasamanos,Pasamanos,¿Funcionan los pasamanos plegables/desplegables [cuando corresponda]?,15,CBL,LOADER - BELT,Conveyor,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,16,CBL,LOADER - BELT,Conveyor,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",17,CBL,LOADER - BELT,Conveyor,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",18,CBL,LOADER - BELT,Conveyor,
-calzosGoma,Calzos de goma,¿Están los calzos en su lugar y son de goma?,19,CBL,LOADER - BELT,Conveyor,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",20,CBL,LOADER - BELT,Conveyor,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-gomaDelantera,Protección de goma delantera,"¿Hay protección de goma en la parte delantera, p. Ruedas de protección y ¿el estado es bueno?",5,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",6,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de mano/estacionamiento)?,7,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-barandelasExtension,Barandales con extensiones,¿Hay barandales equipados con extensiones para mitigar el espacio con el fuselaje en ambos lados?,8,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-pasamanos,Pasamanos,¿Funcionan los pasamanos plegables/desplegables [cuando corresponda]?,9,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-barraTiroOjillo,Bara de tiro y ojillo,¿La barra de tiro y ojillo se encuentran en buena condiciones?,10,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",11,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-calzosGoma,Calzos de goma,¿Están los calzos en su lugar y son de goma?,13,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",14,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,DCR,CART - DE ICER,De-Icer,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,DCR,CART - DE ICER,De-Icer,*Comparten sigla
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,DCR,CART - DE ICER,De-Icer,
-barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,4,DCR,CART - DE ICER,De-Icer,
-frenoEstacionamiento,Freno de estacionamiento,¿Está funcionando el freno de estacionamiento?,5,DCR,CART - DE ICER,De-Icer,
-barraTiro,Barra de tiro,¿La barra de tiro gira suevemente durante su manipulacion?,6,DCR,CART - DE ICER,De-Icer,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",7,DCR,CART - DE ICER,De-Icer,
-pistolaPresion,Pistola de alta presión,¿Funcionan correctamente la pistola de alta presion?,8,DCR,CART - DE ICER,De-Icer,
-indicadorTemperatura,Indicador de temperatura,¿Funciona correctamente el indicador de temperatura?,9,DCR,CART - DE ICER,De-Icer,
-mangueraBoquilla,Manguera y boquilla,¿Están la manguera y boquilla de eliminación de heces en condiciones de servicio?,10,DCR,CART - DE ICER,De-Icer,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",11,DCR,CART - DE ICER,De-Icer,
-extensionElectrica,Extensión eléctrica,¿La extension electrica se encuentra libre de cortes y daños?,12,DCR,CART - DE ICER,De-Icer,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",13,DCR,CART - DE ICER,De-Icer,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",4,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-frenoEstacionamiento,Freno de estacionamiento,¿Funciona correctamente el freno de estacionamiento?,5,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-casterLibre,Caster y libre,¿Estan en buenas condiciones los casters y rodillos?,6,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-segurosGuias,Seguros y guías,¿Estan operativos los seguros y guias de carga y libres de daños?,7,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-tapasCojinetes,Tapas de cojinetes,¿Están las tapas de los cojinetes de las ruedas en su lugar y presentes?,8,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-engancheTrasero,Enganche trasero,¿Está el enganche trasero en buenas condiciones de funcionamiento y equipado con bloqueo positivo (pasador accionado por resorte)?,9,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,10,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,4,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-estabilizadores,Estabilizadores,¿Están los estabilizadores funcionando y sin daños?,9,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-pasamanos,Pasamanos,¿Están los pasamanos libres de daños?,10,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-panelesLaterales,Paneles laterales,¿Están los paneles laterales superiores deslizantes libres de daños y funcionando?,11,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-sistemaBloqueoPanel,Sistema de bloqueo de panel,¿Hay instalado un sistema de bloqueo Anderson [cuando corresponda] o un sistema inhibidor de panel deslizante superior para garantizar que los paneles estén completamente retraídos?,12,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,13,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",14,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,15,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave?,16,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-sistemaBloqueoPanel,Sistema de bloqueo de panel,¿Existe un sistema de aproximación de aeronaves instalado [aplicable desde 2018] y en funcionamiento?,17,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",18,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Los limpiaparabrisas y el lavaparabrisas funcionan [motorizados]?,19,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",20,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",21,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PST,EM,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan?,4,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-estabilizadores,Estabilizadores,¿Están los cuatro estabilizadores funcionando y sin daños?,5,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-pasamanos,Pasamanos,¿Están los pasamanos libres de daños?,6,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-panelesLaterales,Paneles laterales,¿Están los paneles laterales superiores deslizantes libres de daños y funcionando?,7,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-correaTrasera,Correa colocada,¿Hay una correa colocada en la parte trasera de las escaleras para controlar el acceso?,8,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, etc.?",9,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-tapasCojinetes,Tapas de cojinetes,¿Están las tapas de los cojinetes de las ruedas en su lugar y presentes?,10,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave en barandales y plataforma?,11,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,12,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-trinquete,Trinquete,Cuenta con trinquete (ganchos) accionados por resorte que se bloquean en el sistema de altura de la escalera?,13,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",14,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"GPU,PE",CART - GPU,GPU,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"GPU,PE",CART - GPU,GPU,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"GPU,PE",CART - GPU,GPU,
-bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,4,"GPU,PE",CART - GPU,GPU,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"GPU,PE",CART - GPU,GPU,
-frenoMano,Freno de mano,¿Está funcionando el freno de mano/estacionamiento adecuadamente?,6,"GPU,PE",CART - GPU,GPU,
-brazoEngancheRemolque,Brazo y enganche de remolque,¿Están el brazo de remolque y el enganche de remolque en buenas condiciones y sin daños?,7,"GPU,PE",CART - GPU,GPU,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",8,"GPU,PE",CART - GPU,GPU,
-conexionesMangueraCabezal,Cables y conexiones de cabezal,¿Están los cables y las conexiones del cabezal en buenas condiciones?,9,"GPU,PE",CART - GPU,GPU,
-bloqueoMagneticoCable,Bloqueo magnético o de cable de seguridad,¿Está funcionando el sistema de bloqueo magnético o de cable de seguridad?,10,"GPU,PE",CART - GPU,GPU,
-calcetin,Calcetín,¿Hay un calcetin instalado sobre el brazo de remolque para advertir que se desconecten los cables antes de partir?,11,"GPU,PE",CART - GPU,GPU,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,"GPU,PE",CART - GPU,GPU,
-calzosGoma,Calzos de goma,¿Están los calzos en su lugar y son de goma?,13,"GPU,PE",CART - GPU,GPU,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",14,"GPU,PE",CART - GPU,GPU,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-cinturonConductor,Cinturón de seguridad,¿El cinturón de seguridad del conductor está instalado y funcionando?,4,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-impermeabilizacion,Impermeabilización,"¿Está la impermeabilización de los interruptores y controles del tablero en buenas condiciones, sin daños visibles y funcionando correctamente?",6,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave?,10,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-sistemaAproximacion,Sistema de aproximación,¿Existe un sistema de aproximación de aeronaves instalado [aplicable desde 2017] y en funcionamiento?,11,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-alarmaPlataformaTorreta,Alarma de plataforma y torreta,"¿Está activada la alarma de la plataforma trasera o el aviso visible, p. ¿Funciona la torreta?",12,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,13,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,14,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",15,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",16,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",17,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",18,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"MC,FLT",FORKLIFT,Montacargas,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"MC,FLT",FORKLIFT,Montacargas,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"MC,FLT",FORKLIFT,Montacargas,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,4,"MC,FLT",FORKLIFT,Montacargas,
-torreta,Torreta,¿Funciona correctamente la torreta?,5,"MC,FLT",FORKLIFT,Montacargas,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,"MC,FLT",FORKLIFT,Montacargas,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,"MC,FLT",FORKLIFT,Montacargas,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,"MC,FLT",FORKLIFT,Montacargas,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, etc.?",9,"MC,FLT",FORKLIFT,Montacargas,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,10,"MC,FLT",FORKLIFT,Montacargas,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,11,"MC,FLT",FORKLIFT,Montacargas,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,"MC,FLT",FORKLIFT,Montacargas,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,"MC,FLT",FORKLIFT,Montacargas,
-funcionesHidraulicas,Funciones hidráulicas,¿Realiza todas las funciones hidrualicas sin ruidos extraños?,14,"MC,FLT",FORKLIFT,Montacargas,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,"MC,FLT",FORKLIFT,Montacargas,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,TS,TAIL STAND,Poste de Cola,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,TS,TAIL STAND,Poste de Cola,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,TS,TAIL STAND,Poste de Cola,
-tipoAvion,Tipo de avión en barra,¿Se muestra claramente el tipo de avión correcto en el poste de cola?,4,TS,TAIL STAND,Poste de Cola,
-topesDescanso,Topes de descanso,¿El soporte de la barra de remolque (topes de descanso) está libre de daños y en buenas condiciones?,5,TS,TAIL STAND,Poste de Cola,
-actuadorGas,Actuador de gas,Verifique el funcionamiento del actuador de gas comprimiendo el tubo deslizante hasta el area roja y asegurese que regrese a la zona verde.,6,TS,TAIL STAND,Poste de Cola,
-agarraderas,Agarraderas,Revisa que las agarraderas estén en buenas condiciones sin movimiento anormal.,7,TS,TAIL STAND,Poste de Cola,
-soporteNivelacion,Soporte de nivelación,Verifique si el soporte de nivelacion esta presente y funcionando.,8,TS,TAIL STAND,Poste de Cola,
-movimientoRuedas,Movimiento de ruedas,Verifique el libre movimiento de las ruedas.,9,TS,TAIL STAND,Poste de Cola,
-almohadillaPunta,Almohadilla de punta,Verifique que la almohadilla de la punta gura libremente.,10,TS,TAIL STAND,Poste de Cola,
-fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,TS,TAIL STAND,Poste de Cola,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-calcomaniaAvion,Calcomanía de avión aplicable,¿Hay una calcomania colocada para el operador que muestre el tipo de avion aplicable a este pushback?,4,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,6,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,10,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-engancheRemolque,Enganches de remolque,¿Están los enganches de remolque/empuje en buenas condiciones y sin daños?,11,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-indicadoresTuercas,Indicadores de tuercas,¿Hay indicadores de tuercas instalados para mostrar si alguna tuerca está floja?,12,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,13,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",14,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",15,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,16,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",17,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-tipoAvion,Tipo de avión en barra,¿Se muestra claramente el tipo de avión correcto en la barra?,4,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-topesDescanso,Topes de descanso,¿El soporte de la barra de remolque (topes de descanso) está libre de daños y en buenas condiciones?,5,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-pernosFusibles,Pernos fusibles,"¿Están los pernos fusibles en su lugar, giran libremente y tienen algún daño visible?",6,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-pasadorBloqueoCadena,Pasador de bloqueo y cadena,¿Están el pasador de bloqueo y la cadena de seguridad en su lugar y en buenas condiciones?,7,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-cabezalConexion,Cabezal de conexión,¿Está el cabezal de conexión de la barra de remolque en buenas condiciones y hay algún daño visible?,8,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-tapasCojinetes,Tapas de cojinetes,¿Están en su lugar las tapas de los cojinetes de las ruedas?,9,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",10,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,5,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,6,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, etc.?",10,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,11,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,12,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,14,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,5,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,9,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,10,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",11,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Los limpiaparabrisas y el lavaparabrisas funcionan [motorizados]?,12,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",13,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-mangueraBoquilla,Manguera y boquilla,¿Están la manguera y boquilla de eliminación de heces en condiciones de servicio?,14,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras,
-estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,4,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-torreta,Torreta,¿Funciona correctamente la torreta?,5,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, etc.?",9,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-direccion,Dirección,¿Está funcionando correctamente la dirección?,10,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,11,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-limpiaLavaParabrisas,Limpiaparabrisas y Lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,14,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
-fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto,
+identifier,short,question,qPosition,gseCode,gseType,checkRelated
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,4,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+frenoMano,Freno de mano,¿Está funcionando el freno de mano/estacionamiento adecuadamente?,6,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+brazoEngancheRemolque,Brazo y enganche de remolque,¿Están el brazo de remolque y el enganche de remolque en buenas condiciones y sin daños?,7,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",8,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+conexionesMangueraCabezal,Cables y conexiones de cabezal,¿Están en buenas condiciones las conexiones de la manguera y el cabezal?,9,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",10,"ACU,AC",CART - AIR CONDITION UNIT (ACU),ACU
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,4,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+frenoEstacionamiento,Freno de estacionamiento,¿Está funcionando el freno de estacionamiento?,5,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+barraTiro,Barra de tiro,¿La barra de tiro gira suevemente durante su manipulacion?,6,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",7,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+galometroManometro,Galómetro y monómetro,¿El galometro y manometro funcionan correctamente?,8,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+mangueraSuministro,Manguera de suministro,¿La manguera de suministro de agua potable se encuentra en buenas condiciones y sin signos visibles de infeccion?,9,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",10,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"PWC,WSC",CART - WATER,Agua Potable Remolcable
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,LSC,CART - LAVATORY,Aguas Negras Remolcable
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,LSC,CART - LAVATORY,Aguas Negras Remolcable
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,LSC,CART - LAVATORY,Aguas Negras Remolcable
+barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,4,LSC,CART - LAVATORY,Aguas Negras Remolcable
+frenoEstacionamiento,Freno de estacionamiento,¿Está funcionando el freno de estacionamiento?,5,LSC,CART - LAVATORY,Aguas Negras Remolcable
+barraTiro,Barra de tiro,¿La barra de tiro gira suevemente durante su manipulacion?,6,LSC,CART - LAVATORY,Aguas Negras Remolcable
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",7,LSC,CART - LAVATORY,Aguas Negras Remolcable
+galometroManometro,Galómetro y monómetro,¿El galometro y manometro funcionan correctamente?,8,LSC,,Aguas Negras Remolcable
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",9,LSC,CART - LAVATORY,Aguas Negras Remolcable
+mangueraBoquilla,Manguera y boquilla,¿Están la manguera y boquilla de eliminación de heces en condiciones de servicio?,10,LSC,CART - LAVATORY,Aguas Negras Remolcable
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,LSC,CART - LAVATORY,Aguas Negras Remolcable
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,4,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+frenoMano,Freno de mano,¿Está funcionando el freno de mano/estacionamiento adecuadamente?,6,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+brazoEngancheRemolque,Brazo y enganche de remolque,¿Están el brazo de remolque y el enganche de remolque en buenas condiciones y sin daños?,7,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",8,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+conexionesMangueraCabezal,Cables y conexiones de cabezal,¿Están en buenas condiciones las conexiones de la manguera y el cabezal?,9,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",10,"ASU,GP",CART - AIR START UNIT (ASU),ASU
+estadoGeneral,Estado General,"¿Está bien el estado general, es decir, sin daños?",1,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",3,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+frenoEstacionamiento,Freno de estacionamiento,¿Funciona correctamente el freno de estacionamiento?,4,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,5,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+cortinasBarras,Cortinas y barras deslizantes,¿Compruebe la fijacion de las cortinas y barras deslizantes?,6,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+tapasCojinetes,Tapas de los cojinetes,¿Están las tapas de los cojinetes de las ruedas en su lugar y presentes?,7,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+engancheTrasero,Enganche trasero,¿Está el enganche trasero en buenas condiciones de funcionamiento y equipado con bloqueo positivo (pasador accionado por resorte)?,8,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,9,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+libreCorrosion,Libre de corrosión,Esta libre de corrosion el piso y/o techo?,10,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"XQC,XQ,CB",CART - BAGGAGE,Carro Equipaje
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad del operador?,5,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+cinturonConductor,Cinturones y abrazaderas,¿Están funcionando todos los cinturones de seguridad de los pasajeros?,6,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,10,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave?,11,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+barandelasSeguridad,Barandales de seguridad,¿Los barandales de seguridad funcionan sin daños?,12,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+sistemaAproximacion,Sistema de aproximación,¿Existe un sistema de aproximación de aeronaves instalado y en funcionamiento? Aplicable desde 2018,13,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+direccion,Dirección,¿Está funcionando correctamente la dirección?,14,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",15,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,16,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",17,PWT,TRUCK - WATER,CATERING/CLEANING TRUCK - Camión de limpieza / Comisariato
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,BUS,BUS - PASSENGER,Coach - Autobus
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,BUS,BUS - PASSENGER,Coach - Autobus
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,BUS,BUS - PASSENGER,Coach - Autobus
+pasamanosCorreas,Pasamanos y correas,¿Están en buenas condiciones los pasamanos y correas dentro del autobús?,4,BUS,BUS - PASSENGER,Coach - Autobus
+estadoGeneralInterior,Estado general al interior,"¿El estado general dentro del autobús es bueno, p.e. libre de FOD?",5,BUS,BUS - PASSENGER,Coach - Autobus
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,6,BUS,BUS - PASSENGER,Coach - Autobus
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad [área del conductor]?,7,BUS,BUS - PASSENGER,Coach - Autobus
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,8,BUS,BUS - PASSENGER,Coach - Autobus
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,9,BUS,BUS - PASSENGER,Coach - Autobus
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,10,BUS,BUS - PASSENGER,Coach - Autobus
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,11,BUS,BUS - PASSENGER,Coach - Autobus
+direccion,Dirección,¿Está funcionando correctamente la dirección?,12,BUS,BUS - PASSENGER,Coach - Autobus
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,BUS,BUS - PASSENGER,Coach - Autobus
+limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Los limpiaparabrisas y el lavaparabrisas funcionan [motorizados]?,14,BUS,BUS - PASSENGER,Coach - Autobus
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,BUS,BUS - PASSENGER,Coach - Autobus
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,CBL,LOADER - BELT,Conveyor
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,CBL,LOADER - BELT,Conveyor
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,CBL,LOADER - BELT,Conveyor
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,CBL,LOADER - BELT,Conveyor
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,5,CBL,LOADER - BELT,Conveyor
+gomaDelantera,Protección de goma delantera,"¿Hay protección de goma en la parte delantera, p. Ruedas de protección y ¿el estado es bueno?",6,CBL,LOADER - BELT,Conveyor
+sistemaAproximacion,Sistema de aproximación,¿Existe un sistema de aproximación de aeronaves instalado y en funcionamiento? Aplicable desde 2017,7,CBL,LOADER - BELT,Conveyor
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,8,CBL,LOADER - BELT,Conveyor
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,9,CBL,LOADER - BELT,Conveyor
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,10,CBL,LOADER - BELT,Conveyor
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",11,CBL,LOADER - BELT,Conveyor
+aceleradorCorreas,Acelerador y correas WASP/FAST,"¿Está funcionando el control del acelerador en el conveyor, incluidas las correas WASP/FAST?",12,CBL,LOADER - BELT,Conveyor
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,13,CBL,LOADER - BELT,Conveyor
+barandelasExtension,Barandales con extensiones,¿Hay barandales equipados con extensiones para mitigar el espacio con el fuselaje en ambos lados?,14,CBL,LOADER - BELT,Conveyor
+pasamanos,Pasamanos,¿Funcionan los pasamanos plegables/desplegables [cuando corresponda]?,15,CBL,LOADER - BELT,Conveyor
+direccion,Dirección,¿Está funcionando correctamente la dirección?,16,CBL,LOADER - BELT,Conveyor
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",17,CBL,LOADER - BELT,Conveyor
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",18,CBL,LOADER - BELT,Conveyor
+calzosGoma,Calzos de goma,¿Están los calzos en su lugar y son de goma?,19,CBL,LOADER - BELT,Conveyor
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",20,CBL,LOADER - BELT,Conveyor
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+gomaDelantera,Protección de goma delantera,"¿Hay protección de goma en la parte delantera, p. Ruedas de protección y ¿el estado es bueno?",5,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",6,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de mano/estacionamiento)?,7,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+barandelasExtension,Barandales con extensiones,¿Hay barandales equipados con extensiones para mitigar el espacio con el fuselaje en ambos lados?,8,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+pasamanos,Pasamanos,¿Funcionan los pasamanos plegables/desplegables [cuando corresponda]?,9,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+barraTiroOjillo,Bara de tiro y ojillo,¿La barra de tiro y ojillo se encuentran en buena condiciones?,10,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",11,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+calzosGoma,Calzos de goma,¿Están los calzos en su lugar y son de goma?,13,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",14,CBL,LOADER - BELT TOWABLE,Conveyor Remolcable
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,DCR,CART - DE ICER,De-Icer
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,DCR,CART - DE ICER,De-Icer
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,DCR,CART - DE ICER,De-Icer
+barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,4,DCR,CART - DE ICER,De-Icer
+frenoEstacionamiento,Freno de estacionamiento,¿Está funcionando el freno de estacionamiento?,5,DCR,CART - DE ICER,De-Icer
+barraTiro,Barra de tiro,¿La barra de tiro gira suevemente durante su manipulacion?,6,DCR,CART - DE ICER,De-Icer
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",7,DCR,CART - DE ICER,De-Icer
+pistolaPresion,Pistola de alta presión,¿Funcionan correctamente la pistola de alta presion?,8,DCR,CART - DE ICER,De-Icer
+indicadorTemperatura,Indicador de temperatura,¿Funciona correctamente el indicador de temperatura?,9,DCR,CART - DE ICER,De-Icer
+mangueraBoquilla,Manguera y boquilla,¿Están la manguera y boquilla de eliminación de heces en condiciones de servicio?,10,DCR,CART - DE ICER,De-Icer
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",11,DCR,CART - DE ICER,De-Icer
+extensionElectrica,Extensión eléctrica,¿La extension electrica se encuentra libre de cortes y daños?,12,DCR,CART - DE ICER,De-Icer
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",13,DCR,CART - DE ICER,De-Icer
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",4,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+frenoEstacionamiento,Freno de estacionamiento,¿Funciona correctamente el freno de estacionamiento?,5,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+casterLibre,Caster y libre,¿Estan en buenas condiciones los casters y rodillos?,6,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+segurosGuias,Seguros y guías,¿Estan operativos los seguros y guias de carga y libres de daños?,7,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+tapasCojinetes,Tapas de cojinetes,¿Están las tapas de los cojinetes de las ruedas en su lugar y presentes?,8,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+engancheTrasero,Enganche trasero,¿Está el enganche trasero en buenas condiciones de funcionamiento y equipado con bloqueo positivo (pasador accionado por resorte)?,9,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,10,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"PC,DLL,PCA,DLL,DO,TP,DO3,DLL",DOLLY – XXX,Dolly
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,4,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+estabilizadores,Estabilizadores,¿Están los estabilizadores funcionando y sin daños?,9,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+pasamanos,Pasamanos,¿Están los pasamanos libres de daños?,10,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+panelesLaterales,Paneles laterales,¿Están los paneles laterales superiores deslizantes libres de daños y funcionando?,11,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+sistemaBloqueoPanel,Sistema de bloqueo de panel,¿Hay instalado un sistema de bloqueo Anderson [cuando corresponda] o un sistema inhibidor de panel deslizante superior para garantizar que los paneles estén completamente retraídos?,12,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+direccion,Dirección,¿Está funcionando correctamente la dirección?,13,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",14,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,15,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave?,16,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+sistemaBloqueoPanel,Sistema de bloqueo de panel,¿Existe un sistema de aproximación de aeronaves instalado [aplicable desde 2018] y en funcionamiento?,17,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",18,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Los limpiaparabrisas y el lavaparabrisas funcionan [motorizados]?,19,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",20,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",21,"PST,EM,PSM",STEPS - PASSENGER,Escalera Motorizada
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PST,EM,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+luces,Luces,¿Las luces están en buenas condiciones y funcionan?,4,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+estabilizadores,Estabilizadores,¿Están los cuatro estabilizadores funcionando y sin daños?,5,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+pasamanos,Pasamanos,¿Están los pasamanos libres de daños?,6,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+panelesLaterales,Paneles laterales,¿Están los paneles laterales superiores deslizantes libres de daños y funcionando?,7,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+correaTrasera,Correa colocada,¿Hay una correa colocada en la parte trasera de las escaleras para controlar el acceso?,8,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, etc.?",9,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+tapasCojinetes,Tapas de cojinetes,¿Están las tapas de los cojinetes de las ruedas en su lugar y presentes?,10,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave en barandales y plataforma?,11,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+barraTiro,Barra de tiro,¿Está la barra de tiro en buenas condiciones y sin signos visibles de daño (grietas/dobladuras/ojillo deformado)?,12,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+trinquete,Trinquete,Cuenta con trinquete (ganchos) accionados por resorte que se bloquean en el sistema de altura de la escalera?,13,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",14,"EHQ,PSP,EH,ADA,PSM",STEPS - PASSENGER TOWABLE,Escalera Remolcable
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"GPU,PE",CART - GPU,GPU
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"GPU,PE",CART - GPU,GPU
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"GPU,PE",CART - GPU,GPU
+bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,4,"GPU,PE",CART - GPU,GPU
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"GPU,PE",CART - GPU,GPU
+frenoMano,Freno de mano,¿Está funcionando el freno de mano/estacionamiento adecuadamente?,6,"GPU,PE",CART - GPU,GPU
+brazoEngancheRemolque,Brazo y enganche de remolque,¿Están el brazo de remolque y el enganche de remolque en buenas condiciones y sin daños?,7,"GPU,PE",CART - GPU,GPU
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",8,"GPU,PE",CART - GPU,GPU
+conexionesMangueraCabezal,Cables y conexiones de cabezal,¿Están los cables y las conexiones del cabezal en buenas condiciones?,9,"GPU,PE",CART - GPU,GPU
+bloqueoMagneticoCable,Bloqueo magnético o de cable de seguridad,¿Está funcionando el sistema de bloqueo magnético o de cable de seguridad?,10,"GPU,PE",CART - GPU,GPU
+calcetin,Calcetín,¿Hay un calcetin instalado sobre el brazo de remolque para advertir que se desconecten los cables antes de partir?,11,"GPU,PE",CART - GPU,GPU
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,"GPU,PE",CART - GPU,GPU
+calzosGoma,Calzos de goma,¿Están los calzos en su lugar y son de goma?,13,"GPU,PE",CART - GPU,GPU
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",14,"GPU,PE",CART - GPU,GPU
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+cinturonConductor,Cinturón de seguridad,¿El cinturón de seguridad del conductor está instalado y funcionando?,4,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+impermeabilizacion,Impermeabilización,"¿Está la impermeabilización de los interruptores y controles del tablero en buenas condiciones, sin daños visibles y funcionando correctamente?",6,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+topesGoma,Topes de goma,¿Están en buenas condiciones los topes de goma de protección de la aeronave?,10,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+sistemaAproximacion,Sistema de aproximación,¿Existe un sistema de aproximación de aeronaves instalado [aplicable desde 2017] y en funcionamiento?,11,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+alarmaPlataformaTorreta,Alarma de plataforma y torreta,"¿Está activada la alarma de la plataforma trasera o el aviso visible, p. ¿Funciona la torreta?",12,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,13,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+direccion,Dirección,¿Está funcionando correctamente la dirección?,14,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",15,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, palancas, etc.?",16,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",17,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",18,"RE,LDL,MDL,A01,LD",LOADER - XXX,Loader LDL/MDL
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"MC,FLT",FORKLIFT,Montacargas
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"MC,FLT",FORKLIFT,Montacargas
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"MC,FLT",FORKLIFT,Montacargas
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,4,"MC,FLT",FORKLIFT,Montacargas
+torreta,Torreta,¿Funciona correctamente la torreta?,5,"MC,FLT",FORKLIFT,Montacargas
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,"MC,FLT",FORKLIFT,Montacargas
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,"MC,FLT",FORKLIFT,Montacargas
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,"MC,FLT",FORKLIFT,Montacargas
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, etc.?",9,"MC,FLT",FORKLIFT,Montacargas
+direccion,Dirección,¿Está funcionando correctamente la dirección?,10,"MC,FLT",FORKLIFT,Montacargas
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,11,"MC,FLT",FORKLIFT,Montacargas
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,"MC,FLT",FORKLIFT,Montacargas
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,"MC,FLT",FORKLIFT,Montacargas
+funcionesHidraulicas,Funciones hidráulicas,¿Realiza todas las funciones hidrualicas sin ruidos extraños?,14,"MC,FLT",FORKLIFT,Montacargas
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,"MC,FLT",FORKLIFT,Montacargas
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,TS,TAIL STAND,Poste de Cola
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,TS,TAIL STAND,Poste de Cola
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,TS,TAIL STAND,Poste de Cola
+tipoAvion,Tipo de avión en barra,¿Se muestra claramente el tipo de avión correcto en el poste de cola?,4,TS,TAIL STAND,Poste de Cola
+topesDescanso,Topes de descanso,¿El soporte de la barra de remolque (topes de descanso) está libre de daños y en buenas condiciones?,5,TS,TAIL STAND,Poste de Cola
+actuadorGas,Actuador de gas,Verifique el funcionamiento del actuador de gas comprimiendo el tubo deslizante hasta el area roja y asegurese que regrese a la zona verde.,6,TS,TAIL STAND,Poste de Cola
+agarraderas,Agarraderas,Revisa que las agarraderas estén en buenas condiciones sin movimiento anormal.,7,TS,TAIL STAND,Poste de Cola
+soporteNivelacion,Soporte de nivelación,Verifique si el soporte de nivelacion esta presente y funcionando.,8,TS,TAIL STAND,Poste de Cola
+movimientoRuedas,Movimiento de ruedas,Verifique el libre movimiento de las ruedas.,9,TS,TAIL STAND,Poste de Cola
+almohadillaPunta,Almohadilla de punta,Verifique que la almohadilla de la punta gura libremente.,10,TS,TAIL STAND,Poste de Cola
+fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,TS,TAIL STAND,Poste de Cola
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+calcomaniaAvion,Calcomanía de avión aplicable,¿Hay una calcomania colocada para el operador que muestre el tipo de avion aplicable a este pushback?,4,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,5,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,6,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,10,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+engancheRemolque,Enganches de remolque,¿Están los enganches de remolque/empuje en buenas condiciones y sin daños?,11,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+indicadoresTuercas,Indicadores de tuercas,¿Hay indicadores de tuercas instalados para mostrar si alguna tuerca está floja?,12,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+direccion,Dirección,¿Está funcionando correctamente la dirección?,13,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",14,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",15,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,16,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",17,"PBT,PBT,TT",PUSHBACK - XXX,Pushback NB/WB
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+tipoAvion,Tipo de avión en barra,¿Se muestra claramente el tipo de avión correcto en la barra?,4,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+topesDescanso,Topes de descanso,¿El soporte de la barra de remolque (topes de descanso) está libre de daños y en buenas condiciones?,5,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+pernosFusibles,Pernos fusibles,"¿Están los pernos fusibles en su lugar, giran libremente y tienen algún daño visible?",6,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+pasadorBloqueoCadena,Pasador de bloqueo y cadena,¿Están el pasador de bloqueo y la cadena de seguridad en su lugar y en buenas condiciones?,7,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+cabezalConexion,Cabezal de conexión,¿Está el cabezal de conexión de la barra de remolque en buenas condiciones y hay algún daño visible?,8,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+tapasCojinetes,Tapas de cojinetes,¿Están en su lugar las tapas de los cojinetes de las ruedas?,9,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",10,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+fod,FOD,"¿El equipo se encuentra libre de FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",11,"HOQ,BP,HOD,HOR,HAD,TWP,TBP,A01,DL0,TB,TBR",TOW BAR,TOWBARS – Barra Remolque-Empuje
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,5,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+bumpersTecho,Bumpers techo,¿Hay protección de caucho (bumpers) para aviones en las esquinas del techo?,6,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,7,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,8,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,9,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, etc.?",10,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+direccion,Dirección,¿Está funcionando correctamente la dirección?,11,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,12,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,14,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,"XQT,TTQ",TRACTOR - BAGGAGE,Tractor de Equipaje/Carga
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+parosEmergencia,Paros de emergencia,¿Los paros de emergencia están en buenas condiciones y funcionando?,4,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,5,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,9,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+direccion,Dirección,¿Está funcionando correctamente la dirección?,10,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",11,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+limpiaLavaParabrisas,Limpiaparabrisas y lavaparabrisas,¿Los limpiaparabrisas y el lavaparabrisas funcionan [motorizados]?,12,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",13,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+mangueraBoquilla,Manguera y boquilla,¿Están la manguera y boquilla de eliminación de heces en condiciones de servicio?,14,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,LST,TRUCK - LAVATORY,TSU – Camion Aguas Negras
+estadoGeneral,Estado general,"¿Está bien el estado general, es decir, sin daños?",1,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+advertenciasSeguridad,Advertencias de seguridad,¿Están todas las advertencias de seguridad presentes y legibles?,2,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+calcomanias,Calcomanías,¿Las calcomanías especificadas actualmente están en buenas condiciones?,3,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+cinturonConductor,Cinturones de seguridad,¿Están colocados y funcionando los cinturones de seguridad?,4,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+torreta,Torreta,¿Funciona correctamente la torreta?,5,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+luces,Luces,¿Las luces están en buenas condiciones y funcionan [incluidas las luces de freno]?,6,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+lucesAlarmaReversa,Luces y alarma de reversa,¿Funciona la luz y alarma de reversa?,7,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+bocina,Bocina (pito),¿Funciona la bocina(pito)?,8,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+controlesInternos,Controles internos,"¿Están los controles internos en buenas condiciones, p. ¿Interruptores, instrumentos, etc.?",9,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+direccion,Dirección,¿Está funcionando correctamente la dirección?,10,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+frenos,Frenos,¿Están funcionando los frenos (incluido el freno de pedal/estacionamiento)?,11,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+extintor,Extintor,"¿Hay un extintor, está dentro de la fecha de caducidad, está lleno y todos los sellos están en su lugar?",12,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+neumaticos,Neumáticos,"¿Están los neumáticos en buenas condiciones, por ejemplo, dibujo, paredes laterales, inflado, etc.?",13,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+limpiaLavaParabrisas,Limpiaparabrisas y Lavaparabrisas,¿Funcionan los limpiaparabrisas y el lavaparabrisas?,14,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
+fugasDerramesFod,"Fugas, derrames y FOD","¿El equipo se encuentra libre de fugas, derrames visibles, FOD y se asegura que NO existan objetos sospechosos y/o prohibidos ocultos en el interior y exterior del equipo (guanteras(si aplica),salpicaderas, cabina, debajo de asientos, motor etc.)?",15,"VAN,PUT","VAN,CAR,TRUCK – PICK-UP,SUV",Van/Pick Up/Auto
