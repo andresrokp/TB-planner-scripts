@@ -160,47 +160,51 @@ function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
 // --------- Inicio ejecución-----------
 
 
+// GUIDING ARRAY
 // Load the JSON file where is the datakeys mapping to follow
-const inputDatakeysLabelsFilepath = __dirname+'/datakey-array-generator/check-datakeys-tree.json';
-const inputDatakeysLabelsArray = readDatakeyValuesArrayFromFile(inputDatakeysLabelsFilepath);
+const inputNamesLabelsFilepath = __dirname+'/datakey-array-generator/check-datakeys-tree.json';
+const inputNamesLabelsArray = readDatakeyValuesArrayFromFile(inputNamesLabelsFilepath);
+// console.log('inputNamesLabelsArray',inputNamesLabelsArray);
 
+// FILE NAMES ARRAY
 // Indicate Windows folders to read the templates and write results
 const mainFolderPath = process.env.CHECKLIST_PATH;
-const inputJsonTemplatesDirName = mainFolderPath + 'original_templates/'
+const inputWidgetTemplatesDirName = mainFolderPath + 'original_templates/'
 const outputWidgetsDirName = mainFolderPath + 'generated_widgets/'
 // Load all widget templates' filenames and sort them
-const jsonTemplateFilenamesList = fs.readdirSync(inputJsonTemplatesDirName);
+const jsonTemplateFilenamesList = fs.readdirSync(inputWidgetTemplatesDirName);
 jsonTemplateFilenamesList.sort();
+// console.log(jsonTemplateFilenamesList);
 
-console.log(jsonTemplateFilenamesList);
-
-// // ordered array to associate generators and slice. The order matter to comply with the sorted filenames
-// const dataKeyGenerators = [
-//   {
-//     builder: turnToOperInputForm,
-//     headElements: 1, // elements to keep at the begining
-//     tailElements: 5, // elements in the original datakeys array to keep at the end
-//     outFile: outputWidgetsDirName + '1_operInputFormDatakeys.json',
-//   },
-//   {
-//     builder: turnToOperBuffer,
-//     headElements: 1, // mark the start of the splice
-//     tailElements: 5, // used to determine the quantity to delete in splice
-//     outFile: outputWidgetsDirName + '2_operBufferDatakeys.json',
-//   },
-//   {
-//     builder: turnToAdminHistoryTablita,
-//     headElements: 0,
-//     tailElements: 4,
-//     outFile: outputWidgetsDirName + '3_adminHistoryTablitaDatakeys.json',
-//   },
-//   {
-//     builder: turnToAdminPlotChart,
-//     headElements: 0,
-//     tailElements: 0,
-//     outFile: outputWidgetsDirName + '4_adminPlotChartDatakeys.json',
-//   },
-// ];
+// BUILDERS DICTIONARY
+// Associate filename with builder and slice range
+const datakeysObjectBuilders = {
+  [jsonTemplateFilenamesList[0]]:{
+    builder: turnToOperInputForm,
+    headElements: 1, // elements to keep at the begining
+    tailElements: 5, // elements in the original datakeys array to keep at the end
+    outFile: outputWidgetsDirName + '1_operInputFormDatakeys.json',
+  },
+  [jsonTemplateFilenamesList[1]]:{
+    builder: turnToOperBuffer,
+    headElements: 1, // mark the start of the splice
+    tailElements: 5, // used to determine the quantity to delete in splice
+    outFile: outputWidgetsDirName + '2_operBufferDatakeys.json',
+  },
+  [jsonTemplateFilenamesList[2]]:{
+    builder: turnToAdminHistoryTablita,
+    headElements: 0,
+    tailElements: 4,
+    outFile: outputWidgetsDirName + '3_adminHistoryTablitaDatakeys.json',
+  },
+  [jsonTemplateFilenamesList[3]]:{
+    builder: turnToAdminPlotChart,
+    headElements: 0,
+    tailElements: 0,
+    outFile: outputWidgetsDirName + '4_adminPlotChartDatakeys.json',
+  },
+};
+console.log('datakeysObjectBuilders',datakeysObjectBuilders);
 
 
 // // iterate over the widgets and process it
