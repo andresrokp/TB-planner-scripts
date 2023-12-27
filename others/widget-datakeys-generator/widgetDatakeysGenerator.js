@@ -160,68 +160,68 @@ function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
 // --------- Inicio ejecución-----------
 
 
-// The file where lies the information to follow
-const inputDatakeysLabelsFilepath = 'others/widget-datakeys-generator/widgetDatakeys.json';
+// Load the JSON file where is the datakeys mapping to follow
+const inputDatakeysLabelsFilepath = __dirname+'/datakey-array-generator/check-datakeys-tree.json';
 const inputDatakeysLabelsArray = readDatakeyValuesArrayFromFile(inputDatakeysLabelsFilepath);
-console.log(inputDatakeysLabelsArray);
 
-// the Windows folder for web transactions
+// Indicate Windows folders to read the templates and write results
 const mainFolderPath = process.env.CHECKLIST_PATH;
 const inputJsonTemplatesDirName = mainFolderPath + 'original_templates/'
 const outputWidgetsDirName = mainFolderPath + 'generated_widgets/'
-// widget templates names loading
+// Load all widget templates' filenames and sort them
 const jsonTemplateFilenamesList = fs.readdirSync(inputJsonTemplatesDirName);
 jsonTemplateFilenamesList.sort();
 
+console.log(jsonTemplateFilenamesList);
 
-// ordered array to associate generators and slice. The order matter to comply with the sorted filenames
-const dataKeyGenerators = [
-  {
-    builder: turnToOperInputForm,
-    headElements: 1, // elements to keep at the begining
-    tailElements: 5, // elements in the original datakeys array to keep at the end
-    outFile: outputWidgetsDirName + '1_operInputFormDatakeys.json',
-  },
-  {
-    builder: turnToOperBuffer,
-    headElements: 1, // mark the start of the splice
-    tailElements: 5, // used to determine the quantity to delete in splice
-    outFile: outputWidgetsDirName + '2_operBufferDatakeys.json',
-  },
-  {
-    builder: turnToAdminHistoryTablita,
-    headElements: 0,
-    tailElements: 4,
-    outFile: outputWidgetsDirName + '3_adminHistoryTablitaDatakeys.json',
-  },
-  {
-    builder: turnToAdminPlotChart,
-    headElements: 0,
-    tailElements: 0,
-    outFile: outputWidgetsDirName + '4_adminPlotChartDatakeys.json',
-  },
-];
+// // ordered array to associate generators and slice. The order matter to comply with the sorted filenames
+// const dataKeyGenerators = [
+//   {
+//     builder: turnToOperInputForm,
+//     headElements: 1, // elements to keep at the begining
+//     tailElements: 5, // elements in the original datakeys array to keep at the end
+//     outFile: outputWidgetsDirName + '1_operInputFormDatakeys.json',
+//   },
+//   {
+//     builder: turnToOperBuffer,
+//     headElements: 1, // mark the start of the splice
+//     tailElements: 5, // used to determine the quantity to delete in splice
+//     outFile: outputWidgetsDirName + '2_operBufferDatakeys.json',
+//   },
+//   {
+//     builder: turnToAdminHistoryTablita,
+//     headElements: 0,
+//     tailElements: 4,
+//     outFile: outputWidgetsDirName + '3_adminHistoryTablitaDatakeys.json',
+//   },
+//   {
+//     builder: turnToAdminPlotChart,
+//     headElements: 0,
+//     tailElements: 0,
+//     outFile: outputWidgetsDirName + '4_adminPlotChartDatakeys.json',
+//   },
+// ];
 
 
-// iterate over the widgets and process it
-jsonTemplateFilenamesList
-  .filter(file => file.endsWith('.json'))
-  .forEach( ( filename, idx ) =>{
+// // iterate over the widgets and process it
+// jsonTemplateFilenamesList
+//   .filter(file => file.endsWith('.json'))
+//   .forEach( ( filename, idx ) =>{
 
-    const widgetPath = `${mainFolderPath}/${filename}`;
-    const wg = readDatakeyValuesArrayFromFile(widgetPath);
+//     const widgetPath = `${mainFolderPath}/${filename}`;
+//     const wg = readDatakeyValuesArrayFromFile(widgetPath);
 
-    const dataKeyGenerator = dataKeyGenerators[idx];
-    colorIndex = 0;
-    const generatedDatakeys = inputDatakeysLabelsArray.map(dataKeyGenerator.builder);
-    let wgCurrentDatakeys = wg.widget.config.datasources[0].dataKeys
-    const start = dataKeyGenerator.headElements;
-    const toDelete = wgCurrentDatakeys.length - dataKeyGenerator.headElements - dataKeyGenerator.tailElements;
-    wgCurrentDatakeys.splice(start, toDelete, ...generatedDatakeys);
+//     const dataKeyGenerator = dataKeyGenerators[idx];
+//     colorIndex = 0;
+//     const generatedDatakeys = inputDatakeysLabelsArray.map(dataKeyGenerator.builder);
+//     let wgCurrentDatakeys = wg.widget.config.datasources[0].dataKeys
+//     const start = dataKeyGenerator.headElements;
+//     const toDelete = wgCurrentDatakeys.length - dataKeyGenerator.headElements - dataKeyGenerator.tailElements;
+//     wgCurrentDatakeys.splice(start, toDelete, ...generatedDatakeys);
       
-    wg.widget.id = generateRandomLowercaseHexGuid();
+//     wg.widget.id = generateRandomLowercaseHexGuid();
         
-    writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
-})
+//     writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
+// })
 
-// console.log(widgetsJsonArray);
+// // console.log(widgetsJsonArray);
