@@ -1,7 +1,7 @@
 const fs = require('fs');
 require('dotenv').config();
 
-function readDatakeyValuesArrayFromFile(filename) {
+function readJsonFromFile(filename) {
   try {
     // read text, parse and return
     const jsonText = fs.readFileSync(filename,'utf-8');
@@ -163,21 +163,24 @@ function writeDatakeyJsonArrayToFile(myJsonArray, filename) {
 // GUIDING ARRAY
 // Load the JSON file where is the datakeys mapping to follow
 const inputNamesLabelsFilepath = __dirname+'/datakey-array-generator/check-datakeys-tree.json';
-const inputNamesLabelsArray = readDatakeyValuesArrayFromFile(inputNamesLabelsFilepath);
-// console.log('inputNamesLabelsArray',inputNamesLabelsArray);
+const inputNamesLabelsBigObjectOfArrays = readJsonFromFile(inputNamesLabelsFilepath);
+// console.log('inputNamesLabelsBigObjectOfArrays',inputNamesLabelsBigObjectOfArrays);
+
+const GSE_TYPE_TO_TAKE = 'TRACTOR - BAGGAGE';
+const inputNamesLabelsArray = inputNamesLabelsBigObjectOfArrays[GSE_TYPE_TO_TAKE];
 
 // FILE NAMES ARRAY
 // Indicate Windows folders to read the templates and write results
 const mainFolderPath = process.env.CHECKLIST_PATH;
-const inputWidgetTemplatesDirName = mainFolderPath + 'original_templates/'
-const outputWidgetsDirName = mainFolderPath + 'generated_widgets/'
+const inputWidgetTemplatesDirName = mainFolderPath + 'original_templates/';
+const outputWidgetsDirName = mainFolderPath + 'generated_widgets/';
 // Load all widget templates' filenames and sort them
 const jsonTemplateFilenamesList = fs.readdirSync(inputWidgetTemplatesDirName);
 jsonTemplateFilenamesList.sort();
 // console.log(jsonTemplateFilenamesList);
 
 // BUILDERS DICTIONARY
-// Associate filename with builder and slice range
+// Associate filename with its builder and its slice range (the algorithm should respect some static datakeys at extremes of the widget)
 const datakeysObjectBuilders = {
   [jsonTemplateFilenamesList[0]]:{
     builder: turnToOperInputForm,
@@ -204,28 +207,31 @@ const datakeysObjectBuilders = {
     outFile: outputWidgetsDirName + '4_adminPlotChartDatakeys.json',
   },
 };
-console.log('datakeysObjectBuilders',datakeysObjectBuilders);
+// console.log('datakeysObjectBuilders',datakeysObjectBuilders);
 
+// FULL-WIDGETS GENERATOR ENGINE LOOP
+// Take each widget template (filename) and generate the Full widget related to the inputJsonGuide
+jsonTemplateFilenamesList
+  .filter(file => file.endsWith('.json')) // exclude the .txt file in dir
+  .forEach( ( filename, idx ) =>{
+    
+    colorIndex = 0; // restart the global color counter
 
-// // iterate over the widgets and process it
-// jsonTemplateFilenamesList
-//   .filter(file => file.endsWith('.json'))
-//   .forEach( ( filename, idx ) =>{
+    // get wg and its datakeys array
+    const widgetFilePath = inputWidgetTemplatesDirName +'/'+filename;
+    const wg = readJsonFromFile(widgetFilePath);
+    let wgCurrentDatakeys = wg.widget.config.datasources[0].dataKeys
 
-//     const widgetPath = `${mainFolderPath}/${filename}`;
-//     const wg = readDatakeyValuesArrayFromFile(widgetPath);
-
-//     const dataKeyGenerator = dataKeyGenerators[idx];
-//     colorIndex = 0;
-//     const generatedDatakeys = inputDatakeysLabelsArray.map(dataKeyGenerator.builder);
-//     let wgCurrentDatakeys = wg.widget.config.datasources[0].dataKeys
-//     const start = dataKeyGenerator.headElements;
-//     const toDelete = wgCurrentDatakeys.length - dataKeyGenerator.headElements - dataKeyGenerator.tailElements;
-//     wgCurrentDatakeys.splice(start, toDelete, ...generatedDatakeys);
-      
-//     wg.widget.id = generateRandomLowercaseHexGuid();
-        
-//     writeDatakeyJsonArrayToFile(wg, dataKeyGenerator.outFile);
-// })
-
-// // console.log(widgetsJsonArray);
+    // DO STUFF :)
+    // get processing parameters
+    const dataKeyBuilder = datakeysObjectBuilders[filename];
+    const startIndex = dataKeyBuilder.headElements;
+    const numElmensToDelete = wgCurrentDatakeys.length - dataKeyBuilder.headElements - dataKeyBuilder.tailElements;
+    const generatedDatakeysArray = inputNamesLabelsArray.map(dataKeyBuilder.builder);
+    // replace existingVolatileDatakeys in the widgetTemplate's datakeysArray with the generatedDatakeys
+    wgCurrentDatakeys.splice(startIndex, numElmensToDelete, ...generatedDatakeysArray);
+    // make widget unique
+    wg.widget.id = generateRandomLowercaseHexGuid();
+    // save da' shi'
+    writeDatakeyJsonArrayToFile(wg, dataKeyBuilder.outFile);
+})
