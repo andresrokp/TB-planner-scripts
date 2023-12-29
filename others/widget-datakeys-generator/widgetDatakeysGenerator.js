@@ -114,10 +114,9 @@ function turnToAdminHistoryTablita(dataKey) {
     "label": dataKey.label,
     "color": colorList[colorIndex++],
     "settings": {
-      "useCellStyleFunction": true,
-      "cellStyleFunction": "if (value === 0) return {color:'red', fontWeight: 600};\r\nif (value === 1) return {fontWeight: 600};\r\nreturn {};",
+      "useCellStyleFunction": false,
       "useCellContentFunction": true,
-      "cellContentFunction": "const valueMap = {\r\n    1:\"C\",\r\n    0: \"NC\"\r\n};\r\nreturn valueMap[value] || \"NA\";"
+      "cellContentFunction": "return value == 0 ? '<img style=\"height:25px;\" src=\"https://www.sighums.com/menzies/assets/iconos/circulo_rojo.png\" />'\n    : value == 1 ? '<img style=\"height:25px;\" src=\"https://www.sighums.com/menzies/assets/iconos/check.png\" />'\n    : '-';"
     },
     "_hash": Math.random(),
     "aggregationType": null,
