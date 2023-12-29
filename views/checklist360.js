@@ -202,26 +202,61 @@ function mainTable_headerAction_readQrCode(params) {
 }
 
 function mainTable_rowClickAction_goToAuxDash() {
-    if (entityName.includes('GPU')) {
-        openDash('check_gpu');
-    } else if (entityName.includes('CBL')) {
-        openDash('check_belt');
-    } else if (entityName.includes('ASU')) {
-        openDash('check_asu');
-    } else if (entityName.includes('ACU')) {
+    // console.log('widgetContext',widgetContext);
+    // console.log('additionalParams',additionalParams);
+
+    const tipoGse = additionalParams.entity['Tipo GSE'];
+    const estacion = additionalParams.entity['Estación'];
+
+
+    if (estacion == 'BOG' || additionalParams['Estación'] == 'MED') {
+        openDash('check_gse_colombia');
+    } else if (tipoGse == 'CART - AIR CONDITION UNIT (ACU)') {
         openDash('check_acu');
-    } else if (entityName.includes('MC-')) {
-        openDash('check_forklift');
-    } else if (entityName.includes('PUT')) {
-        openDash('check_car');
-    } else if (entityName.includes('LSC')) {
-        openDash('check_lav');
-    } else if (entityName.includes('PST')) {
-        openDash('check_steps');
+    } else if (tipoGse == 'CART - WATER') {
+        openDash('check_agua_pot_rem__cart_water');
+    } else if (tipoGse == 'CART - LAVATORY') {
+        openDash('checklist_aguas_neg_rem__cart_lavatory');
+    } else if (tipoGse == 'CART - AIR START UNIT (ASU)') {
+        openDash('check_asu');
+    } else if (tipoGse == 'CART - BAGGAGE') {
+        openDash('check_carro_equipaje__cart_baggage');
+    } else if (tipoGse == 'TRUCK - WATER') {
+        openDash('check_camion_limp_comi__truck_water');
+    } else if (tipoGse == 'BUS - PASSENGER') {
+        openDash('check_coach_autobus__bus_passenger');
+    } else if (tipoGse == 'LOADER - BELT') {
+        openDash('check_conv_mot__loader_belt');
+    } else if (tipoGse == 'LOADER - BELT TOWABLE') {
+        openDash('check_conv_remol__loader_belt_towable');
+    } else if (tipoGse == 'CART - DE ICER') {
+        openDash('check_de_icer__cart_deicer');
+    } else if (tipoGse == 'DOLLY – XXX') {
+        openDash('check_dolly__dolly_xxx');
+    } else if (tipoGse == 'STEPS - PASSENGER') {
+        openDash('check_esc_motor__steps_passengers');
+    } else if (tipoGse == 'STEPS - PASSENGER TOWABLE') {
+        openDash('checklist_esc_remol__steps_pass_towa');
+    } else if (tipoGse == 'CART - GPU') {
+        openDash('check_gpu');
+    } else if (tipoGse.includes('LOADER')) {
+        openDash('check_loader_ldl_mdl__loader_xxx');
+    } else if (tipoGse == 'FORKLIFT') {
+        openDash('check_montacarga__forklift');
+    } else if (tipoGse == 'TAIL STAND') {
+        openDash('check_poste_cola__tail_stand');
+    } else if (tipoGse.includes('PUSHBACK')) {
+        openDash('check_pushback_nb_wb__pushback_xxx');
+    } else if (tipoGse == 'TOW BAR') {
+        openDash('check_barra_remolque_empuje__tow_bar');
+    } else if (tipoGse == 'TRACTOR - BAGGAGE') {
+        openDash('check_tractor_equip_carga__tractor_baggage');
+    } else if (tipoGse == 'TRUCK - LAVATORY') {
+        openDash('check_camion_aguas_negras__truck_lavatory');
     } else {
-        openDash('diligenciar_checklist')
+        openDash('check_van_pick_auto__van_car_pick_sub');
     }
-    
+
     function openDash(statedId) {
         var params = {entityId, entityName};
         widgetContext.stateController.openState(statedId, params, false);
