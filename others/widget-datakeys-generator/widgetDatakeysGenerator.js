@@ -165,7 +165,7 @@ const inputNamesLabelsFilepath = __dirname+'/datakey-array-generator/check-datak
 const inputNamesLabelsBigObjectOfArrays = readJsonFromFile(inputNamesLabelsFilepath);
 // console.log('inputNamesLabelsBigObjectOfArrays',inputNamesLabelsBigObjectOfArrays);
 
-const GSE_TYPE_TO_TAKE = 'CART - BAGGAGE';
+const GSE_TYPE_TO_TAKE = process.argv[2];
 const inputNamesLabelsArray = inputNamesLabelsBigObjectOfArrays[GSE_TYPE_TO_TAKE];
 
 // FILE NAMES ARRAY
@@ -195,8 +195,8 @@ const datakeysObjectBuilders = {
   },
   [jsonTemplateFilenamesList[2]]:{
     builder: turnToAdminHistoryTablita,
-    headElements: 0,
-    tailElements: 4,
+    headElements: 1,
+    tailElements: 3,
     outFile: outputWidgetsDirName + '3_adminHistoryTablitaDatakeys.json',
   },
   [jsonTemplateFilenamesList[3]]:{
@@ -212,7 +212,7 @@ const datakeysObjectBuilders = {
 // Take each widget template (filename) and generate the Full widget related to the inputJsonGuide
 jsonTemplateFilenamesList
   .filter(file => file.endsWith('.json')) // exclude the .txt file in dir
-  .forEach( ( filename, idx ) =>{
+  .forEach( ( filename ) =>{
     
     colorIndex = 0; // restart the global color counter
 
