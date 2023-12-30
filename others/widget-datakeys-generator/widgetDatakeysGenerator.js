@@ -50,9 +50,9 @@ function generateRandomLowercaseHexGuid() {
 // Function to convert a label/name object to the datasource form
 function turnToOperInputForm(dataKey) {
     return {
-        "name": dataKey.name,
+        "name": dataKey.identifier,
         "type": "attribute",
-        "label": dataKey.label,
+        "label": dataKey.question,
         "color": colorList[colorIndex++],
         "settings": {
             "dataKeyHidden": false,
@@ -91,9 +91,9 @@ function turnToOperInputForm(dataKey) {
 // Function to get the structure for Buffer
 function turnToOperBuffer(dataKey) {
   return {
-      "name": dataKey.name,
+      "name": dataKey.identifier,
       "type": "attribute",
-      "label": dataKey.label,
+      "label": dataKey.question,
       "color": colorList[colorIndex++],
       "settings": {},
       "_hash": Math.random(),
@@ -109,9 +109,9 @@ function turnToOperBuffer(dataKey) {
 
 function turnToAdminHistoryTablita(dataKey) {
   return {
-    "name": dataKey.name,
+    "name": dataKey.identifier,
     "type": "timeseries",
-    "label": dataKey.label,
+    "label": dataKey.short,
     "color": colorList[colorIndex++],
     "settings": {
       "useCellStyleFunction": false,
@@ -131,9 +131,9 @@ function turnToAdminHistoryTablita(dataKey) {
 
 function turnToAdminPlotChart(dataKey) {
   return {
-    "name": dataKey.name,
+    "name": dataKey.identifier,
     "type": "timeseries",
-    "label": dataKey.label,
+    "label": dataKey.short,
     "color": colorList[colorIndex++],
     "settings": {},
     "_hash": Math.random(),
@@ -165,7 +165,7 @@ const inputNamesLabelsFilepath = __dirname+'/datakey-array-generator/check-datak
 const inputNamesLabelsBigObjectOfArrays = readJsonFromFile(inputNamesLabelsFilepath);
 // console.log('inputNamesLabelsBigObjectOfArrays',inputNamesLabelsBigObjectOfArrays);
 
-const GSE_TYPE_TO_TAKE = 'TRACTOR - BAGGAGE';
+const GSE_TYPE_TO_TAKE = 'CART - BAGGAGE';
 const inputNamesLabelsArray = inputNamesLabelsBigObjectOfArrays[GSE_TYPE_TO_TAKE];
 
 // FILE NAMES ARRAY
