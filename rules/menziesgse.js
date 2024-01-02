@@ -293,6 +293,23 @@ function variablesProcessing(){
     var ajusteHorometro = parseFloat((metadata.ss_ajusteHorometro || "0").replace(/"/g, ""));
     msg.horometerAltAdjusted = msg.horometerAlt + ajusteHorometro;
 
+    //----------------------------------------------------------
+    //MANTENIMIENTOS
+
+
+    var KM_THRESHOLDS = [1000, 500, 100];
+    if(metadata.ss_proxMnttoA_km){
+        // Alarm levels[Low, Mid, High]
+        var proxMtoA_km = parseFloat((metadata.ss_proxMnttoA_km || "0").replace(/"/g, ""));
+        // Calc remaining kms for mto
+        msg.kmsParaMto = Math.round( (proxMtoA_km - msg.acumuladoDistancia) * 100) / 100;
+    }else {
+        // Induce Low alarm level if proxMnttoA_km not exists
+        msg.kmsParaMto = KM_THRESHOLDS[0]-1;
+    }
+
+    // horasParaMto
+    // diasParaMto
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
