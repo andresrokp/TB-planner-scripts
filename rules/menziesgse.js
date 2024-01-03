@@ -396,3 +396,20 @@ function script_adaptNoCumpleListForAlarm() {
     
     return {msg: {noCumpleList:noCumpleList}, metadata: metadata, msgType: msgType};
 }
+
+
+function switch_kms_alarm_router() {
+    var KMS_LEVELS = {
+        low : 1000,
+        mid : 500,
+        high : 100,
+        critical : 0
+    };
+    
+    var kms_level = ['kms_good'];
+    if (msg.kmsParaMto > KMS_LEVELS.high) kms_level = ['kms_clear'];
+    if (msg.kmsParaMto < KMS_LEVELS.high) kms_level = ['kms_high'];
+    if (msg.kmsParaMto < KMS_LEVELS.critical) kms_level = ['kms_critical'];
+    
+    return kms_level;
+}
