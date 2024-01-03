@@ -1,5 +1,15 @@
+// 
+// MAIN DASH
+// 
 
-
+function mainDash_rowStyle() {
+    console.log('entity',entity);
+    console.log('ctx',ctx);
+    
+    if (entity['Prox. MTO en [km]'] < 1000) return {
+      backgroundColor: 'rgb(255, 255, 100, 0.2)'
+    };    
+}
 
 
 
