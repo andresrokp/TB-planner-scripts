@@ -3,12 +3,15 @@
 // 
 
 function mainDash_rowStyle() {
-    console.log('entity',entity);
-    console.log('ctx',ctx);
-    
+    if (entity['Prox. MTO en [km]'] < 100) return {
+        backgroundColor: 'rgb(255, 50, 50, 0.3)'
+    };
+    if (entity['Prox. MTO en [km]'] < 500) return {
+        backgroundColor: 'rgb(255, 165, 0, 0.2)'
+    };
     if (entity['Prox. MTO en [km]'] < 1000) return {
-      backgroundColor: 'rgb(255, 255, 100, 0.2)'
-    };    
+        backgroundColor: 'rgb(255, 255, 100, 0.2)'
+    };  
 }
 
 
