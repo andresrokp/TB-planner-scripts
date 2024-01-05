@@ -1,9 +1,11 @@
-let {credentials} = require('../myvars')
+require('dotenv').config();
 
-const url = `https://${credentials.dns}/api/auth/login`;
+let { CREDENTIALS_URL, CREDENDIALS_USER, CREDENTIALS_PASS } = process.env
+
+const url = CREDENTIALS_URL;
 const data = {
-    username: credentials.user,
-    password: credentials.pass
+    username: CREDENDIALS_USER,
+    password: CREDENTIALS_PASS
 };
 
 fetch(url, {
