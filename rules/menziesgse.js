@@ -300,7 +300,7 @@ function variablesProcessing(){
     // Alarm levels[Low, Mid, High]
     // kmsParaMto
     var KM_THRESHOLDS = [1000, 500, 100];
-    if(metadata.ss_proxMnttoA_km){
+    if(!!metadata.ss_proxMnttoA_km){
         var proxMtoA_km = parseFloat((metadata.ss_proxMnttoA_km || "0").replace(/"/g, ""));
         // Calc remaining kms for mto
         msg.kmsParaMto = Math.round( (proxMtoA_km - msg.acumuladoDistancia) * 100) / 100;
@@ -308,9 +308,19 @@ function variablesProcessing(){
         // Induce Low alarm level if proxMnttoA_km not exists
         msg.kmsParaMto = KM_THRESHOLDS[0]-1;
     }
+    // horasParaMto
+    var HR_THRESHOLDS = [150, 72,10];
+    if (!!metadata.ss_proxMnttoA_horas) {
+        var proxMtoA_horas = parseFloat((metadata.ss_proxMnttoA_horas || "0").replace(/"/g, ""));
+        // Calc remaining hours for mto
+        msg.horasParaMto = Math.round((proxMtoA_horas - msg.horometerAltAdjusted/3600) * 10) / 10;
+    } else {
+        // Induce Low alarm level if proxMnttoA_horas not exists
+        msg.horasParaMto = HR_THRESHOLDS[0] - 1;
+    }
     // diasParaMto
     var DS_THRESHOLDS = [30, 7, 1];
-    if(metadata.ss_proxMnttoA_dias){
+    if(!!metadata.ss_proxMnttoA_dias){
         var proxMtoA_dias = parseInt((metadata.ss_proxMnttoA_dias || "0").replace(/"/g, ""));
         // Calc remaining days for mto
         msg.diasParaMto = Math.round( (proxMtoA_dias - Date.now())/(1000*60*60*24) * 10) / 10;
@@ -318,7 +328,7 @@ function variablesProcessing(){
         // Induce Low alarm level if proxMnttoA_dias not exists
         msg.diasParaMto = DS_THRESHOLDS[0]-1;
     }
-    // horasParaMto
+    return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
 
 
