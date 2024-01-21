@@ -34,7 +34,6 @@ FLUTTER MOBILE APP
     + ERROR: flutter error: cannot find symbol (!isTrustedWebActivity ? ChromeCustomTabsActivitySingleInstance.class : TrustedWebActivitySingleInstance.class));
 
 + ALL artifacts versions must match
-+ Install and import morgan
 
 + ERROR: flutter doctor : Unable to find bundled Java version.
     + For some reason th SDK look for the 'jre' folder, but now its name is 'jbr'
@@ -45,13 +44,27 @@ FLUTTER MOBILE APP
     + Bad try
     + Learn gradle
     + ERROR: FAILURE: Build failed with an exception. * What went wrong: A problem occurred configuring root project 'android'. > Could not resolve all files for configuration ':classpath'. > Could not find com.android.tools.build:gradle:
-    + Leave same hardcoded original gradle version
++ DO: Leave same hardcoded original gradle version
 + TRY: `flutter clean`
     + OK
     + ERROR: error: cannot find symbol private ThreadedInputConnectionProxyAdapterView proxyAdapterView; ^ symbol: class ThreadedInputConnectionProxyAdapterView location: class InputAwareWebView
+    + ERROR: Execution failed for task ':app:compileFlutterBuildDebug' + 'java.lang.StackOverflowError (no error message)'.
+TRY: `flutter pub get` `flutter pub cache repair`
     + ERROR: Building with plugins requires symlink support. Please enable Developer Mode in your system    settings. Run `start ms-settings:developers`
 + TRY: run the command `start ms-settings:developers`
     + Opens windows configs
     + Toggle developer mode ON
 + ERROR: lib/core/auth/login/login_page.dart:29:7: Error: No named parameter with the name 'foregroundColor'.
     + Change property name: `primary: Colors.black87`
+    + ERROR: This application cannot tree shake icons fonts. It has non-constant instances of IconData at the following locations  -  Execution failed for task ':app:compileFlutterBuildRelease'.
++ TRY: `flutter build apk --no-tree-shake-icons -v`
+    + Make compiler to not tree shake the icons
+    + Tree shake is like eliminating dead code or unused asset
+    + NICE :)
++ DO: Set OK icons in device
+    + Replace manually all thingsboard_.svg in /assets/images
+        + Changed some but Launcher icon missing
+    + `flutter pub run flutter_launcher_icons:main`
+        + Create icons in series for all android devices
+        + Main icon 
+
