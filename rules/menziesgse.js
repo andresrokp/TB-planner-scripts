@@ -97,6 +97,39 @@ function transformMessage(message, metadata, msgType) {
     };
 }
 
+function beaconsArrayEnrichment(params) {
+    var atts = msg.position.attributes
+    var beaconsArray = [];
+    if (!!atts.beacon1Namespace){
+        
+        // Iterate all atts
+        for (var key in atts) {
+          // Take 1 of each beacon
+          if ( /beacon/i.test(key) && /Namespace/i.test(key)) {
+            var beaconNumber = key.replace(/\D/g, "");
+            
+            // Complete that beacon atts strings
+            var namespaceKey = 'beacon'+beaconNumber+'Namespace';
+            var instanceKey = 'beacon'+beaconNumber+'Instance';
+            var rssiKey = 'beacon'+beaconNumber+'Rssi';
+        
+            // Create an object with the 3 beacon atts
+            var beaconTriad = {
+              namespace: atts[namespaceKey],
+              instance: atts[instanceKey],
+              rssi: atts[rssiKey],
+            };
+        
+            beaconsArray.push(beaconTriad);
+          }
+        }
+    }
+    
+    msg.position.attributes.beaconsArray = beaconsArray;
+    
+    return {msg: msg, metadata: metadata, msgType: msgType};
+}
+
 
 // Procesa datos del mensaje (acumulación, no repeticón, conversión, etc)
 function variablesProcessing(){
