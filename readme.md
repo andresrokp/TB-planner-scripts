@@ -61,10 +61,35 @@ TRY: `flutter pub get` `flutter pub cache repair`
     + Make compiler to not tree shake the icons
     + Tree shake is like eliminating dead code or unused asset
     + NICE :)
-+ DO: Set OK icons in device
++ DO: Set Custom SH icons in App
     + Replace manually all thingsboard_.svg in /assets/images
         + Changed some but Launcher icon missing
     + `flutter pub run flutter_launcher_icons:main`
         + Create icons in series for all android devices
         + Main icon 
 
+
+
+
+BUILD FOR IOS
+
++ DO: Research
+    + Compiling:
+        + iOS machine > burrow one
+        + codemagic > OK
+    + Deployment
+        + appleDev
+        + codemagic stream
+        + SideLoad apps: Scarlet
++ DO: Fork TB mobile
+    + complicated
++ DO: clone TB repo & change origin
+    + clone spacific branch: 1.0.7
+    + (do custom stuff above)
+    + OK
++ DO: Build app in codemagic
+    + Sign in account
+    + Set build config
+        + Debug mode
+        + Flutter 3.0.0
+    + OK but no .ipa
