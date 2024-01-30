@@ -449,18 +449,70 @@ function script_adaptNoCumpleListForAlarm() {
 }
 
 
-function switch_kms_alarm_router() {
-    var KMS_LEVELS = {
-        low : 1000,
-        mid : 500,
-        high : 100,
-        critical : 0
+function triple_MTO_alarm_handler() {
+    // remaining vars load
+    var remainingKms = msg.kmsParaMto;
+    var remainingHours = msg.hoursParaMto;
+    var remainingDays = msg.diasParaMto;
+
+    // levels dict
+    var alarmLevels = {
+        kms: {
+            low: 1000,
+            mid: 500,
+            high: 100,
+            critical: 0
+        },
+        hours: {
+            low: 150,
+            mid: 72,
+            high: 10,
+            critical: 0
+        },
+        days: {
+            low: 30,
+            mid: 7,
+            high: 1,
+            critical: 0
+        }
     };
-    
-    var kms_level = ['kms_good'];
-    if (msg.kmsParaMto > KMS_LEVELS.high) kms_level = ['kms_clear'];
-    if (msg.kmsParaMto < KMS_LEVELS.high) kms_level = ['kms_high'];
-    if (msg.kmsParaMto < KMS_LEVELS.critical) kms_level = ['kms_critical'];
-    
-    return kms_level;
+
+    // Default level
+    var alarmLevelsResult = ['alarm_clear'];
+    var varibleList = [];
+
+    // alarm level injections
+
+    if (remainingKms < alarmLevels.kms.high) {
+        alarmLevelsResult = ['alarm_high'];
+        varibleList.push('KM');
+    }
+    if (remainingHours < alarmLevels.hours.high) {
+        alarmLevelsResult = ['alarm_high'];
+        varibleList.push('HR');
+    }
+    if (remainingDays < alarmLevels.days.high) {
+        alarmLevelsResult.days = ['alarm_high'];
+        varibleList.push('DS');
+    }
+
+
+    if (remainingKms < alarmLevels.kms.critical) {
+        alarmLevelsResult = ['alarm_critical'];
+        varibleList.push('KM');
+    }
+    if (remainingHours < alarmLevels.hours.critical) {
+        varibleList.push('HR');
+        alarmLevelsResult = ['alarm_critical'];
+    }
+    if (remainingDays < alarmLevels.days.critical) {
+        varibleList.push('DS');
+        alarmLevelsResult.days = ['alarm_critical'];
+    }
+
+    // Return the alarms array
+    msg.alarmLevelsResult = alarmLevelsResult;
+    msg.varibleList = varibleList;
+
+    return {msg: msg, metadata: metadata, msgType: "POST_ATTRIBUTES_REQUEST"};
 }
