@@ -480,6 +480,7 @@ function triple_MTO_alarm_handler() {
     // Default level
     var alarmLevelsResult = ['alarm_clear'];
     var varibleList = [];
+    var criticalVar;
 
     // alarm level injections
 
@@ -500,19 +501,23 @@ function triple_MTO_alarm_handler() {
     if (remainingKms < alarmLevels.kms.critical) {
         alarmLevelsResult = ['alarm_critical'];
         varibleList.push('KM');
+        criticalVar = 'KM';
     }
     if (remainingHours < alarmLevels.hours.critical) {
         varibleList.push('HR');
         alarmLevelsResult = ['alarm_critical'];
+        criticalVar = 'HR';
     }
     if (remainingDays < alarmLevels.days.critical) {
         varibleList.push('DS');
         alarmLevelsResult.days = ['alarm_critical'];
+        criticalVar = 'DS';
     }
 
     // Return the alarms array
     msg.alarmLevelsResult = alarmLevelsResult;
     msg.varibleList = varibleList;
+    metadata.criticalVar = criticalVar;
 
     return {msg: msg, metadata: metadata, msgType: "POST_ATTRIBUTES_REQUEST"};
 }
