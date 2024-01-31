@@ -518,6 +518,8 @@ function triple_MTO_alarm_handler() {
     msg.alarmLevelsResult = alarmLevelsResult;
     msg.varibleList = varibleList;
     metadata.criticalVar = criticalVar;
+    metadata.acumuladoDistancia = Math.round(msg.acumuladoDistancia*100)/100;
+    metadata.horometerAltAdjusted = Math.round(msg.horometerAltAdjusted/3600*100)/100;
 
     return {msg: msg, metadata: metadata, msgType: "POST_ATTRIBUTES_REQUEST"};
 }
