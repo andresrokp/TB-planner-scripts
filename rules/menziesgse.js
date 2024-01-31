@@ -521,3 +521,42 @@ function triple_MTO_alarm_handler() {
 
     return {msg: msg, metadata: metadata, msgType: "POST_ATTRIBUTES_REQUEST"};
 }
+
+function email_data_organizer (){
+    var criticalVar = metadata.criticalVar;
+    var kmHrStyle = '';
+    var dsStyle = '';
+    var criticalText;
+
+    if (criticalVar == 'KM' || criticalVar == 'HR'){
+        criticalText = 'kilometraje/horómetro';
+        kmHrStyle = 'color: red; font-weight: bold; '
+    }else{
+        criticalText = 'día programado';
+        dsStyle = 'color: red; font-weight: bold; '
+    }
+
+    function formatDate(milliseconds) {
+        var date = new Date(milliseconds);
+        var day = String(date.getDate());
+        var month = String(date.getMonth() + 1);
+        var year = String(date.getFullYear()).slice(-2);
+
+        return day+'/'+month+'/'+year;
+    }
+
+    var proxDate = formatDate(parseInt(metadata.ss_proxMnttoA_dias));
+
+    var newMetadata = {
+        deviceName : metadata.deviceName,
+        ss_estacion : metadata.ss_estacion,
+        criticalText : criticalText,
+        kmHrStyle : kmHrStyle,
+        acumuladoDistancia : metadata.acumuladoDistancia,
+        horometerAltAdjusted : metadata.horometerAltAdjusted,
+        dsStyle : dsStyle,
+        ss_proxMnttoA_dias : proxDate,
+    };
+
+    return {msg: {}, metadata: newMetadata, msgType: msgType};
+}
