@@ -14,6 +14,21 @@ function mainDash_rowStyle() {
     };  
 }
 
+function mainDash_Hmto_CellContent(){
+
+    let gseType = entity["Tipo GSE"];
+
+    let groups = {
+    kilometers: ["BUS - PASSENGER", "SUV", "TRUCK - PICK-UP", "VAN"],
+    dateOnly: ["DOLLY - CARGO PALLET", "DOLLY - CARGO PALLET 20FT", "DOLLY - ULD CONTAINER", "TAIL STAND"]
+    };
+
+    if (groups.kilometers.includes(gseType) || groups.dateOnly.includes(gseType))
+        return "-";
+
+    return Math.floor(value/3600 * 100) / 100;
+}
+
 
 
 // 
