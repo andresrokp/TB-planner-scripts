@@ -6,31 +6,37 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <p>
-            El vehículo 
-            <span style="font-weight: bold; text-decoration: underline; font-style: italic;">
-          ${deviceName}
-        </span> 
-        de la estación 
+<div>
+    <p>
+        El vehículo
+        <span style="font-weight: bold; text-decoration: underline; font-style: italic;">
+            ${deviceName}
+        </span>
+        de la estación
         <span style="text-decoration: underline; font-style: italic;">
-          ${ss_estacion}
-        </span> 
-        presenta una demora en su mantenimiento con respecto a su 
+            ${ss_estacion}
+        </span>
+        presenta una demora en su mantenimiento con respecto a su
         <span style="text-decoration: underline; font-style: italic;">
             ${criticalText}
         </span>.
     </p>
-    
-      <ul>
-        <li>
-            Kilometraje / horómetro actual: 
+
+    <ul>
+        <li style="display: ${kmDisplay}">
+            Kilometraje actual:
             <span style="${kmHrStyle} text-decoration: underline; font-style: italic;">
-                ${acumuladoDistancia} Km/${horometerAltAdjusted} Hrs.
+                ${acumuladoDistancia} Km.
+            </span>
+        </li>
+        <li style="display: ${hrDisplay}">
+            Horómetro actual:
+            <span style="${kmHrStyle} text-decoration: underline; font-style: italic;">
+                ${horometerAltAdjusted} Hrs.
             </span>
         </li>
         <li>
-            Fecha límite de mantenimiento: 
+            Fecha límite de mantenimiento:
             <span style="${dsStyle} text-decoration: underline; font-style: italic;">
                 ${ss_proxMnttoA_dias}
             </span>
