@@ -67,7 +67,23 @@ function auxDash_updMultAtts_settings_widgetCss() {
 
 function auxDash_multAttsUpdate_inputHorasProxMto_getValue() {
     // Esto es suceptible al orden de los campos en los datasource
-    // data posee los datos originales de la DDBB antes de entrar a la vm de Angular
+    // ctx.data posee los datos originales de la DDBB antes de entrar a la vm de Angular
+
+    // A. Verificar que tipo de MTO tiene, y "anular" si no es de horas
+
+    // toma el tipo de GSE del último datakey
+    let gseType = ctx.data[10].data[0][1];
+
+    let groups = {
+    kilometers: ["BUS - PASSENGER", "SUV", "TRUCK - PICK-UP", "VAN"],
+    dateOnly: ["DOLLY - CARGO PALLET", "DOLLY - CARGO PALLET 20FT", "DOLLY - ULD CONTAINER", "TAIL STAND"]
+    };
+
+    if (groups.kilometers.includes(gseType) || groups.dateOnly.includes(gseType))
+        return 999999999
+
+
+    // B. Desarrollo normal del cálculo y render 
 
     // valor en el input disabled de la derecha
     let hrsProxMntoA = ctx.data[5].data[0][1]
