@@ -452,7 +452,7 @@ function script_adaptNoCumpleListForAlarm() {
 function triple_MTO_alarm_handler() {
     // remaining vars load
     var remainingKms = msg.kmsParaMto;
-    var remainingHours = msg.hoursParaMto;
+    var remainingHours = msg.horasParaMto;
     var remainingDays = msg.diasParaMto;
 
     // levels dict
@@ -482,13 +482,33 @@ function triple_MTO_alarm_handler() {
     var varibleList = [];
     var criticalVar;
 
+
+
+    var gseType = metadata.ss_VehicleType;
+
+    var groups = {
+    kilometers: ["BUS - PASSENGER", "SUV", "TRUCK - PICK-UP", "VAN"],
+    dateOnly: ["DOLLY - CARGO PALLET", "DOLLY - CARGO PALLET 20FT", "DOLLY - ULD CONTAINER", "TAIL STAND"]
+    };
+    // Helper to replace array.includes()
+    function customIncludes(arr, target) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == target) {
+        return true;
+        }
+    }
+    return false;
+    }
+    var hasKilometers = customIncludes(groups.kilometers,gseType);
+    var hasHours = ! (customIncludes(groups.dateOnly, gseType) || customIncludes(groups.kilometers,gseType) );
+
     // alarm level injections
 
-    if (remainingKms < alarmLevels.kms.high) {
+    if (remainingKms < alarmLevels.kms.high && hasKilometers) {
         alarmLevelsResult = ['alarm_high'];
         varibleList.push('KM');
     }
-    if (remainingHours < alarmLevels.hours.high) {
+    if (remainingHours < alarmLevels.hours.high && hasHours) {
         alarmLevelsResult = ['alarm_high'];
         varibleList.push('HR');
     }
@@ -498,12 +518,12 @@ function triple_MTO_alarm_handler() {
     }
 
 
-    if (remainingKms < alarmLevels.kms.critical) {
+    if (remainingKms < alarmLevels.kms.critical && hasKilometers) {
         alarmLevelsResult = ['alarm_critical'];
         varibleList.push('KM');
         criticalVar = 'KM';
     }
-    if (remainingHours < alarmLevels.hours.critical) {
+    if (remainingHours < alarmLevels.hours.critical && hasHours ) {
         varibleList.push('HR');
         alarmLevelsResult = ['alarm_critical'];
         criticalVar = 'HR';
@@ -520,6 +540,12 @@ function triple_MTO_alarm_handler() {
     metadata.criticalVar = criticalVar;
     metadata.acumuladoDistancia = Math.round(msg.acumuladoDistancia*100)/100;
     metadata.horometerAltAdjusted = Math.round(msg.horometerAltAdjusted/3600*100)/100;
+
+    // probing variables
+    msg.ZhasHours = hasHours;
+    msg.ZremainingHours = remainingHours;
+    msg.ZthisAlarmLevel = alarmLevels.hours.critical;
+    msg.ZisDelayed = remainingHours < alarmLevels.hours.critical;
 
     return {msg: msg, metadata: metadata, msgType: "POST_ATTRIBUTES_REQUEST"};
 }
