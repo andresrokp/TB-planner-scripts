@@ -554,27 +554,37 @@ function email_data_organizer (){
     var criticalVar = metadata.criticalVar;
     var kmHrStyle = '';
     var dsStyle = '';
+    var kmDisplay = '';
+    var hrDisplay = '';
+    var dsStyle = '';
     var criticalText;
-
-    if (criticalVar == 'KM' || criticalVar == 'HR'){
-        criticalText = 'kilometraje/horómetro';
+    
+    if (criticalVar == 'KM'){
+        criticalText = 'kilometraje';
         kmHrStyle = 'color: red; font-weight: bold; '
+        kmDisplay = 'list-item';
+        hrDisplay = 'none';
+    } else if (criticalVar == 'HR'){
+        criticalText = 'horómetro';
+        kmHrStyle = 'color: red; font-weight: bold; ';
+        kmDisplay = 'none';
+        hrDisplay = 'list-item';
     }else{
         criticalText = 'día programado';
         dsStyle = 'color: red; font-weight: bold; '
     }
-
+    
     function formatDate(milliseconds) {
         var date = new Date(milliseconds);
         var day = String(date.getDate());
         var month = String(date.getMonth() + 1);
         var year = String(date.getFullYear()).slice(-2);
-
+    
         return day+'/'+month+'/'+year;
     }
-
+    
     var proxDate = formatDate(parseInt(metadata.ss_proxMnttoA_dias));
-
+    
     var newMetadata = {
         deviceName : metadata.deviceName,
         ss_estacion : metadata.ss_estacion,
@@ -582,9 +592,11 @@ function email_data_organizer (){
         kmHrStyle : kmHrStyle,
         acumuladoDistancia : metadata.acumuladoDistancia,
         horometerAltAdjusted : metadata.horometerAltAdjusted,
+        kmDisplay : kmDisplay,
+        hrDisplay : hrDisplay,
         dsStyle : dsStyle,
         ss_proxMnttoA_dias : proxDate,
     };
-
+    
     return {msg: {}, metadata: newMetadata, msgType: msgType};
 }
