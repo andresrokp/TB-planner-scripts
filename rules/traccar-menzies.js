@@ -15,3 +15,7 @@ function isBLE_filter(params) {
 function esBuenMensaje_filter(params) {
     return !!msg.position.attributes.sat && !!msg.position.attributes.sat.io449 ?  msg.position.attributes.sat > 6 : false;
 }
+
+function beaconNonZeroLatLon_filter(params) {
+    return msg.position.latitude != 0 && msg.position.longitude != 0;
+}
