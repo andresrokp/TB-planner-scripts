@@ -8,3 +8,6 @@ function buenFecha_fiterNode(params) {
     return currentYear == fixTimeYear;
 }
 
+function isBLE_filter(params) {
+    return !!msg.position.attributes.beacon1Namespace || !!msg.position.attributes.beacon1Uuid ?  true : false;
+}
