@@ -81,3 +81,134 @@ function msgTransformador_script(params) {
         msgType: msgType,
     };
 }
+
+function name(params) {
+    var atts = msg.position.attributes
+    var beaconMsgArray = [];
+    if (!!atts.beacon1Namespace){
+        
+        // Iterate all atts . beacon1Namespace
+        for (var key in atts) {
+          // Take 1 of each beacon
+          if ( /beacon/i.test(key) && /Namespace/i.test(key)) {
+            var beaconNumber = key.replace(/\D/g, "");
+            
+            // Complete that beacon atts strings
+            var namespaceKey = 'beacon'+beaconNumber+'Namespace';
+            // var instanceKey = 'beacon'+beaconNumber+'Instance';
+            var rssiKey = 'beacon'+beaconNumber+'Rssi';
+        
+            // Create an object with the 3 beacon atts
+            var beaconMsg = {
+                ts: new Date(msg.position.fixTime).valueOf(),
+                namespace: atts[namespaceKey],
+                // instance: atts[instanceKey],
+                rssi: atts[rssiKey],
+                latitude: msg.position.latitude == 0 ? 4.700001 : msg.position.latitude,
+                longitude: msg.position.longitude == 0 ? -74.140001 : msg.position.longitude,
+                vehicleName: msg.device.name,
+                vehicleId: msg.device.uniqueId,
+                geofenceIds: msg.device.geofenceIds
+            };
+            beaconMsgArray.push(beaconMsg);
+          }
+        }
+    }
+    
+    return {msg: beaconMsgArray, metadata: metadata, msgType: msgType};
+    
+    
+    /*
+    {
+        "position": {
+            "id": 0,
+            "attributes": {
+                "priority": 0,
+                "sat": 19,
+                "event": 385,
+                "beacon1Uuid": "0000999900001000800000177a000002",
+                "beacon1Major": 43690,
+                "beacon1Minor": 48059,
+                "beacon1Rssi": -100,
+                "distance": 0.0,
+                "totalDistance": 1.7952659504E8,
+                "motion": false,
+                "hours": 5020316423
+            },
+            "deviceId": 1002,
+            "protocol": "teltonika",
+            "serverTime": "2024-02-19T16:46:41.387+00:00",
+            "deviceTime": "2024-02-19T16:46:32.011+00:00",
+            "fixTime": "2024-02-19T16:46:32.011+00:00",
+            "outdated": false,
+            "valid": true,
+            "latitude": 4.7008183,
+            "longitude": -74.143965,
+            "altitude": 2582.0,
+            "speed": 0.0,
+            "course": 38.0,
+            "accuracy": 0.0
+        },
+        "device": {
+            "id": 1002,
+            "attributes": {},
+            "groupId": 5,
+            "name": "bog - 17 - 860896053043535",
+            "uniqueId": "860896053043535",
+            "status": "online",
+            "lastUpdate": "2024-02-19T16:46:41.387+00:00",
+            "positionId": 17658904,
+            "geofenceIds": [],
+            "phone": "",
+            "model": "",
+            "contact": "",
+            "disabled": false
+        }
+    }
+    
+    {
+        "position": {
+            "id": 0,
+            "attributes": {
+                "priority": 0,
+                "sat": 18,
+                "event": 385,
+                "beacon1Namespace": "16f03fc089d155aac19a",
+                "beacon1Instance": "ea6a347c0055",
+                "beacon1Rssi": -71,
+                "distance": 0.0,
+                "totalDistance": 2.477801613E7,
+                "motion": false
+            },
+            "deviceId": 1066,
+            "protocol": "teltonika",
+            "serverTime": "2024-02-22T21:11:48.291+00:00",
+            "deviceTime": "2024-02-22T21:11:46.011+00:00",
+            "fixTime": "2024-02-22T21:11:46.011+00:00",
+            "outdated": false,
+            "valid": true,
+            "latitude": 4.6929666,
+            "longitude": -74.1325733,
+            "altitude": 2583.0,
+            "speed": 0.0,
+            "course": 49.0,
+            "accuracy": 0.0
+        },
+        "device": {
+            "id": 1066,
+            "attributes": {},
+            "groupId": 5,
+            "name": "BOG - 287 - 863719062415618",
+            "uniqueId": "863719062415618",
+            "status": "online",
+            "lastUpdate": "2024-02-22T21:11:48.292+00:00",
+            "positionId": 18466620,
+            "geofenceIds": [],
+            "phone": "",
+            "model": "",
+            "contact": "",
+            "disabled": false
+        }
+    }
+    */
+}
