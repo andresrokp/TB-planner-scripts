@@ -143,7 +143,9 @@ function variablesProcessing(){
             65: "SJD-Ciudad, El Zacatal",
             66: "SJD-Ciudad, Santa Rosa",
             69: "SJD-Ciudad, Las Veredas",
-            70: "CUN"
+            70: "CUN",
+            86: "Edificio terminal", // VER
+            87: "Zona 1" // VER
         };
         msg.geofenceIds.forEach( function (e,i)
             {
@@ -238,16 +240,7 @@ function variablesProcessing(){
         // Induce Low alarm level if proxMnttoA_km not exists
         msg.kmsParaMto = KM_THRESHOLDS[0]-1;
     }
-    // horasParaMto
-    var HR_THRESHOLDS = [150, 72,10];
-    if (!!metadata.ss_proxMnttoA_horas) {
-        var proxMtoA_horas = parseFloat((metadata.ss_proxMnttoA_horas || "0").replace(/"/g, ""));
-        // Calc remaining hours for mto
-        msg.horasParaMto = Math.round((proxMtoA_horas - msg.horometerAltAdjusted/3600) * 10) / 10;
-    } else {
-        // Induce Low alarm level if proxMnttoA_horas not exists
-        msg.horasParaMto = HR_THRESHOLDS[0] - 1;
-    }
+
     // diasParaMto
     var DS_THRESHOLDS = [30, 7, 1];
     if(!!metadata.ss_proxMnttoA_dias){
@@ -257,6 +250,16 @@ function variablesProcessing(){
     }else {
         // Induce Low alarm level if proxMnttoA_dias not exists
         msg.diasParaMto = DS_THRESHOLDS[0]-1;
+    }
+    // horasParaMto
+    var HR_THRESHOLDS = [150, 72,10];
+    if (!!metadata.ss_proxMnttoA_horas) {
+        var proxMtoA_horas = parseFloat((metadata.ss_proxMnttoA_horas || "0").replace(/"/g, ""));
+        // Calc remaining hours for mto
+        msg.horasParaMto = Math.round((proxMtoA_horas - msg.horometerAltAdjusted/3600) * 10) / 10;
+    } else {
+        // Induce Low alarm level if proxMnttoA_horas not exists
+        msg.horasParaMto = HR_THRESHOLDS[0] - 1;
     }
     return {msg: msg, metadata: metadata, msgType: "POST_TELEMETRY_REQUEST"};
 }
