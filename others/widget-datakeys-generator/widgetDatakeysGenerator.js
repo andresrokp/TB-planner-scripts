@@ -16,7 +16,7 @@ function readJsonFromFile(filename) {
 
 
 // 'global' variable to track color setting
-const colorList = ['#2196f3','#4caf50','#f44336','#ffc107','#607d8b','#9c27b0','#8bc34a','#3f51b5','#e91e63','#ffeb3b','#03a9f4','#ff9800','#673ab7','#cddc39','#009688','#795548','#00bcd4','#ff5722','#9e9e9e','#2962ff','#00c853','#d50000','#ffab00','#455a64']
+const colorList = ["#43a047","#2196f3","#4caf50","#f44336","#ffc107","#607d8b","#9c27b0","#8bc34a","#3f51b5","#e91e63","#ffeb3b","#03a9f4","#ff9800","#673ab7","#cddc39","#009688","#795548","#00bcd4","#ff5722","#9e9e9e","#2962ff","#00c853","#d50000","#ffab00","#455a64","#aa00ff","#64dd17","#304ffe","#c51162","#ffd600","#0091ea","#ff6d00","#6200ea","#aeea00","#00bfa5","#5d4037","#00b8d4","#dd2c00","#616161","#1e88e5","#ffb300","#e53935","#546e7a","#8e24aa"]
 let colorIndex = 0
 
 // generate random guid
