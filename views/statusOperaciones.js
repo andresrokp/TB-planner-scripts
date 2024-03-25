@@ -29,14 +29,53 @@ function sateliteMap(params) {
 
         let pos;
 
-        if (data.active == 'true')  pos = 18;
-        if (data.active == 'false')  pos = 17;
-        if (data.emergency == 1)  pos = 16;
+        if (data.VehicleType == 'LOADER - BELT') pos = 1;
+        if (data.active == 'true')  pos += 1;
+        if (data.emergency == 1)  pos += 2;
 
         return {
             url: images[pos],
             size: 35
         }
+
+
+        /*
+
+        data = {
+            "entityName": "287",
+            "deviceName": "287",
+            "entityId": "c433b380-d1c1-11ee-bf46-f528f0cf9f6e",
+            "entityType": "DEVICE",
+            "entityLabel": "863719062415618",
+            "entityDescription": "",
+            "aliasName": "vehicles",
+            "dsIndex": 174,
+            "dsName": "287",
+            "deviceType": null,
+            "Vuelo": "",
+            "Vuelo|ts": 0,
+            "C. Asignado": "",
+            "C. Asignado|ts": 0,
+            "Conductor": "",
+            "Conductor|ts": 0,
+            "speed": 0,
+            "speed|ts": 1711378999000,
+            "fuel": "",
+            "fuel|ts": 0,
+            "status": "",
+            "status|ts": 0,
+            "latitude": 4.69893,
+            "latitude|ts": 1711378999000,
+            "longitude": -74.1460916,
+            "longitude|ts": 1711378999000,
+            "active": "false",
+            "active|ts": 1711379614661,
+            "VehicleType": "LOADER - BELT",
+            "VehicleType|ts": 1708634064608,
+            "emergency": 0,
+            "emergency|ts": 1711378995000
+        }
+        */
     }
 
 }
