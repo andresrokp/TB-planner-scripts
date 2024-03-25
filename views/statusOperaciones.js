@@ -27,14 +27,32 @@ function sateliteMap(params) {
         // console.log("~~ dsData", dsData)
         // console.log("~~ dsIndex", dsIndex)
 
-        let pos;
+        const mappingTable = {
+            "CART - AIR START UNIT (ASU)": 1,
+            "LOADER - BELT": 4,
+            "CAR": 7,
+            "FORKLIFT": 10,
+            "CART - GPU": 13,
+            "LOADER - AIRCRAFT MDL (14T-40T)": 16,
+            "LOADER - AIRCRAFT LDL 7T": 16,
+            "PUSHBACK - NARROW BODY": 19,
+            "PUSHBACK - WIDEBODY": 19,
+            "STEPS - PASSENGER": 22,
+            "TRACTOR - BAGGAGE": 25,
+            "TRUCK - BOX": 25,
+            "TRUCK - LAVATORY": 28,
+            "TRUCK - PICK-UP": 31,
+            "TRUCK - WATER": 34,
+        };
 
-        if (data.VehicleType == 'LOADER - BELT') pos = 1;
-        if (data.active == 'true')  pos += 1;
-        if (data.emergency == 1)  pos += 2;
+        const pos = mappingTable[data.VehicleType];
+
+        let pos_ = pos;
+        if (data.active == 'true')  pos_ = pos + 2;
+        if (data.emergency == 1)  pos_ = pos + 1;
 
         return {
-            url: images[pos],
+            url: images[pos_],
             size: 35
         }
 
@@ -77,7 +95,6 @@ function sateliteMap(params) {
         }
         */
     }
-
 }
 
 function aux_dash(params) {
