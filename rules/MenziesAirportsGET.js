@@ -43,46 +43,45 @@ let msg = {
 }
 
 function filterOnlyScheduledInsideTime(msg, metadata) {
-// TO FILTER FLIGTHS IN A TIME RANGE
-// var offset = parseInt(metadata.utcTimeOffset);
-// var presentTime = new Date().getTime();
-// var intervalStart = presentTime +  (-0.2 + offset)*60*60*1000;
-// var intervalEnd = presentTime +  (12 + offset)*60*60*1000;
-// var scheduledTime = new Date(msg.arrival.scheduledTime).getTime();
-// var isInTime = scheduledTime > intervalStart && scheduledTime < intervalEnd; 
 
-var patterns = [
-    /^N[^\w]*3[^\w]*3[^\w]*0[^\w]*Q[^\w]*T$/,
-    /^N[^\w]*3[^\w]*3[^\w]*1[^\w]*Q[^\w]*T$/,
-    /^N[^\w]*3[^\w]*3[^\w]*2[^\w]*Q[^\w]*T$/,
-    /^N[^\w]*3[^\w]*3[^\w]*3[^\w]*Q[^\w]*T$/,
-    /^N[^\w]*3[^\w]*3[^\w]*4[^\w]*Q[^\w]*T$/,
-    /^N[^\w]*3[^\w]*3[^\w]*5[^\w]*Q[^\w]*T$/,
-    /^N[^\w]*3[^\w]*3[^\w]*6[^\w]*Q[^\w]*T$/,
-    /^X[^\w]*A[^\w]*U[^\w]*Y[^\w]*R$/,
-    /^X[^\w]*A[^\w]*G[^\w]*G[^\w]*L$/,
-    /^X[^\w]*A[^\w]*E[^\w]*F[^\w]*R$/,
-    /^X[^\w]*A[^\w]*L[^\w]*R[^\w]*C$/,
-    /^X[^\w]*A[^\w]*L[^\w]*R[^\w]*F$/,
-  ];
-  
-  var isInCargoRegNums = patterns.some(function(e){
-      e.test(msg.aircraft_registration);
-  });
-  
-  // var isAvianca = /avianca/i.test(msg.airline_name);
-  
-  var isFedex = /fedex/i.test(msg.airline_name);
-  var isAerounion = /aerounion/i.test(msg.airline_name);
-  var isMartinair = /martinair/i.test(msg.airline_name);
-  
-  var isCargo = isInCargoRegNums || isFedex || isAerounion || isMartinair;
-  
-  metadata.isCargo;
-  
-  
-  
-  return isCargo;
+    var patterns = [
+        /^N[^\w]*3[^\w]*3[^\w]*0[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*1[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*2[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*3[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*4[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*5[^\w]*Q[^\w]*T$/,
+        /^N[^\w]*3[^\w]*3[^\w]*6[^\w]*Q[^\w]*T$/,
+        /^X[^\w]*A[^\w]*U[^\w]*Y[^\w]*R$/,
+        /^X[^\w]*A[^\w]*G[^\w]*G[^\w]*L$/,
+        /^X[^\w]*A[^\w]*E[^\w]*F[^\w]*R$/,
+        /^X[^\w]*A[^\w]*L[^\w]*R[^\w]*C$/,
+        /^X[^\w]*A[^\w]*L[^\w]*R[^\w]*F$/,
+      ];
+      
+      var isInCargoRegNums = patterns.some(function(e){
+          e.test(msg.aircraft_registration);
+      });
+      
+      // var isAvianca = /avianca/i.test(msg.airline_name);
+      
+      var isFedex = /fedex/i.test(msg.airline_name);
+      var isAerounion = /aerounion/i.test(msg.airline_name);
+      var isMartinair = /martinair/i.test(msg.airline_name);
+      
+      var isCargo = isInCargoRegNums || isFedex || isAerounion || isMartinair;
+      
+      
+      var isLatam = /latam/i.test(msg.airline_name);
+      var isKlm = /klm/i.test(msg.airline_name);
+      var isAirFrance = /france/i.test(msg.airline_name);
+      var isAirEuropa = /europa/i.test(msg.airline_name);
+      var isAmerican = /american/i.test(msg.airline_name);
+      var isUnited = /united/i.test(msg.airline_name);
+      
+      var isPax = isLatam || isKlm || isAirFrance || isAirEuropa || isAmerican || isUnited;
+      
+      return isPax || isCargo
 }
 
 function msgTransformationToTelemetry(msg) {
